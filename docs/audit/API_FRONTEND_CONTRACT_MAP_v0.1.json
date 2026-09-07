@@ -1,0 +1,2543 @@
+{
+  "metadata": {
+    "title": "DNK OS 0.2 API & Frontend Contract Alignment Map",
+    "version": "v0.1",
+    "timestamp": "2026-09-07",
+    "audit_type": "read-only",
+    "total_routes_in_schema": 627,
+    "total_frontend_endpoints_scanned": 583,
+    "duplicate_operation_ids_count": 0,
+    "paired_root_and_api_aliases_count": 13
+  },
+  "main_py_mounts": {
+    "manual_mounts_count": 34,
+    "manual_mounts": [
+      {
+        "router_expr": "canvas.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 157
+      },
+      {
+        "router_expr": "canvas.router",
+        "prefix": "/api",
+        "tags": [],
+        "lineno": 158
+      },
+      {
+        "router_expr": "agent.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 159
+      },
+      {
+        "router_expr": "agent.router",
+        "prefix": "/api",
+        "tags": [],
+        "lineno": 160
+      },
+      {
+        "router_expr": "artifact.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 161
+      },
+      {
+        "router_expr": "artifact.router",
+        "prefix": "/api",
+        "tags": [],
+        "lineno": 162
+      },
+      {
+        "router_expr": "analytics.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 163
+      },
+      {
+        "router_expr": "analytics.router",
+        "prefix": "/api",
+        "tags": [],
+        "lineno": 164
+      },
+      {
+        "router_expr": "taskdna.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 165
+      },
+      {
+        "router_expr": "taskdna.router",
+        "prefix": "/api",
+        "tags": [],
+        "lineno": 166
+      },
+      {
+        "router_expr": "workspace.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 167
+      },
+      {
+        "router_expr": "secrets_vault.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 168
+      },
+      {
+        "router_expr": "admin_security.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 169
+      },
+      {
+        "router_expr": "workspace_collaboration.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 170
+      },
+      {
+        "router_expr": "github.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 171
+      },
+      {
+        "router_expr": "timeline.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 172
+      },
+      {
+        "router_expr": "workspace_analytics.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 173
+      },
+      {
+        "router_expr": "analytics_alerting.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 174
+      },
+      {
+        "router_expr": "analytics_forecasting.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 175
+      },
+      {
+        "router_expr": "worker_management.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 176
+      },
+      {
+        "router_expr": "shopify.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 177
+      },
+      {
+        "router_expr": "video_router.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 178
+      },
+      {
+        "router_expr": "whiteboard_router.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 179
+      },
+      {
+        "router_expr": "product_launch.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 180
+      },
+      {
+        "router_expr": "patent_shield.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 181
+      },
+      {
+        "router_expr": "memory_l3.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 182
+      },
+      {
+        "router_expr": "workflow_composer.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 183
+      },
+      {
+        "router_expr": "workflow_composer.router",
+        "prefix": "/api",
+        "tags": [],
+        "lineno": 184
+      },
+      {
+        "router_expr": "swarm_resilience_router.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 185
+      },
+      {
+        "router_expr": "swarm_ws.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 190
+      },
+      {
+        "router_expr": "node_tasks_router.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 191
+      },
+      {
+        "router_expr": "task_forest_router.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 192
+      },
+      {
+        "router_expr": "canvas_bridge.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 193
+      },
+      {
+        "router_expr": "mod.router",
+        "prefix": null,
+        "tags": [],
+        "lineno": 205
+      }
+    ],
+    "has_dynamic_pkgutil_mount": true,
+    "critical_finding": "Both manual mounts (with and without prefix) AND dynamic pkgutil auto-discovery are present in main.py, causing double/triple route registration."
+  },
+  "duplicate_operation_ids": {},
+  "paired_aliases": [
+    {
+      "root_path": "/agent/run",
+      "api_path": "/api/agent/run"
+    },
+    {
+      "root_path": "/health",
+      "api_path": "/api/health"
+    },
+    {
+      "root_path": "/agent/swarm/adversarial-review",
+      "api_path": "/api/agent/swarm/adversarial-review"
+    },
+    {
+      "root_path": "/canvas",
+      "api_path": "/api/canvas"
+    },
+    {
+      "root_path": "/workflow/compose",
+      "api_path": "/api/workflow/compose"
+    },
+    {
+      "root_path": "/canvas/{canvas_id}",
+      "api_path": "/api/canvas/{canvas_id}"
+    },
+    {
+      "root_path": "/agent/swarm/status",
+      "api_path": "/api/agent/swarm/status"
+    },
+    {
+      "root_path": "/workflow/execute",
+      "api_path": "/api/workflow/execute"
+    },
+    {
+      "root_path": "/workflow/registry/capabilities",
+      "api_path": "/api/workflow/registry/capabilities"
+    },
+    {
+      "root_path": "/workflow/registry/nodes",
+      "api_path": "/api/workflow/registry/nodes"
+    },
+    {
+      "root_path": "/agent/swarm/dispatch",
+      "api_path": "/api/agent/swarm/dispatch"
+    },
+    {
+      "root_path": "/agent/deploy/pr",
+      "api_path": "/api/agent/deploy/pr"
+    },
+    {
+      "root_path": "/artifact/{canvas_id}",
+      "api_path": "/api/artifact/{canvas_id}"
+    }
+  ],
+  "frontend_consumers_sample": {
+    "/web-pixel/metrics": [
+      "apps/web/ui/hooks/usePixelEvents.ts"
+    ],
+    "/api/v1/agents": [
+      "apps/web/ui/hooks/useAgents.ts",
+      "apps/web/ui/hooks/useCreateAgent.ts"
+    ],
+    "/api/v1/memory/l3/memories": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts"
+    ],
+    "/api/v1/memory/l3/stats": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts"
+    ],
+    "/api/v1/memory/l3/consolidate": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts"
+    ],
+    "/api/v1/patent-shield/search": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/usePatentShield.ts"
+    ],
+    "/api/v1/patent-shield/risk-assessment": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/usePatentShield.ts"
+    ],
+    "/api/v1/agents/metrics": [
+      "apps/web/ui/hooks/useAgentMetrics.ts"
+    ],
+    "/canvas": [
+      "apps/web/components/launchpad/LaunchpadView.tsx",
+      "apps/web/components/navigation/CommandBar.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/canvas/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/canvas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/canvas/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/run": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/swarm/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/swarm/adversarial-review": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/swarm/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/deploy/pr": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/run": [
+      "apps/web/app/canvas/[canvasId]/page.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/swarm/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/swarm/adversarial-review": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/swarm/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/deploy/pr": [
+      "apps/web/components/canvas/ArtifactPanel.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifact/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/artifact/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/overview": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/agents/{agent_id}/performance": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/bottlenecks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/recommendations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/analytics/overview": [
+      "apps/web/types/apiGenerated.ts"
+    ]
+  },
+  "all_frontend_endpoints": {
+    "/web-pixel/metrics": [
+      "apps/web/ui/hooks/usePixelEvents.ts"
+    ],
+    "/api/v1/agents": [
+      "apps/web/ui/hooks/useAgents.ts",
+      "apps/web/ui/hooks/useCreateAgent.ts"
+    ],
+    "/api/v1/memory/l3/memories": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts"
+    ],
+    "/api/v1/memory/l3/stats": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts"
+    ],
+    "/api/v1/memory/l3/consolidate": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts"
+    ],
+    "/api/v1/patent-shield/search": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/usePatentShield.ts"
+    ],
+    "/api/v1/patent-shield/risk-assessment": [
+      "apps/web/types/apiGenerated.ts",
+      "apps/web/ui/hooks/usePatentShield.ts"
+    ],
+    "/api/v1/agents/metrics": [
+      "apps/web/ui/hooks/useAgentMetrics.ts"
+    ],
+    "/canvas": [
+      "apps/web/components/launchpad/LaunchpadView.tsx",
+      "apps/web/components/navigation/CommandBar.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/canvas/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/canvas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/canvas/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/run": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/swarm/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/swarm/adversarial-review": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/swarm/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/agent/deploy/pr": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/run": [
+      "apps/web/app/canvas/[canvasId]/page.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/swarm/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/swarm/adversarial-review": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/swarm/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/agent/deploy/pr": [
+      "apps/web/components/canvas/ArtifactPanel.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifact/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/artifact/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/overview": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/agents/{agent_id}/performance": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/bottlenecks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/analytics/recommendations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/analytics/overview": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/analytics/agents/{agent_id}/performance": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/analytics/bottlenecks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/analytics/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/analytics/recommendations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/workspaces/{workspace_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/tasks": [
+      "apps/web/components/taskdna/TaskDNADashboard.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/tasks/{task_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/tasks/{task_id}/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/tasks/{task_id}/graph": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/runs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/approvals": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/approvals/{approval_id}/decision": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/plugins": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/trust/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/sync/dry-run": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/tasks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/approvals": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/plugins": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/shopify/diff": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/cabinet/canvas/research": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/workspaces/{workspace_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/tasks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/tasks/{task_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/tasks/{task_id}/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/tasks/{task_id}/graph": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/runs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/approvals": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/approvals/{approval_id}/decision": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/plugins": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/trust/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/shopify/sync/dry-run": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/tasks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/approvals": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/plugins": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/shopify/diff": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/api/cabinet/canvas/research": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/state": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/prompts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/diffs/stage": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/approvals/create": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/approvals/{approval_id}/action": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/snapshots": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/commit": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/rollback": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/kill-switch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/audit-trail": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/mutate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/shopify-sync": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/shopify/sync": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/secrets": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/secrets/{secret_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/secrets/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/admin/security/vault-status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/admin/security/rotate-jwt-secret": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/admin/security/users": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/members": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/members/{user_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/invitations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/invitations/{invitation_id}/accept": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/invitations/{invitation_id}/reject": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/users/me/workspace-context": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/users/me/workspaces": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/presence": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/workspaces/{workspace_id}/locks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/prs/{owner}/{repo_name}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/pr/{owner}/{repo_name}/{pr_number}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/pr/{owner}/{repo_name}/{pr_number}/checks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/prs/{owner}/{repo_name}/{pr_number}/checks": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/pr/{owner}/{repo_name}/{pr_number}/files": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/prs/{owner}/{repo_name}/{pr_number}/files": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/pr/{owner}/{repo_name}/{pr_number}/diff": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/prs/{owner}/{repo_name}/{pr_number}/diff": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/pr/{owner}/{repo_name}/{pr_number}/diff/file": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/prs/{owner}/{repo_name}/{pr_number}/diff/file": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/pr/{owner}/{repo_name}/{pr_number}/ast-diff": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/github/prs/{owner}/{repo_name}/{pr_number}/ast-diff": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/timeline/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/timeline/v1/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/workspaces/{workspace_id}/activity": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/workspaces/{workspace_id}/users": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/workspaces/{workspace_id}/performance": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/workspaces/{workspace_id}/errors": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/users/me/activity": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/alerts/rules": [
+      "apps/web/lib/api/analytics_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/alerts/rules/{rule_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/alerts/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/alerts/events/{event_id}/resolve": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/slo/status": [
+      "apps/web/lib/api/analytics_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/slo/history": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/slo/burn-rate": [
+      "apps/web/lib/api/analytics_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/anomalies/scores": [
+      "apps/web/lib/api/analytics_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/anomalies/events": [
+      "apps/web/lib/api/analytics_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/models": [
+      "apps/web/lib/api/analytics_forecast_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/models/{model_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/models/{model_id}/train": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/snapshots": [
+      "apps/web/lib/api/analytics_forecast_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/snapshots/latest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/snapshots/{metric_type}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/workload/predictions": [
+      "apps/web/lib/api/analytics_forecast_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/workload/predictions/recommended": [
+      "apps/web/lib/api/analytics_forecast_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/analytics/forecast/accuracy": [
+      "apps/web/lib/api/analytics_forecast_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/pools": [
+      "apps/web/lib/api/worker_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/pools/{pool_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/pools/{pool_id}/workers": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/pools/{pool_id}/workers/scale": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/workers/{worker_id}/drain": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/workers/{worker_id}/stop": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/queues": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/queues/{queue_id}/depth": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/queues/{queue_id}/metrics": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/dlq": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/dlq/{dlq_id}/retry": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/worker/dlq/{dlq_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/{store_domain}/meta": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/{store_domain}/themes": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/{store_domain}/themes/{theme_id}/assets": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/{store_domain}/themes/{theme_id}/asset": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/{store_domain}/themes/{theme_id}/tree": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/{store_domain}/themes/{theme_id}/canvas-graph": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/preview/render": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/tailwind/compile": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/extension/validate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/schema/generate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/section/schema": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/template/mutate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/transpile/canvas-node": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/validate/section": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/build": [
+      "apps/web/components/canvas/nodes/ShopifyBuilderNode.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/deploy": [
+      "apps/web/components/shopify/ShopifyDeployPipeline.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/releases/{store_domain}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/rollback": [
+      "apps/web/components/shopify/ShopifyDeployPipeline.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/components/registry": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/store/synthesize": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/components/adapt-block": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/store/export-manifest": [
+      "apps/web/components/workspace/ShopifyInspectorSection.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/shopify/store/export-zip": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/video/templates": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/video/preview/{style}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/video/generate": [
+      "apps/web/components/canvas/VideoPreviewModal.tsx",
+      "apps/web/components/stitch/StitchRemotionVideoDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/video/timeline": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/video/timeline/synthesize": [
+      "apps/web/components/canvas/VideoPreviewModal.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/video/timeline/compile-tsx": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/whiteboard/scenes/{scene_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/whiteboard/scenes": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/product-launch/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/product-launch/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/patent-shield/corpus/ingest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/patent-shield/corpus/stats": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/memory/l3/store": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/workflow/compose": [
+      "apps/web/components/workspace/WorkspaceShell.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/workflow/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/workflow/registry/nodes": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/workflow/registry/capabilities": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/swarm/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/swarm/reap-zombies": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/swarm/token-status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/batch_positions": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/projects": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/graph": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/critical_path": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/node": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/node/{node_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/edge": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/edge/{edge_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/stage_transition": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/convert_idea": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/sync_obsidian": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/sync_from_obsidian": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/sync_bidirectional": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/reset_baseline": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/logs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/artifacts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/generate_marketing_video": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/marketing_video": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/synthesize_voiceover": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/voiceover_audio": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/export_video_mp4": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/video_export_status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/accept_artifacts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/reject_artifacts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/run_verification": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/clear_logs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/execute_agent": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/batch_stage_transition": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/batch_delete": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/batch_execute": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/decompose": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/chat_intake": [
+      "apps/web/store/nodeTasksStore.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/merge": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/node_tasks/{node_id}/audit_session": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/task_forest/graph": [
+      "apps/web/components/canvas/CanvasEngine.tsx",
+      "apps/web/components/stitch/StitchTaskForestDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/task_forest/node/mutate": [
+      "apps/web/components/canvas/nodes/TaskForestSpatialNode.tsx",
+      "apps/web/components/stitch/StitchTaskForestDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/task_forest/evolution_history": [
+      "apps/web/components/canvas/TimeTravelRail.tsx",
+      "apps/web/components/stitch/StitchTaskForestDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/task_forest/reset": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/obsidian": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/react-flow-to-canvas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/convert/canvas-to-flow": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/convert/flow-to-canvas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/trigger-check": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/merge": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/swarm-hud": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/bridge/events/swarm": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/agents": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/agents/{agent_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/capabilities": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/routes": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/routes/{capability_key}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/probes": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/health/{agent_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/stream/sessions": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/stream/{session_token}/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/a2a/mesh/stream/{session_token}/close": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/anomaly-detection/configs": [
+      "apps/web/lib/api/analytics_anomaly_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/anomaly-detection/configs/{config_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/anomaly-detection/thresholds": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/anomaly-detection/thresholds/recalculate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/anomaly-detection/events": [
+      "apps/web/lib/api/analytics_anomaly_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/anomaly-detection/events/{event_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/rules/advanced": [
+      "apps/web/lib/api/analytics_anomaly_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/rules/advanced/{rule_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/events/advanced": [
+      "apps/web/components/analytics/AlertHistoryTimeline.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/events/advanced/{event_id}/resolve": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/channels": [
+      "apps/web/lib/api/analytics_anomaly_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/channels/{channel_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/channels/{channel_id}/test": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifacts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifacts/{artifact_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifacts/{artifact_id}/versions": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifacts/{artifact_id}/comments": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/artifacts/health/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/register": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/login": [
+      "apps/web/lib/apiClient.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/refresh": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/logout": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/me": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/jwks.json": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/rotate-keys": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/api-keys": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/api-keys/{key_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/rbac/check": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/auth/audit/logs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/jobs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/jobs/{job_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/jobs/{job_id}/cancel": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/workflows/dag": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/workflows/dag/{dag_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/workflows/dag/{dag_id}/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/workers": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/workers/register": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/workers/{worker_id}/heartbeat": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/dlq": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/dlq/{dlq_id}/replay": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/batch/metrics": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows/templates": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows/templates/{template_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows": [
+      "apps/web/components/canvas/WorkflowDesigner.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows/validate": [
+      "apps/web/components/canvas/WorkflowDesigner.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows/{workflow_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows/{workflow_id}/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/workflows/{workflow_id}/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/nodes": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/nodes/{node_id}/move": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/nodes/move-batch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/nodes/{node_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/edges": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/edges/{edge_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/generate-ui": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/validate-props": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/auto-layout": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/{canvas_id}/smart-connectors": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/sandbox/envelope": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/stitch/projects": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/stitch/projects/{project_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/stitch/screens/generate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/stitch/screens/link": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/stitch/design_system/parse": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/stitch/export/shopify": [
+      "apps/web/components/stitch/StitchSmartInspector.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/spatial/index": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/spatial/query": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/spatial/nearest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/lock/acquire": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/lock/release": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/lock/list": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/presence/heartbeat": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/presence/active": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/cursor/event": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/ai/generate-subflow": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/ai/create-group": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/history/snapshot": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/history/list": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/history/undo": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/history/redo": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/history/branch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/canvas/{canvas_id}/history/merge": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/snapshots": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/forecasts/generate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/forecasts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/queues/metrics": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/queues/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/anomalies/alerts": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/anomalies/alerts/{alert_id}/resolve": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/scaling/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/scaling/recommendations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/scaling/recommendations/{recommendation_id}/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/cost/reports/generate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/capacity/cost/reports": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/checkout/extensions": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/checkout/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/post-purchase/offers": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/post-purchase/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/post-purchase/accept": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/webhooks/shopify": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/analytics/events": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/ecom/analytics/summary": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/distiller/query": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/distiller/record": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/distiller/heal": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/distiller/stats": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/gcp/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/gcp/projects": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/gcp/rotate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/alerts/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/metrics/ingest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/metrics/summary": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/metrics/snapshot": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/rules": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/incidents": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/incidents/{incident_id}/resolve": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/policies": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/remediate/{incident_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/remediations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/alerts/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/alerts/logs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/swarm": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/health/swarm/heal": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/lakehouse/query": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/lakehouse/nl2sql": [
+      "apps/web/components/stitch/StitchBiAnalystDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/lakehouse/metrics": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/lakehouse/workflows": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/lakehouse/workflows/execute": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/workers/heartbeat": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/workers": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/jobs/ingest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/jobs/{job_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/jobs/{job_id}/progress": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/jobs/{job_id}/package": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/jobs/{job_id}/hls/master.m3u8": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/media/jobs/{job_id}/dash/manifest.mpd": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/spans/ingest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/traces": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/traces/{trace_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/topology": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/services": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/services/register": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/metrics/aggregations": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/observe/flush": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/initiate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/canary/start": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/canary/advance": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/canary/analyze": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/promote": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/rollback": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/{deployment_id}/manifests": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/deployments/metrics": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/regions": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/regions/{name}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/regions/{name}/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/gslb/config": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/gslb/route": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/edge-routing/rules": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/edge-routing/rules/{rule_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/replication/status": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/platform/replication/lag": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/ingest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/ingest-text": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/query": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/query-multimodal": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/graph/{doc_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/ingest-canvas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/query-dual-level": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/scones-sync": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/canvas-graph": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/rag/marketing-banner": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/policies": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/policies/{policy_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/tokens/revoke": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/tokens/is-revoked/{token_jti}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/tokens/stats": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/tokens/cleanup": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/audit/logs": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/audit/verify-chain": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/subjects": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/subjects/{subject_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/security/roles": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/shopify/presets": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/shopify/transpile": [
+      "apps/web/components/stitch/StitchShopifyPreviewDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/shopify/validate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/shopify/theme/push": [
+      "apps/web/components/stitch/StitchShopifyPreviewDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v3/shopify/theme/download": [
+      "apps/web/components/stitch/StitchShopifyPreviewDrawer.tsx",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/checkout-extensions": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/checkout-extensions/{config_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/checkout-extensions/validate-payload": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/checkout-extensions/{config_id}/manifest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/checkout-extensions/{config_id}/code": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-gateways": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-gateways/{gateway_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-gateways/test-connection": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents/{intent_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents/{intent_id}/confirm": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents/{intent_id}/3ds-challenge": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents/{intent_id}/capture": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents/{intent_id}/refund": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/payment-intents/{intent_id}/cancel": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/upsell/offers": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/upsell/offers/{offer_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/upsell/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/upsell/validate-liquid": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/upsell/decision": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/webhooks/ingress": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/webhooks/{event_id}/dispatch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/webhooks/{event_id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/cart-transform/rules/bundle": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/cart-transform/rules/price-override": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/cart-transform/rules": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/cart-transform/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/cart-transform/manifest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/discounts/rules": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/discounts/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/discounts/manifest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/delivery/rules": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/delivery/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/payment/rules": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/payment/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/shopify/functions/evaluate": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/shopify/webhooks/orders/create": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/shopify/webhooks/products/update": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/shopify/webhooks/app/uninstalled": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/shopify/webhooks/generic": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/topics": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/schemas": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/schemas/{subject}/latest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/publish": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/consumer-groups/join": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/consumer-groups/poll": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/consumer-groups/commit": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/consumer-groups/{group_id}/lag": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/dlq": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/dlq/{event_id}/replay": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/probes/e2e": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/stream/events/sse": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/ingest": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/ingest/batch": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/{id}": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/hybrid-search": [
+      "apps/web/lib/api/vector_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/search/dense": [
+      "apps/web/lib/api/vector_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/search/sparse": [
+      "apps/web/lib/api/vector_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/rerank": [
+      "apps/web/lib/api/vector_client.ts",
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/collections": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/collections/{id}/stats": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/health": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/vector/stats": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/v1/canvas/video/audit": [
+      "apps/web/types/apiGenerated.ts"
+    ],
+    "/api/canvas/${canvasId}": [
+      "apps/web/app/canvas/[canvasId]/page.tsx",
+      "apps/web/components/canvas/CanvasEditor.tsx"
+    ],
+    "/api/artifact/${canvasId}": [
+      "apps/web/app/canvas/[canvasId]/page.tsx",
+      "apps/web/components/canvas/ArtifactPanel.tsx"
+    ],
+    "/canvas/default-canvas-id": [
+      "apps/web/components/cabinet/CabinetShell.tsx"
+    ],
+    "/api/shopify/releases/${encodeURIComponent(storeDomain)}": [
+      "apps/web/components/shopify/ShopifyDeployPipeline.tsx"
+    ],
+    "/analytics": [
+      "apps/web/components/navigation/CommandBar.tsx"
+    ],
+    "/api/v1/canvas/workflows/${workflowId}/execute": [
+      "apps/web/components/canvas/WorkflowDesigner.tsx"
+    ],
+    "/api/task-forest/sync": [
+      "apps/web/components/canvas/TaskForestCanvas.tsx"
+    ],
+    "/api/task-dna/decompose": [
+      "apps/web/components/canvas/TaskForestCanvas.tsx"
+    ],
+    "/api/v1/swarm/agents": [
+      "apps/web/components/canvas/SwarmTaskForestBoard.tsx"
+    ],
+    "/api/v1/swarm/task-forest": [
+      "apps/web/components/canvas/SwarmTaskForestBoard.tsx"
+    ],
+    "/api/v1/swarm/reports": [
+      "apps/web/components/canvas/SwarmTaskForestBoard.tsx"
+    ],
+    "/api/v1/swarm/dispatch": [
+      "apps/web/components/canvas/SwarmTaskForestBoard.tsx"
+    ],
+    "/api/v1/swarm/hud-summary": [
+      "apps/web/components/canvas/SwarmHUD.tsx"
+    ],
+    "/api/v1/swarm/worktrees": [
+      "apps/web/components/canvas/SwarmHUD.tsx"
+    ],
+    "/api/v1/swarm/audit-trail": [
+      "apps/web/components/canvas/SwarmHUD.tsx"
+    ],
+    "/api/v1/swarm/ledger": [
+      "apps/web/components/canvas/SwarmHUD.tsx"
+    ],
+    "/api/video": [
+      "apps/web/components/canvas/nodes/VideoCreatorNode.tsx"
+    ],
+    "/api/v1/canvas/ai/cutout": [
+      "apps/web/components/canvas/nodes/PhotoStudioNode.tsx",
+      "apps/web/src/canvas/ai/ai-client.ts"
+    ],
+    "/api/v1/canvas/ai/relight": [
+      "apps/web/components/canvas/nodes/PhotoStudioNode.tsx",
+      "apps/web/src/canvas/ai/ai-client.ts"
+    ],
+    "/api/v1/canvas/ai/generate-layer": [
+      "apps/web/components/canvas/nodes/PhotoStudioNode.tsx",
+      "apps/web/src/canvas/ai/ai-client.ts"
+    ],
+    "/api/tasks/${id}": [
+      "apps/web/components/taskdna/TaskDNADashboard.tsx"
+    ],
+    "/api/tasks/${id}/timeline": [
+      "apps/web/components/taskdna/TaskDNADashboard.tsx"
+    ],
+    "/api/tasks/${id}/graph": [
+      "apps/web/components/taskdna/TaskDNADashboard.tsx"
+    ],
+    "/api/v1/worker/dlq/${id}/retry": [
+      "apps/web/components/worker/DLQManager.tsx"
+    ],
+    "/api/v1/worker/dlq/${id}": [
+      "apps/web/components/worker/DLQManager.tsx"
+    ],
+    "/canvas/new-video": [
+      "apps/web/components/hub/MagicToolsLaunchpad.tsx"
+    ],
+    "/canvas/script-to-video": [
+      "apps/web/components/hub/MagicToolsLaunchpad.tsx"
+    ],
+    "/canvas/autocut": [
+      "apps/web/components/hub/MagicToolsLaunchpad.tsx"
+    ],
+    "/canvas/shopify": [
+      "apps/web/components/hub/MagicToolsLaunchpad.tsx"
+    ],
+    "/canvas/image-gen": [
+      "apps/web/components/hub/MagicToolsLaunchpad.tsx"
+    ],
+    "/canvas/video-studio": [
+      "apps/web/components/hub/HubSidebar.tsx"
+    ],
+    "/api/v1/alerts/events/advanced/${eventId}/resolve": [
+      "apps/web/components/analytics/AlertHistoryTimeline.tsx"
+    ],
+    "/api": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/github/prs/${owner}/${repo}": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/github/pr/${owner}/${repo}/${prNumber}/checks": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/github/pr/${owner}/${repo}/${prNumber}/files": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/github/pr/${owner}/${repo}/${prNumber}/diff": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/github/pr/${owner}/${repo}/${prNumber}/diff/file": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/github/pr/${owner}/${repo}/${prNumber}/ast-diff": [
+      "apps/web/lib/api_client.ts"
+    ],
+    "/api/v1${endpoint}": [
+      "apps/web/lib/apiClient.ts"
+    ],
+    "/api/v1/worker/pools/${poolId}/workers/scale": [
+      "apps/web/lib/api/worker_client.ts"
+    ],
+    "/api/v1/worker/queues/${queueId}/metrics": [
+      "apps/web/lib/api/worker_client.ts"
+    ],
+    "/api/v1/platform": [
+      "apps/web/lib/api/platform_regions_client.ts"
+    ],
+    "/api/v1/shopify/functions": [
+      "apps/web/lib/api/shopify_functions_client.ts"
+    ],
+    "/api/v1/vector/collections/${encodeURIComponent(workspace_id)}/stats": [
+      "apps/web/lib/api/vector_client.ts"
+    ],
+    "/api/shopify/${storeDomain}/themes/${themeId}/tree": [
+      "apps/web/lib/api/shopify_canvas_client.ts"
+    ],
+    "/api/shopify/${storeDomain}/themes/${themeId}/canvas-graph": [
+      "apps/web/lib/api/shopify_canvas_client.ts"
+    ],
+    "/api/shopify/${storeDomain}/themes/${themeId}/asset": [
+      "apps/web/lib/api/shopify_canvas_client.ts"
+    ],
+    "/api/v1/analytics/forecast/models/${modelId}/train": [
+      "apps/web/lib/api/analytics_forecast_client.ts"
+    ],
+    "/api/v1/analytics/forecast/snapshots/${metricType}": [
+      "apps/web/lib/api/analytics_forecast_client.ts"
+    ],
+    "/api/v1/analytics/workspaces/${workspaceId}/activity": [
+      "apps/web/lib/api/analytics_client.ts"
+    ],
+    "/api/v1/analytics/workspaces/${workspaceId}/performance": [
+      "apps/web/lib/api/analytics_client.ts"
+    ],
+    "/api/v1/analytics/workspaces/${workspaceId}/errors": [
+      "apps/web/lib/api/analytics_client.ts"
+    ],
+    "/api/v1/analytics/workspaces/${workspaceId}/users": [
+      "apps/web/lib/api/analytics_client.ts"
+    ],
+    "/api/mindmap/cluster": [
+      "apps/web/store/canvasStore.ts"
+    ],
+    "/api/v3/node_tasks/node/${encodeURIComponent(nodeId)}": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/edge/${encodeURIComponent(edgeId)}": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/execute": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/logs": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/marketing_video": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/generate_marketing_video": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/synthesize_voiceover": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/voiceover_audio": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/export_video_mp4": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/video_export_status": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/artifacts": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/accept_artifacts": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/reject_artifacts": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/run_verification": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/v3/node_tasks/${nodeId}/decompose": [
+      "apps/web/store/nodeTasksStore.ts"
+    ],
+    "/api/swarm/dispatch": [
+      "apps/web/store/taskForestStore.ts"
+    ],
+    "/api/v1/workspaces/": [
+      "apps/web/src/canvas/swarm-copilot-phase3.test.ts"
+    ],
+    "/api/v1/workspaces/${brand.workspaceId}/campaigns": [
+      "apps/web/src/canvas/copilot/agentCopilotService.ts"
+    ]
+  },
+  "test_coverage_summary": {
+    "tested_endpoints_count": 413,
+    "untested_endpoints_count": 214,
+    "tested_sample": {
+      "POST /canvas": [
+        "tests/canvas/test_canvas_ai_actions.py",
+        "tests/canvas/test_canvas_api_and_ws.py",
+        "tests/canvas/test_canvas_execution_engine_and_api.py",
+        "tests/canvas/test_canvas_reburn_templates.py",
+        "tests/canvas/test_canvas_swarm_bridge.py",
+        "tests/canvas/test_canvas_v3_phase4.py",
+        "tests/canvas/test_canvas_v3_phase4_adapters.py",
+        "tests/canvas/test_mindmap_auto_cluster.py",
+        "tests/canvas/test_mindmap_nodes_edges_contract.py",
+        "tests/canvas/test_obsidian_sync.py",
+        "tests/core/test_task_triage.py",
+        "tests/core/test_zero_waste_slicer.py",
+        "tests/deployment/test_canvas_deployment.py",
+        "tests/dnk_os_001/test_working_cabinet_api.py",
+        "tests/e2e/test_ecom_brand_launch_e2e.py",
+        "tests/ecom/test_shopify_canvas_sync.py",
+        "tests/load/test_canvas_performance.py",
+        "tests/load/test_http_load.py",
+        "tests/load/test_websocket_load.py",
+        "tests/rag/test_rag_anything_adapter.py",
+        "tests/rag/test_rag_router_and_tools.py",
+        "tests/security/test_ssrf_guard.py",
+        "tests/verification/test_canvas_bridge_router.py",
+        "tests/verification/test_canvas_e2e_concurrency.py",
+        "tests/verification/test_canvas_research_links.py",
+        "tests/verification/test_canvas_research_workflow_e2e.py",
+        "tests/verification/test_production_hardening.py",
+        "tests/verification/test_shopify_builder.py",
+        "tests/verification/test_swarm_delegation_guard.py",
+        "tests/verification/test_swarm_ledger_and_mailbox.py",
+        "tests/verification/test_task_forest_spatial_ui.py",
+        "tests/verification/test_visual_shell.py"
+      ],
+      "GET /canvas/{canvas_id}": [
+        "tests/canvas/test_canvas_ai_actions.py",
+        "tests/canvas/test_canvas_api_and_ws.py",
+        "tests/canvas/test_canvas_execution_engine_and_api.py",
+        "tests/canvas/test_canvas_reburn_templates.py",
+        "tests/canvas/test_canvas_swarm_bridge.py",
+        "tests/canvas/test_canvas_v3_phase4.py",
+        "tests/canvas/test_canvas_v3_phase4_adapters.py",
+        "tests/canvas/test_mindmap_auto_cluster.py",
+        "tests/canvas/test_mindmap_nodes_edges_contract.py",
+        "tests/canvas/test_obsidian_sync.py",
+        "tests/core/test_task_triage.py",
+        "tests/core/test_zero_waste_slicer.py",
+        "tests/deployment/test_canvas_deployment.py",
+        "tests/dnk_os_001/test_working_cabinet_api.py",
+        "tests/e2e/test_ecom_brand_launch_e2e.py",
+        "tests/ecom/test_shopify_canvas_sync.py",
+        "tests/load/test_canvas_performance.py",
+        "tests/load/test_http_load.py",
+        "tests/load/test_websocket_load.py",
+        "tests/rag/test_rag_anything_adapter.py",
+        "tests/rag/test_rag_router_and_tools.py",
+        "tests/security/test_ssrf_guard.py",
+        "tests/verification/test_canvas_bridge_router.py",
+        "tests/verification/test_canvas_e2e_concurrency.py",
+        "tests/verification/test_canvas_research_links.py",
+        "tests/verification/test_canvas_research_workflow_e2e.py",
+        "tests/verification/test_production_hardening.py",
+        "tests/verification/test_shopify_builder.py",
+        "tests/verification/test_swarm_delegation_guard.py",
+        "tests/verification/test_swarm_ledger_and_mailbox.py",
+        "tests/verification/test_task_forest_spatial_ui.py",
+        "tests/verification/test_visual_shell.py"
+      ],
+      "PUT /canvas/{canvas_id}": [
+        "tests/canvas/test_canvas_ai_actions.py",
+        "tests/canvas/test_canvas_api_and_ws.py",
+        "tests/canvas/test_canvas_execution_engine_and_api.py",
+        "tests/canvas/test_canvas_reburn_templates.py",
+        "tests/canvas/test_canvas_swarm_bridge.py",
+        "tests/canvas/test_canvas_v3_phase4.py",
+        "tests/canvas/test_canvas_v3_phase4_adapters.py",
+        "tests/canvas/test_mindmap_auto_cluster.py",
+        "tests/canvas/test_mindmap_nodes_edges_contract.py",
+        "tests/canvas/test_obsidian_sync.py",
+        "tests/core/test_task_triage.py",
+        "tests/core/test_zero_waste_slicer.py",
+        "tests/deployment/test_canvas_deployment.py",
+        "tests/dnk_os_001/test_working_cabinet_api.py",
+        "tests/e2e/test_ecom_brand_launch_e2e.py",
+        "tests/ecom/test_shopify_canvas_sync.py",
+        "tests/load/test_canvas_performance.py",
+        "tests/load/test_http_load.py",
+        "tests/load/test_websocket_load.py",
+        "tests/rag/test_rag_anything_adapter.py",
+        "tests/rag/test_rag_router_and_tools.py",
+        "tests/security/test_ssrf_guard.py",
+        "tests/verification/test_canvas_bridge_router.py",
+        "tests/verification/test_canvas_e2e_concurrency.py",
+        "tests/verification/test_canvas_research_links.py",
+        "tests/verification/test_canvas_research_workflow_e2e.py",
+        "tests/verification/test_production_hardening.py",
+        "tests/verification/test_shopify_builder.py",
+        "tests/verification/test_swarm_delegation_guard.py",
+        "tests/verification/test_swarm_ledger_and_mailbox.py",
+        "tests/verification/test_task_forest_spatial_ui.py",
+        "tests/verification/test_visual_shell.py"
+      ],
+      "POST /agent/run": [
+        "tests/verification/test_agent_execution_resilience.py",
+        "tests/verification/test_swarm_parallel_and_adversarial.py",
+        "tests/verification/test_visual_shell.py"
+      ],
+      "POST /agent/swarm/dispatch": [
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "POST /agent/swarm/adversarial-review": [
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "GET /agent/swarm/status": [
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "POST /api/agent/run": [
+        "tests/verification/test_agent_execution_resilience.py",
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "POST /api/agent/swarm/dispatch": [
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "POST /api/agent/swarm/adversarial-review": [
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "GET /api/agent/swarm/status": [
+        "tests/verification/test_swarm_parallel_and_adversarial.py"
+      ],
+      "GET /artifact/{canvas_id}": [
+        "tests/artifacts/test_artifact_server_adapter.py",
+        "tests/verification/test_dnk_assimilate_real.py",
+        "tests/verification/test_node_tasks_artifacts.py",
+        "tests/verification/test_swarm_autonomous_subagent_bridge.py",
+        "tests/verification/test_visual_shell.py"
+      ],
+      "PUT /artifact/{canvas_id}": [
+        "tests/artifacts/test_artifact_server_adapter.py",
+        "tests/verification/test_dnk_assimilate_real.py",
+        "tests/verification/test_node_tasks_artifacts.py",
+        "tests/verification/test_swarm_autonomous_subagent_bridge.py",
+        "tests/verification/test_visual_shell.py"
+      ],
+      "GET /api/analytics/overview": [
+        "tests/verification/test_analytics_dashboard.py"
+      ],
+      "GET /api/analytics/agents/{agent_id}/performance": [
+        "tests/verification/test_analytics_dashboard.py"
+      ],
+      "GET /api/analytics/bottlenecks": [
+        "tests/verification/test_analytics_dashboard.py"
+      ],
+      "GET /api/analytics/timeline": [
+        "tests/verification/test_analytics_dashboard.py"
+      ],
+      "GET /api/analytics/recommendations": [
+        "tests/verification/test_analytics_dashboard.py"
+      ],
+      "GET /api/workspaces/{workspace_id}": [
+        "tests/dnk_os_001/test_taskdna_api.py"
+      ],
+      "GET /api/tasks": [
+        "tests/dnk_os_001/test_taskdna_api.py",
+        "tests/dnk_os_001/test_working_cabinet_api.py",
+        "tests/dnk_os_002/test_taskdna_adapter_integration.py"
+      ]
+    },
+    "untested_sample": [
+      "POST /api/canvas",
+      "GET /api/canvas/{canvas_id}",
+      "PUT /api/canvas/{canvas_id}",
+      "POST /agent/deploy/pr",
+      "POST /api/agent/deploy/pr",
+      "GET /api/artifact/{canvas_id}",
+      "PUT /api/artifact/{canvas_id}",
+      "GET /api/api/analytics/overview",
+      "GET /api/api/analytics/agents/{agent_id}/performance",
+      "GET /api/api/analytics/bottlenecks",
+      "GET /api/api/analytics/timeline",
+      "GET /api/api/analytics/recommendations",
+      "GET /api/tasks/{task_id}/timeline",
+      "GET /api/tasks/{task_id}/graph",
+      "GET /api/runs",
+      "GET /api/events",
+      "GET /api/approvals",
+      "POST /api/approvals/{approval_id}/decision",
+      "GET /api/plugins",
+      "GET /api/trust/status",
+      "POST /api/shopify/sync/dry-run",
+      "GET /api/api/workspaces/{workspace_id}",
+      "GET /api/api/tasks",
+      "GET /api/api/tasks/{task_id}",
+      "GET /api/api/tasks/{task_id}/timeline"
+    ]
+  },
+  "graphify_blast_radius": {
+    "apps/api/routers/canvas.py": {
+      "count": 80,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L11",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16",
+        "test_advanced_alerting.py [imports_from] tests/analytics/test_advanced_alerting.py:L15",
+        "test_alert_channel_dispatcher.py [imports_from] tests/analytics/test_alert_channel_dispatcher.py:L14",
+        "test_alerting_engine.py [imports_from] tests/analytics/test_alerting_engine.py:L15",
+        "test_anomaly_detection.py [imports_from] tests/analytics/test_anomaly_detection.py:L14"
+      ]
+    },
+    "apps/api/routers/agent.py": {
+      "count": 80,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L12",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16",
+        "test_advanced_alerting.py [imports_from] tests/analytics/test_advanced_alerting.py:L15",
+        "test_alert_channel_dispatcher.py [imports_from] tests/analytics/test_alert_channel_dispatcher.py:L14",
+        "test_alerting_engine.py [imports_from] tests/analytics/test_alerting_engine.py:L15",
+        "test_anomaly_detection.py [imports_from] tests/analytics/test_anomaly_detection.py:L14"
+      ]
+    },
+    "apps/api/routers/artifacts.py": {
+      "count": 0,
+      "affected_sample": []
+    },
+    "apps/api/routers/analytics.py": {
+      "count": 80,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L14",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16",
+        "test_advanced_alerting.py [imports_from] tests/analytics/test_advanced_alerting.py:L15",
+        "test_alert_channel_dispatcher.py [imports_from] tests/analytics/test_alert_channel_dispatcher.py:L14",
+        "test_alerting_engine.py [imports_from] tests/analytics/test_alerting_engine.py:L15",
+        "test_anomaly_detection.py [imports_from] tests/analytics/test_anomaly_detection.py:L14"
+      ]
+    },
+    "apps/api/routers/taskdna.py": {
+      "count": 80,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L15",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16",
+        "test_advanced_alerting.py [imports_from] tests/analytics/test_advanced_alerting.py:L15",
+        "test_alert_channel_dispatcher.py [imports_from] tests/analytics/test_alert_channel_dispatcher.py:L14",
+        "test_alerting_engine.py [imports_from] tests/analytics/test_alerting_engine.py:L15",
+        "test_anomaly_detection.py [imports_from] tests/analytics/test_anomaly_detection.py:L14"
+      ]
+    },
+    "apps/api/routers/node_tasks_router.py": {
+      "count": 86,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L128",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L39",
+        "test_occ_merge.py [imports_from] tests/core/test_occ_merge.py:L24",
+        "test_node_tasks_video_generator.py [imports_from] tests/verification/test_node_tasks_video_generator.py:L17",
+        "test_node_tasks_voice_exporter.py [imports_from] tests/verification/test_node_tasks_voice_exporter.py:L18",
+        "test_node_tasks_ws_streaming.py [imports_from] tests/verification/test_node_tasks_ws_streaming.py:L20",
+        "test_edge_lifecycle_publishes_to_canvas_bridge() [calls] tests/verification/test_node_tasks_ws_streaming.py:L247",
+        "test_execute_agent_publishes_to_canvas_bridge() [calls] tests/verification/test_node_tasks_ws_streaming.py:L124",
+        "test_ws_connection_receives_reactive_node_lifecycle_events() [calls] tests/verification/test_node_tasks_ws_streaming.py:L165",
+        "test_autonomous_agent_flow_progresses_to_completion() [calls] tests/verification/test_node_tasks_ws_streaming.py:L227"
+      ]
+    },
+    "apps/api/routers/task_forest_router.py": {
+      "count": 88,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L129",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L37",
+        "._init_default_forest() [calls] apps/api/routers/task_forest_router.py:L349",
+        ".mutate_node() [calls] apps/api/routers/task_forest_router.py:L521",
+        ".build_tree_graph() [references] apps/api/routers/task_forest_router.py:L429",
+        "._get_children() [references] apps/api/routers/task_forest_router.py:L368",
+        "._rollup_node() [references] apps/api/routers/task_forest_router.py:L384",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16"
+      ]
+    },
+    "apps/api/routers/shopify.py": {
+      "count": 82,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L26",
+        "test_shopify_router.py [imports_from] tests/dnk_os_003/test_shopify_router.py:L16",
+        "test_shopify_canvas_sync.py [imports_from] tests/ecom/test_shopify_canvas_sync.py:L16",
+        "test_client() [calls] tests/dnk_os_003/test_shopify_router.py:L47",
+        "client() [calls] tests/ecom/test_shopify_canvas_sync.py:L53",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16"
+      ]
+    },
+    "apps/api/routers/video_router.py": {
+      "count": 80,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L27",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16",
+        "test_advanced_alerting.py [imports_from] tests/analytics/test_advanced_alerting.py:L15",
+        "test_alert_channel_dispatcher.py [imports_from] tests/analytics/test_alert_channel_dispatcher.py:L14",
+        "test_alerting_engine.py [imports_from] tests/analytics/test_alerting_engine.py:L15",
+        "test_anomaly_detection.py [imports_from] tests/analytics/test_anomaly_detection.py:L14"
+      ]
+    },
+    "apps/api/routers/workspace.py": {
+      "count": 81,
+      "affected_sample": [
+        "api/main.py [imports_from] apps/api/main.py:L16",
+        "routers/__init__.py [imports_from] apps/api/routers/__init__.py:L16",
+        "ws_workspace_endpoint() [calls] apps/api/main.py:L153",
+        "verify_fast_endpoints.py [imports_from] scripts/system/verify_fast_endpoints.py:L24",
+        "test_a2a_federation_router_and_sse.py [imports_from] tests/a2a/test_a2a_federation_router_and_sse.py:L15",
+        "test_a2a_router_phase4.py [imports_from] tests/a2a/test_a2a_router_phase4.py:L16",
+        "test_a2a_router_ws_phase4.py [imports_from] tests/a2a/test_a2a_router_ws_phase4.py:L16",
+        "test_advanced_alerting.py [imports_from] tests/analytics/test_advanced_alerting.py:L15",
+        "test_alert_channel_dispatcher.py [imports_from] tests/analytics/test_alert_channel_dispatcher.py:L14",
+        "test_alerting_engine.py [imports_from] tests/analytics/test_alerting_engine.py:L15"
+      ]
+    }
+  }
+}
