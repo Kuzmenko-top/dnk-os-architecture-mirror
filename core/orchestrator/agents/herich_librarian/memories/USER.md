@@ -1,0 +1,3 @@
+- Prefers architectural cleanliness and standard ports (e.g. freeing port 3000 by stopping stale containers instead of using workaround ports like 3001). Values structured comparative trade-off tables (speed, cleanliness, future-proofing, risks, recommendation).
+§
+Prefers a Google-first stack when utilizing Google Cloud credits (Gemini Omni/Veo for AI video, Dialogflow CX for support, Memorystore Redis for caching, Cloud Workflows + n8n for orchestration).

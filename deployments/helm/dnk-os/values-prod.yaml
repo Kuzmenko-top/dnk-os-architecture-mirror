@@ -1,0 +1,75 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/helm/dnk-os/values-prod.yaml"
+# purpose: "Production environment values override for DNK OS Helm Chart with maximum high-availability and autoscaling"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+global:
+  environment: production
+  domain: dnk-e.com
+
+api:
+  replicaCount: 3
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2048Mi
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 3
+    maxReplicas: 20
+    targetCPUUtilizationPercentage: 70
+    targetMemoryUtilizationPercentage: 75
+
+web:
+  replicaCount: 2
+  resources:
+    limits:
+      cpu: 1000m
+      memory: 1024Mi
+    requests:
+      cpu: 250m
+      memory: 512Mi
+  autoscaling:
+    enabled: true
+    minReplicas: 2
+    maxReplicas: 10
+    targetCPUUtilizationPercentage: 75
+
+worker:
+  replicaCount: 3
+  resources:
+    limits:
+      cpu: 2000m
+      memory: 2048Mi
+    requests:
+      cpu: 500m
+      memory: 1024Mi
+
+ingress:
+  hosts:
+    - host: app.dnk-e.com
+      paths:
+        - path: /api
+          pathType: Prefix
+          service: api
+        - path: /
+          pathType: Prefix
+          service: web
+    - host: api.dnk-e.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: api
+  tls:
+    - secretName: dnk-tls-secret
+      hosts:
+        - app.dnk-e.com
+        - api.dnk-e.com

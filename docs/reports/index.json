@@ -1,0 +1,267 @@
+[
+  {
+    "id": "shopify_cro_agent",
+    "title": "Shopify CRO Agent",
+    "repo_url": "https://github.com/hawk4747/shopify-cro-agent",
+    "license": "MIT",
+    "sota_rating": 9.2,
+    "target_modules": [
+      "services/dnk_shopify"
+    ],
+    "skills_generated": [
+      "shopify-cro-automation",
+      "shopify_cro_theme_engineering"
+    ],
+    "tags": [
+      "shopify",
+      "cro",
+      "graphql",
+      "oauth"
+    ],
+    "report_path": "rd_assimilation/shopify_cro_agent/RND_REPORT.md"
+  },
+  {
+    "id": "claude_seo",
+    "title": "Claude SEO & GEO Validator",
+    "repo_url": "https://github.com/hawk4747/claude-seo",
+    "license": "MIT",
+    "sota_rating": 9.4,
+    "target_modules": [
+      "services/dnk_shopify",
+      "services/dnk_web_research"
+    ],
+    "skills_generated": [
+      "claude-seo",
+      "dnk-sota-rd-scouting"
+    ],
+    "tags": [
+      "seo",
+      "geo",
+      "schema-org",
+      "iptc",
+      "c2pa"
+    ],
+    "report_path": "rd_assimilation/claude_seo/RND_REPORT.md"
+  },
+  {
+    "id": "meta_ads_analyzer",
+    "title": "Meta Ads Auction Diagnostics",
+    "repo_url": "https://github.com/hawk4747/meta-ads-analyzer",
+    "license": "MIT",
+    "sota_rating": 9.1,
+    "target_modules": [
+      "services/dnk_shopify"
+    ],
+    "skills_generated": [
+      "meta-ads-analyzer"
+    ],
+    "tags": [
+      "marketing",
+      "ads",
+      "analytics",
+      "breakdown-effect"
+    ],
+    "report_path": "rd_assimilation/meta_ads_analyzer/RND_REPORT.md"
+  },
+  {
+    "id": "i_have_adhd",
+    "title": "ADHD High-Signal Formatting",
+    "repo_url": "https://github.com/ayghri/i-have-adhd",
+    "license": "MIT",
+    "sota_rating": 9.5,
+    "target_modules": [
+      "core/orchestrator"
+    ],
+    "skills_generated": [
+      "productivity:i-have-adhd"
+    ],
+    "tags": [
+      "productivity",
+      "cognitive-load",
+      "formatting"
+    ],
+    "report_path": "rd_assimilation/i_have_adhd/RND_REPORT.md"
+  },
+  {
+    "id": "docusaurus_mdx3",
+    "title": "Docusaurus Static Documentation",
+    "repo_url": "https://github.com/facebook/docusaurus",
+    "license": "MIT",
+    "sota_rating": 9.0,
+    "target_modules": [
+      "services/dnk_literature_compiler"
+    ],
+    "skills_generated": [
+      "docusaurus"
+    ],
+    "tags": [
+      "documentation",
+      "mdx",
+      "swizzling",
+      "localization"
+    ],
+    "report_path": "rd_assimilation/docusaurus_mdx3/RND_REPORT.md"
+  },
+  {
+    "id": "mindwalk_citymap",
+    "title": "3D Code CityMap & Two-Phase Sealed Judge",
+    "repo_url": "https://github.com/cosmtrek/mindwalk",
+    "license": "MIT",
+    "sota_rating": 9.6,
+    "target_modules": [
+      "services/dnk_git_research",
+      "scripts/verification"
+    ],
+    "skills_generated": [
+      "cosmtrek/mindwalk"
+    ],
+    "tags": [
+      "visualization",
+      "evals",
+      "metrics",
+      "clis"
+    ],
+    "report_path": "rd_assimilation/mindwalk_citymap/RND_REPORT.md"
+  },
+  {
+    "id": "framecn_video",
+    "title": "Shadcn Video Component Registry",
+    "repo_url": "https://github.com/shadcn-labs/framecn",
+    "license": "MIT",
+    "sota_rating": 9.3,
+    "target_modules": [
+      "services/dnk_web_ui",
+      "services/dnk_video_ai_creator"
+    ],
+    "skills_generated": [
+      "shadcn_labs_framecn_assimilation",
+      "video-ai-timeline-orchestration"
+    ],
+    "tags": [
+      "video",
+      "react",
+      "editframe",
+      "subtitles"
+    ],
+    "report_path": "rd_assimilation/framecn_video/RND_REPORT.md"
+  },
+  {
+    "id": "storefront_skills",
+    "title": "Shopify Storefront Vibe-Code",
+    "repo_url": "https://github.com/Aetheria-Labs1/storefront-skills",
+    "license": "MIT",
+    "sota_rating": 9.2,
+    "target_modules": [
+      "services/dnk_shopify"
+    ],
+    "skills_generated": [
+      "shopify-storefront-ai-generation-ops"
+    ],
+    "tags": [
+      "storefront",
+      "vibe-code",
+      "island-design",
+      "html"
+    ],
+    "report_path": "rd_assimilation/storefront_skills/RND_REPORT.md"
+  },
+  {
+    "id": "agentswarms_nodes",
+    "title": "Topological DAG Level Execution",
+    "repo_url": "https://github.com/AgentSwarms-fyi/agentswarms",
+    "license": "MIT",
+    "sota_rating": 9.7,
+    "target_modules": [
+      "core/orchestrator"
+    ],
+    "skills_generated": [
+      "agentswarms-node-execution-ops"
+    ],
+    "tags": [
+      "dag",
+      "swarms",
+      "parallel-execution",
+      "reducers"
+    ],
+    "report_path": "rd_assimilation/agentswarms_nodes/RND_REPORT.md"
+  },
+  {
+    "id": "prime_agent",
+    "title": "Prime Agent (RLM & Continual Harness)",
+    "repo_url": "https://github.com/PrimeIntellect-ai/prime-agent",
+    "license": "MIT",
+    "sota_rating": 9.8,
+    "target_modules": [
+      "core/orchestrator",
+      "services/dnk_git_research"
+    ],
+    "skills_generated": [
+      "dnk-prime-agent-rlm-assimilation"
+    ],
+    "tags": [
+      "rlm",
+      "harness",
+      "compaction",
+      "ipython"
+    ],
+    "report_path": "rd_assimilation/prime_agent/RND_REPORT.md"
+  },
+  {
+    "id": "obsidian_task_forest",
+    "title": "Obsidian Task Forest Metaphor",
+    "repo_url": "local-native",
+    "license": "Proprietary",
+    "sota_rating": 9.0,
+    "target_modules": [
+      "services/dnk_obsidian_task_forest"
+    ],
+    "skills_generated": [
+      "obsidian-task-forest"
+    ],
+    "tags": [
+      "obsidian",
+      "tasks",
+      "visual-garden",
+      "metaphor"
+    ],
+    "report_path": "domain_research/01_core_mvp_roadmap.md"
+  },
+  {
+    "id": "langchain_deepagents",
+    "title": "LangChain AI Managed DeepAgents",
+    "repo_url": "local-native",
+    "license": "Proprietary",
+    "sota_rating": 8.9,
+    "target_modules": [
+      "core/orchestrator"
+    ],
+    "skills_generated": [
+      "langchain-ai-managed-deepagents"
+    ],
+    "tags": [
+      "langchain",
+      "deep-agents",
+      "orchestrator"
+    ],
+    "report_path": "domain_research/01_core_agentic_benchmark_taskade.md"
+  },
+  {
+    "id": "dnk_task_graph_manager",
+    "title": "DNK Task Graph Manager",
+    "repo_url": "local-native",
+    "license": "Proprietary",
+    "sota_rating": 9.3,
+    "target_modules": [
+      "core/orchestrator"
+    ],
+    "skills_generated": [
+      "dnk-task-graph-manager"
+    ],
+    "tags": [
+      "task-graph",
+      "flow",
+      "verification"
+    ],
+    "report_path": "domain_research/01_core_yt_playbook.md"
+  }
+]

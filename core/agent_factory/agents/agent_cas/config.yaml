@@ -1,0 +1,7 @@
+domain_scope: docs/
+model: nvidia/llama-3.1-nemotron-70b-instruct
+name: agent_cas
+provider: nvidia_nim
+role: Task Forest Gardener & Knowledge Synthesizer
+sandbox_enabled: true
+temperature: 0.2

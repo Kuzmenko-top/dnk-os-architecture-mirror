@@ -1,0 +1,210 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "DNK-STUDIO-ARCH-001-node-contract-v1"
+# purpose: "Canonical Node Contract v1 specification with runtime invariants and edge semantics for DNK Studio."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.1.0"
+# updated_at: "2026-08-30"
+# author: "DNK-e.com Maksym & Antigravity Orchestrator"
+# --- END DNK-MRH-HEADER ---
+
+$schema: "https://json-schema.org/draft/2020-12/schema"
+title: "DNKNodeContractV1"
+description: "Canonical Node Contract schema for DNK OS Studio executable and freeform nodes"
+
+schema_version: "1.0.0"
+
+# Global Node Contract Invariants
+contract_invariants:
+  required_fields:
+    - "id"
+    - "version"
+    - "category"
+    - "kind"
+    - "ui_component"
+    - "executor"
+    - "inputs"
+    - "outputs"
+    - "capabilities"
+    - "permissions"
+    - "risk"
+    - "governance"
+
+  runtime_rules:
+    executable_edge_kinds:
+      - "data"
+      - "dependency"
+      - "control"
+      - "approval"
+    declarative_edge_kinds:
+      - "visual"
+      - "reference"
+    side_effect_rule: >
+      An executor declaring external_write, deployment, delete, merge, purchase,
+      or secret mutation must declare an ApprovalNode gate and generate an
+      immutable audit event before execution.
+
+# Canonical Node Specification Examples
+nodes:
+  - id: "dnk.shopify.theme"
+    version: "1.0.0"
+    display_name: "Shopify Theme AST"
+    category: "ecommerce"
+    kind: "executable"
+    ui_component: "ShopifyThemeNode"
+    executor: "ShopifyThemeExecutor"
+    default_dimensions:
+      width: 380
+      height: 240
+    inputs:
+      - name: "store"
+        type: "shopify.store_ref"
+        required: true
+        description: "Authenticated Shopify store context"
+      - name: "brief"
+        type: "marketing.brief"
+        required: false
+        description: "Persona and design guidelines from Researcher"
+    outputs:
+      - name: "theme_diff"
+        type: "shopify.theme_diff"
+        description: "Liquid AST diff preview and AST tree"
+      - name: "preview"
+        type: "preview.url"
+        description: "Live responsive sandbox URL"
+      - name: "deployment_proposal"
+        type: "governance.proposal"
+        description: "Approval package for live Shopify deployment"
+    capabilities:
+      - "shopify.theme.analyze"
+      - "shopify.theme.preview"
+      - "shopify.theme.create_diff"
+      - "shopify.theme.deploy"
+    risk:
+      "shopify.theme.analyze": "low"
+      "shopify.theme.preview": "low"
+      "shopify.theme.create_diff": "medium"
+      "shopify.theme.deploy": "high"
+    permissions:
+      - "shopify:read_themes"
+      - "shopify:write_themes"
+    governance:
+      approval_required:
+        - "shopify.theme.deploy"
+      evidence_required:
+        - "shopify.theme.create_diff"
+        - "shopify.theme.deploy"
+
+  - id: "dnk.video.render"
+    version: "1.0.0"
+    display_name: "Video Timeline & AI Render"
+    category: "media"
+    kind: "executable"
+    ui_component: "VideoNode"
+    executor: "VideoAiCreatorExecutor"
+    default_dimensions:
+      width: 380
+      height: 240
+    inputs:
+      - name: "script"
+        type: "media.script"
+        required: true
+        description: "Video script with timed scenes and voiceover"
+      - name: "assets"
+        type: "media.asset_list"
+        required: false
+        description: "4K B-Roll footages and brand logos"
+    outputs:
+      - name: "video_render"
+        type: "media.mp4_stream"
+        description: "Rendered 9:16 vertical video stream"
+      - name: "timeline_manifest"
+        type: "media.timeline_ast"
+        description: "Multitrack timeline state for Studio Inspector"
+    capabilities:
+      - "video.script.analyze"
+      - "video.render.preview"
+      - "video.render.production"
+    risk:
+      "video.script.analyze": "low"
+      "video.render.preview": "low"
+      "video.render.production": "medium"
+    permissions:
+      - "media:read_vault"
+      - "media:write_vault"
+    governance:
+      approval_required: []
+      evidence_required:
+        - "video.render.production"
+
+  - id: "dnk.governance.approval"
+    version: "1.0.0"
+    display_name: "Approval Gate"
+    category: "governance"
+    kind: "executable"
+    ui_component: "ApprovalNode"
+    executor: "HumanApprovalExecutor"
+    default_dimensions:
+      width: 320
+      height: 180
+    inputs:
+      - name: "proposal"
+        type: "governance.proposal"
+        required: true
+        description: "Action proposal with risk score and evidence diff"
+    outputs:
+      - name: "authorization"
+        type: "governance.auth_token"
+        description: "Cryptographically signed one-time approval token"
+    capabilities:
+      - "governance.review.present"
+      - "governance.sign.authorize"
+      - "governance.sign.reject"
+    risk:
+      "governance.review.present": "low"
+      "governance.sign.authorize": "high"
+      "governance.sign.reject": "low"
+    permissions:
+      - "admin:governance_sign"
+    governance:
+      approval_required:
+        - "governance.sign.authorize"
+      evidence_required:
+        - "governance.sign.authorize"
+        - "governance.sign.reject"
+
+# Edge Semantic Classification
+edges:
+  types:
+    - id: "visual"
+      executable: false
+      color: "#64748b"
+      style: "dashed"
+      description: "Organizational / mental diagramming link with zero side-effects"
+    - id: "data"
+      executable: true
+      color: "#3b82f6"
+      style: "solid"
+      description: "Passes typed data output from source to target input port"
+    - id: "dependency"
+      executable: true
+      color: "#a855f7"
+      style: "solid"
+      description: "Target task does not start until source task state is COMPLETED"
+    - id: "control"
+      executable: true
+      color: "#06b6d4"
+      style: "solid"
+      description: "Triggers execution invocation based on state machine transition"
+    - id: "approval"
+      executable: true
+      color: "#f59e0b"
+      style: "neon_pulse"
+      description: "Blocks downstream execution until signed human authorization"
+    - id: "reference"
+      executable: false
+      color: "#10b981"
+      style: "dotted"
+      description: "Provenance link to SCONES L3 memory item or external URL"

@@ -1,0 +1,87 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "examples/blueprints/ai_ecommerce_growth_studio.blueprint.yaml"
+# purpose: "Declarative DNK Blueprint specification for AI E-Commerce Growth Studio standalone application."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym & Gerych (Hermes Prime)"
+# --- END DNK-MRH-HEADER ---
+
+id: "ai_ecommerce_growth_studio"
+name: "AI E-Commerce & UGC Video Growth Studio"
+version: "1.0.0"
+description: "Autonomous E-Commerce Storefront Builder with Liquid AST Transpiler and AI UGC Video Generation Engine."
+target_profile: "production"
+
+bricks:
+  - brick_id: "brick_04_shopify_engine"
+    enabled: true
+    config:
+      theme_base: "dawn_os2"
+      auto_transpile_liquid: true
+    routes_prefix: "/api/v3/shopify"
+  - brick_id: "brick_05_video_ai"
+    enabled: true
+    config:
+      default_aspect_ratio: "9:16"
+      render_backend: "remotion"
+    routes_prefix: "/api/v3/video"
+  - brick_id: "brick_06_web_api_shell"
+    enabled: true
+    config:
+      enable_cockpit_ui: true
+      enable_websocket_bridge: true
+    routes_prefix: "/api"
+
+canvas:
+  viewport:
+    x: 100.0
+    y: 150.0
+    zoom: 1.0
+  nodes:
+    - id: "node_shopify_builder"
+      type: "ShopifyBuilderNode"
+      position:
+        x: 250.0
+        y: 200.0
+      data:
+        label: "Shopify 3.0 Theme Engine"
+        theme_name: "DNK Velocity Dawn"
+        active_sections: ["hero-banner", "product-grid", "ugc-video-reel"]
+    - id: "node_ugc_video_creator"
+      type: "VideoCreatorNode"
+      position:
+        x: 650.0
+        y: 200.0
+      data:
+        label: "Video AI UGC Reel Generator"
+        template: "ugc_product_review"
+        aspect_ratio: "9:16"
+    - id: "node_swarm_orchestrator"
+      type: "SwarmAgentNode"
+      position:
+        x: 450.0
+        y: 450.0
+      data:
+        agent_role: "dnk_shopify"
+        status: "idle"
+  edges:
+    - id: "edge_shopify_to_video"
+      source: "node_shopify_builder"
+      target: "node_ugc_video_creator"
+      type: "smoothstep"
+      animated: true
+    - id: "edge_swarm_to_shopify"
+      source: "node_swarm_orchestrator"
+      target: "node_shopify_builder"
+      type: "default"
+      animated: false
+
+environment:
+  NEXT_PUBLIC_APP_NAME: "AI E-Commerce Growth Studio"
+  SHOPIFY_API_VERSION: "2026-04"
+  VIDEO_RENDER_MAX_CONCURRENCY: "4"
+  SECURITY_RATE_LIMIT: "1000"

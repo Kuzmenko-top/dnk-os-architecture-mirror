@@ -1,0 +1,21 @@
+{
+  "generate": {
+    "requests": 100,
+    "p95_ms": 126.04,
+    "rps": 293.8,
+    "errors": 0,
+    "token_generation_latency_ms": 56.72
+  },
+  "update": {
+    "requests": 200,
+    "p95_ms": 246.8,
+    "rps": 250.62,
+    "errors": 0
+  },
+  "stream": {
+    "clients": 50,
+    "total_events": 1000,
+    "events_per_sec": 162.01,
+    "errors": 0
+  }
+}

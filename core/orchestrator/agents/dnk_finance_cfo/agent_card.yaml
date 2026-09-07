@@ -1,0 +1,48 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_finance_cfo/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_finance_cfo (Unit Economics & Cash Flow)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_finance_cfo"
+name: "dnk_finance_cfo (Chief Financial Officer)"
+description: "DNK OS specialist for unit economics modeling, gross/net margins, break-even ROAS, and multi-currency FX forecasting"
+version: "1.0.0"
+domain: "finance"
+owner: "Head of Finance"
+
+capabilities:
+  - "unit_economics_modeling"
+  - "break_even_roas_calculation"
+  - "margin_and_vat_modeling"
+  - "cash_flow_forecasting"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      cogs: {"type": "number"}
+      retail_price: {"type": "number"}
+      ad_spend: {"type": "number"}
+    required: ["cogs", "retail_price"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      margin_pct: {"type": "number"}
+      break_even_roas: {"type": "number"}
+
+safety_gates:
+  high_risk_actions: ["bank_account_payout"]
+  token_budget_cap_usd: 3.00
+  require_hitl: false

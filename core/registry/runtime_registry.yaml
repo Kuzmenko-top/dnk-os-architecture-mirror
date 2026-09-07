@@ -1,0 +1,60 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core_registry_runtime_registry"
+# purpose: "Canonical registry of agent runtime execution layers for DNK OS."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: ["DNK-HUB-ARCH-002"]
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-03"
+# author: "Gerych (Hermes Prime) & Maksym"
+# --- END DNK-MRH-HEADER ---
+
+runtime_registry:
+  active_runtime:
+    name: "hermes-agent"
+    version: "v0.20.5"
+    tag: "v2026.8.19"
+    install_type: "embedded_unmanaged_fork"
+    source_path: "core/hermes_agent"
+    binary_path: "~/.local/bin/hermes"
+    python_env: "core/hermes_agent/.venv"
+    status: "active_production"
+    last_verified: "2026-09-03"
+
+  staging_runtime:
+    name: "hermes-agent"
+    version: "v0.21.0"
+    tag: "v2026.8.31"
+    install_type: "isolated_staging_canary"
+    source_path: "core/hermes_agent_staging"
+    binary_path: "core/hermes_agent_staging/.venv/bin/hermes"
+    python_env: "core/hermes_agent_staging/.venv"
+    state_path: "~/.hermes_staging/state.db"
+    config_path: "~/.hermes_staging/config.yaml"
+    status: "canary_verified_gate_e"
+    smoke_tests_passed: true
+    unit_contract_tests_passed: true
+    canary_integration_tests_passed: true
+    unresolved:
+      critical: 0
+      high: 0
+      medium: 0
+      low: 0
+      deferred:
+        - "Bot Mode"
+        - "desktop UX"
+        - "optional skills"
+    rollback_sla_seconds: 0.205
+    promotion_allowed: false
+    upgrade_task: "DNK-HUB-ARCH-002"
+    gate: "Canary Review"
+
+  governance_policy:
+    runtime_role: "execution_and_tool_sandbox"
+    control_plane: "DNK_HUB"
+    supervisor_profile: "gerych_prime"
+    profiles_count: 14
+    blind_overwrite_allowed: false
+    auto_promotion_allowed: false
+    require_human_signoff: true

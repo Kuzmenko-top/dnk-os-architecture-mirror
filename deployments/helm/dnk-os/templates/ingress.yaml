@@ -1,0 +1,45 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: "{{ include \"dnk-os.fullname\" . }}-ingress"
+  labels:
+    app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}"
+    app.kubernetes.io/part-of: dnk-platform
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+spec:
+  ingressClassName: "{{ .Values.ingress.className }}"
+  tls:
+    - hosts:
+        - app.dnk-e.com
+        - api.dnk-e.com
+      secretName: "{{ include \"dnk-os.fullname\" . }}-tls"
+  rules:
+    - host: app.dnk-e.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{ include \"dnk-os.fullname\" . }}-api"
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{ include \"dnk-os.fullname\" . }}-web"
+                port:
+                  number: 3000
+    - host: api.dnk-e.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: "{{ include \"dnk-os.fullname\" . }}-api"
+                port:
+                  number: 8000

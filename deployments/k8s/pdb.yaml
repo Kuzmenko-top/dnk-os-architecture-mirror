@@ -1,0 +1,38 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/pdb.yaml"
+# purpose: "Kubernetes Pod Disruption Budget (PDB) ensuring continuous availability during node drains and cluster upgrades"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: dnk-api-pdb
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-api-pdb
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dnk-api
+
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: dnk-web-pdb
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-web-pdb
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dnk-web

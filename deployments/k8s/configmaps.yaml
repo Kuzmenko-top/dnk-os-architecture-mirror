@@ -1,0 +1,31 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/configmaps.yaml"
+# purpose: "Kubernetes ConfigMap for DNK OS environment settings, service URLs, and logging parameters"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: dnk-config
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-config
+    app.kubernetes.io/part-of: dnk-platform
+data:
+  ENVIRONMENT: "production"
+  LOG_LEVEL: "INFO"
+  PORT: "8000"
+  WEB_PORT: "3000"
+  CORS_ORIGINS: "https://dnk.internal,https://app.dnk-e.com"
+  OTEL_SERVICE_NAME: "dnk-api"
+  OTEL_TRACES_SAMPLER: "parentbased_always_on"
+  DATABASE_HOST: "dnk-db-service"
+  DATABASE_PORT: "5432"
+  DATABASE_NAME: "dnk_os"
+  REDIS_HOST: "dnk-redis-service"
+  REDIS_PORT: "6379"

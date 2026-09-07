@@ -1,0 +1,120 @@
+{
+  "python_version": "3.12.13",
+  "uv_version": "uv 0.11.8 (0e961dd9a 2026-04-27 aarch64-apple-darwin)",
+  "total_production_packages": 79,
+  "total_staging_packages": 63,
+  "version_differences": {
+    "pytz": {
+      "prod": "2025.2",
+      "staging": "2026.3.post1"
+    },
+    "annotated-types": {
+      "prod": "0.7.0",
+      "staging": "0.8.0"
+    },
+    "httptools": {
+      "prod": "0.7.1",
+      "staging": "0.8.0"
+    },
+    "tqdm": {
+      "prod": "4.67.3",
+      "staging": "4.70.0"
+    },
+    "jiter": {
+      "prod": "0.13.0",
+      "staging": "0.16.0"
+    },
+    "annotated-doc": {
+      "prod": "0.0.4",
+      "staging": "0.0.5"
+    },
+    "fastapi": {
+      "prod": "0.133.1",
+      "staging": "0.141.1"
+    },
+    "typing-extensions": {
+      "prod": "4.15.0",
+      "staging": "4.16.0"
+    },
+    "cffi": {
+      "prod": "2.0.0",
+      "staging": "2.1.1"
+    },
+    "nemo-relay": {
+      "prod": "0.7.2",
+      "staging": "0.7.3"
+    },
+    "anyio": {
+      "prod": "4.12.1",
+      "staging": "4.15.0"
+    },
+    "click": {
+      "prod": "8.4.2",
+      "staging": "8.5.0"
+    },
+    "typing-inspection": {
+      "prod": "0.4.2",
+      "staging": "0.4.4"
+    },
+    "pygments": {
+      "prod": "2.20.0",
+      "staging": "2.21.0"
+    },
+    "starlette": {
+      "prod": "1.3.1",
+      "staging": "1.6.0"
+    },
+    "charset-normalizer": {
+      "prod": "3.4.4",
+      "staging": "3.5.1"
+    },
+    "idna": {
+      "prod": "3.18",
+      "staging": "3.19"
+    },
+    "uvicorn": {
+      "prod": "0.41.0",
+      "staging": "0.52.4"
+    },
+    "markdown-it-py": {
+      "prod": "4.0.0",
+      "staging": "4.2.0"
+    },
+    "wcwidth": {
+      "prod": "0.6.0",
+      "staging": "0.8.3"
+    },
+    "hermes-agent": {
+      "prod": "0.20.5",
+      "staging": "0.21.0"
+    },
+    "watchfiles": {
+      "prod": "1.1.1",
+      "staging": "1.2.0"
+    }
+  },
+  "packages_only_in_staging": [
+    "firecrawl-anydoc",
+    "snowballstemmer"
+  ],
+  "packages_only_in_production": [
+    "agent-client-protocol",
+    "aiohappyeyeballs",
+    "aiohttp",
+    "aiosignal",
+    "attrs",
+    "boto3",
+    "botocore",
+    "edge-tts",
+    "frozenlist",
+    "google-auth",
+    "jmespath",
+    "multidict",
+    "propcache",
+    "pyasn1",
+    "pyasn1-modules",
+    "s3transfer",
+    "tabulate",
+    "yarl"
+  ]
+}

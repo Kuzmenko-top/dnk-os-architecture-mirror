@@ -1,0 +1,68 @@
+{
+  "module_id": "wasm_module_0",
+  "name": "ever_cloud_sdk.wasm",
+  "filename": "wasm_module_0.wasm",
+  "source_url": "https://www.capcut.com/static-resource/ies/ccweb/scm_storage/sdk/ever_cloud_sdk/1.1120.4-cc-remove-blob-8/825b6ee886c926c9ef85.wasm",
+  "size_bytes": 2107012,
+  "hashes": {
+    "md5": "9e356c8690f602b6822dd6ad2611848b",
+    "sha256": "dba12017db6c2780f55bdb9ea06fa4b4922dd18ddd7c421ea1f7695cb85f03cf"
+  },
+  "toolchain": {
+    "compiler": "rustc / wasm-bindgen",
+    "origin_repository": "everphoto-rust-clean",
+    "internal_paths": [
+      "client/api_client/src/definitions.rs",
+      "client/api_client/src/wasm/mod.rs"
+    ]
+  },
+  "sections": {
+    "type": 1,
+    "import": 1,
+    "function": 1,
+    "table": 1,
+    "memory": 1,
+    "global": 1,
+    "export": 1,
+    "element": 1,
+    "code": 1,
+    "data": 1,
+    "custom": 2
+  },
+  "categories": {
+    "asset_and_stream_pipeline": [
+      "sdk_upload",
+      "sdk_upload_as_group",
+      "sdk_stream_clip_files_upload",
+      "sdk_append_clip_file_to_upload",
+      "sdk_download_asset",
+      "sdk_download_url",
+      "TriggerExistImageResize",
+      "CreatePartUpload",
+      "CompletePartUpload",
+      "CreateDraftPackage"
+    ],
+    "cryptography_and_hashing": [
+      "file_digest",
+      "decrypt_data",
+      "GetAssetsByMd5"
+    ],
+    "state_and_persistence": [
+      "test_indexed_db",
+      "__wbg_indexeddb_free",
+      "create_sdk",
+      "sdk_call_sync",
+      "sdk_tear_down",
+      "sdk_set_event_callback"
+    ],
+    "memory_and_runtime_bindgen": [
+      "memory",
+      "__wbindgen_malloc",
+      "__wbindgen_realloc",
+      "__wbindgen_free",
+      "__wbindgen_exn_store"
+    ]
+  },
+  "total_exports_count": 40,
+  "total_imports_count": 132
+}

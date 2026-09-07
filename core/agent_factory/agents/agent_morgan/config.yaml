@@ -1,0 +1,7 @@
+domain_scope: telemetry/ & logs/
+model: nvidia/llama-3.1-nemotron-70b-instruct
+name: agent_morgan
+provider: nvidia_nim
+role: Chief Reflection & Token Optimizer
+sandbox_enabled: true
+temperature: 0.3

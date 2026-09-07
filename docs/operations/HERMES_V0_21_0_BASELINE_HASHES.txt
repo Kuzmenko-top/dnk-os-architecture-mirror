@@ -1,0 +1,3 @@
+b88df733b78288d3aba920482810bde4efccf97ccb32fa43ae53ab53c82ce1b5  /Users/kuzmenko.top/.hermes/state.db
+5be7f02f4e57b4a85c199e121640ebd52a2419b59fe5f1a7eca560ce019421e1  /Users/kuzmenko.top/.hermes/config.yaml
+e64d642e8ee322186a2909261835da69f971b3fc396ccded0039e51c603ecf00  /Users/kuzmenko.top/.local/bin/hermes

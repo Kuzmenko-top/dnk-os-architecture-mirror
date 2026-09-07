@@ -1,0 +1,42 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/bricks/brick_02_scones_memory/brick.manifest.yaml"
+# purpose: "Manifest for Brick 02: SCONES Memory & Knowledge Hub."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym"
+# --- END DNK-MRH-HEADER ---
+
+id: "brick_02_scones_memory"
+name: "SCONES Memory & Knowledge Hub"
+version: "1.0.0"
+mrh_id: "core/bricks/brick_02_scones_memory/brick.manifest.yaml"
+category: "knowledge_memory"
+description: "Hierarchical vector memory, task forest DAG tracking, error distillation, and self-learning distillation loop."
+
+paths:
+  - "core/scones_memory.py"
+  - "services/dnk_obsidian_task_forest"
+
+dependencies:
+  internal: []
+  external:
+    python:
+      - "pydantic>=2.7.0"
+      - "sqlite3"
+    npm: []
+
+contracts:
+  python_schema: "core/bricks/brick_02_scones_memory/contracts/schemas.py"
+  typescript_types: "core/bricks/brick_02_scones_memory/contracts/types.ts"
+
+entrypoints:
+  memory: "core.scones_memory:get_memory_engine"
+  task_graph: "services.dnk_obsidian_task_forest.src.task_graph_reporter:TaskGraphReporter"
+
+quality_gate:
+  test_suite: "tests/verification/test_cascade_reporting.py"
+  min_coverage: 90

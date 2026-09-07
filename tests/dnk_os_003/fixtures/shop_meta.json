@@ -1,0 +1,14 @@
+{
+  "shop": {
+    "id": 987654321,
+    "name": "DNK-e.com Official Store",
+    "email": "contact@dnk-e.com",
+    "domain": "dnk-e.com",
+    "myshopify_domain": "dnk-e-com.myshopify.com",
+    "country_name": "Ukraine",
+    "currency": "USD",
+    "plan_name": "shopify_plus",
+    "created_at": "2024-01-01T10:00:00Z",
+    "updated_at": "2026-08-28T12:00:00Z"
+  }
+}

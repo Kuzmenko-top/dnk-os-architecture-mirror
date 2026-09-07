@@ -1,0 +1,53 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/gerych_prime/agent_card.yaml"
+# purpose: "A2A Agent Card specification for Gerych Prime (Chief Swarm Orchestrator)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "gerych_prime"
+name: "Гєрич Prime (Chief Orchestrator)"
+description: "DNK OS Master Orchestrator, Task Forest Manager, and Multi-Agent Swarm Dispatcher"
+version: "1.0.0"
+domain: "orchestration"
+owner: "Head of Orchestration"
+
+capabilities:
+  - "a2a_swarm_orchestration"
+  - "task_forest_lifecycle_management"
+  - "scones_memory_sync"
+  - "mcp_tool_coordination"
+  - "vertex_ai_gemini_routing"
+
+auth:
+  type: "system_master"
+  scope: "global"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      goal:
+        type: "string"
+      project_id:
+        type: "string"
+    required: ["goal"]
+  output_schema:
+    type: "object"
+    properties:
+      summary:
+        type: "string"
+      delegated_tasks:
+        type: "array"
+      tasks_updated:
+        type: "array"
+
+safety_gates:
+  high_risk_actions: ["code_deprecation", "system_reconfiguration", "database_migration"]
+  token_budget_cap_usd: 10.00
+  require_hitl: true

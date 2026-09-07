@@ -1,0 +1,59 @@
+{
+  "total_detected": 2,
+  "canvases": [
+    {
+      "id": "offscreenCanvas",
+      "selector": "#offscreenCanvas",
+      "dimensions": {
+        "width": 750,
+        "height": 81,
+        "aspect_ratio": "9.26:1"
+      },
+      "context_type": "2d",
+      "purpose": "Text Metric & Kerning Measurement Buffer",
+      "engine": "Tiptap / ProseMirror typography layout engine",
+      "analysis": "Used by CapCut's rich-text subsystem to calculate multiline bounding boxes, word wrapping, font ascenders/descenders, and glyph advances before rendering text into the Konva scene graph. Bypasses DOM layout thrashing."
+    },
+    {
+      "id": "pencil_wheel_canvas",
+      "selector": ".pencil-wheel-canvas-Kj8Wpf",
+      "dimensions": {
+        "width": 300,
+        "height": 150,
+        "aspect_ratio": "2:1"
+      },
+      "context_type": "2d",
+      "purpose": "Interactive Color Wheel & Brush Stroke Sampler",
+      "engine": "Custom Brush & Color Subsystem",
+      "analysis": "Provides real-time chromatic aberration, gradient hue ring sampling, and smooth brush dynamics without polluting the primary scene graph."
+    }
+  ],
+  "main_render_surfaces": {
+    "physical_resolution": {
+      "width": 3360,
+      "height": 1924
+    },
+    "logical_resolution": {
+      "width": 1680,
+      "height": 962
+    },
+    "device_pixel_ratio": 2.0,
+    "layers": [
+      {
+        "name": "top_gizmo_canvas",
+        "z_index": 20,
+        "purpose": "Selection bounding boxes, rotation handles, snap guides"
+      },
+      {
+        "name": "middle_scene_canvas",
+        "z_index": 0,
+        "purpose": "Primary Konva scene graph, vector shapes, active elements"
+      },
+      {
+        "name": "bottom_bg_canvas",
+        "z_index": -1,
+        "purpose": "Static background layer, grid lines, canvas backdrop"
+      }
+    ]
+  }
+}

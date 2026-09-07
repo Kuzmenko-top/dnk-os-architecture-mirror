@@ -1,0 +1,34 @@
+{{ 'loyalty-widget.css' | asset_url | stylesheet_tag }}
+
+<div class="dnk-loyalty-widget" data-customer-id="{{ customer.id }}">
+  <div class="dnk-loyalty-header">
+    <span class="dnk-loyalty-badge">{{ block.settings.widget_title | default: "DNK Rewards Club" }}</span>
+  </div>
+  
+  {% if customer %}
+    <div class="dnk-loyalty-body">
+      <p>У вас є <strong id="dnk-points-val">150</strong> балів!</p>
+      <div class="dnk-loyalty-progress-bar">
+        <div class="dnk-loyalty-progress-fill" style="width: 75%;"></div>
+      </div>
+      <button id="dnk-redeem-btn" class="dnk-redeem-btn" data-points="100">
+        {{ block.settings.redeem_text | default: "Обміняти 100 балів на $10 знижки" }}
+      </button>
+    </div>
+  {% else %}
+    <div class="dnk-loyalty-guest">
+      <p>Увійдіть, щоб накопичувати бали та отримувати знижки.</p>
+      <a href="/account/login" class="dnk-login-link">Увійти</a>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  const redeemBtn = document.getElementById('dnk-redeem-btn');
+  if (redeemBtn) {
+    redeemBtn.addEventListener('click', async () => {
+      redeemBtn.textContent = 'Знижка застосована!';
+      redeemBtn.disabled = true;
+    });
+  }
+</script>

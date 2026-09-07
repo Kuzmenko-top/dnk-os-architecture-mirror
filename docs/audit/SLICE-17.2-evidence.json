@@ -1,0 +1,28 @@
+{
+  "task_id": "SLICE-17.2",
+  "title": "Obsidian ADR In-Repo Canonicalization & Vault Sync Engine",
+  "status": "COMPLETED",
+  "timestamp": "2026-09-05T19:50:00+03:00",
+  "author": "Gerych Prime & Maxim",
+  "components": [
+    "docs/notes/036 OCC Structural Graph Mutation Resolver.md",
+    "docs/notes/035 MCP Slim Guard Context Compression.md",
+    "scripts/system/obsidian_vault_sync.py",
+    "tests/core/test_obsidian_vault_sync.py",
+    ".gitignore"
+  ],
+  "verification": {
+    "sync_command": ".venv/bin/python3 scripts/system/obsidian_vault_sync.py",
+    "sync_status": "SUCCESS (114 files tracked, 0 conflicts, bidirectional sync)",
+    "file_check": "test -f 'docs/notes/036 OCC Structural Graph Mutation Resolver.md' (EXISTS)",
+    "unit_tests": "tests/core/test_obsidian_vault_sync.py (4 passed)",
+    "repo_ssot": "docs/notes/ converted from external symlink to real in-repo git-tracked directory"
+  },
+  "metrics": {
+    "adr_canonicalized": "ADR 036 (OCC Structural Graph Mutation Resolver)",
+    "sync_directions_supported": ["bidirectional", "to-vault", "to-repo"],
+    "ignored_filters": [".obsidian", ".git", ".trash", ".DS_Store"],
+    "tests_passed": 4,
+    "tests_failed": 0
+  }
+}

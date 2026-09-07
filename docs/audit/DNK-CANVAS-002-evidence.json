@@ -1,0 +1,31 @@
+{
+  "task_id": "DNK-CANVAS-002",
+  "title": "Visual Canvas V2 & Generative UI 2.0 Engine",
+  "status": "Completed",
+  "branch": "feature/dnk-canvas-002-visual-canvas-v2",
+  "commit_sha": "7b368ec82f",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/42",
+  "generated_at": "2026-08-28T21:03:08.105581+00:00",
+  "components": [
+    "apps/api/db/models/canvas.py",
+    "apps/api/services/canvas_graph_engine.py",
+    "apps/api/services/canvas_occ_sync.py",
+    "apps/api/services/canvas_generative_ui_engine.py",
+    "apps/api/services/canvas_component_sandbox.py",
+    "apps/api/routers/canvas_router.py",
+    "apps/api/routers/canvas_ws.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

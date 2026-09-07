@@ -1,0 +1,25 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "services/dnk_shopify/dnk_manifest.yaml"
+# purpose: "Manifest for dnk_shopify service in DNK OS 1.0.0."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "0.1.0"
+# updated_at: "2026-08-06"
+# --- END DNK-MRH-HEADER ---
+
+service:
+  name: "dnk_shopify"
+  display_name: "DNK Shopify 3.0 Agent-Driven Theme Builder"
+  version: "0.1.0"
+  type: "spoke_service"
+  owner: "Maxim"
+  license: "DNK-INTERNAL"
+  theme_architecture: "Shopify 3.0 (Horizon / Tinker 4.3.1)"
+  capabilities:
+    - "liquid_2_0_compilation"
+    - "metaobjects_schema_generation"
+    - "theme_app_extensions"
+    - "cro_theme_engineering"
+    - "css_token_update"

@@ -1,0 +1,55 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/gerych_builder/agent_card.yaml"
+# purpose: "A2A Agent Card specification for Gerych Builder (Chief Fullstack & Systems Engineer)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "gerych_builder"
+name: "Гєрич Builder (Fullstack & Systems Engineer)"
+description: "DNK OS Master Builder specializing in Python, TypeScript, React Canvas, and Shopify Ecosystem"
+version: "1.0.0"
+domain: "development"
+owner: "Head of Engineering"
+
+capabilities:
+  - "fullstack_code_generation"
+  - "fastapi_service_architecture"
+  - "react_canvas_xyflow_ui"
+  - "shopify_liquid_generation"
+  - "mrh_header_enforcement"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      task_id:
+        type: "string"
+      specification:
+        type: "string"
+      target_files:
+        type: "array"
+    required: ["specification"]
+  output_schema:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      files_modified:
+        type: "array"
+      summary:
+        type: "string"
+
+safety_gates:
+  high_risk_actions: ["schema_alteration", "package_dependency_change"]
+  token_budget_cap_usd: 8.00
+  require_hitl: false

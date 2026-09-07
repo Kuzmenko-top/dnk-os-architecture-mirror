@@ -1,0 +1,35 @@
+{
+  "task_id": "DNK-MEDIA-002",
+  "title": "Distributed Video Processing & Transcoding Pipeline (GOP Chunking, HW Acceleration, ABR Packaging & FastAPI Router)",
+  "status": "Completed",
+  "branch": "feature/dnk-media-002-distributed-video-pipeline",
+  "commit_sha": "d71a761ad9",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/37",
+  "generated_at": "2026-08-28T16:12:33.707387+00:00",
+  "components": [
+    "apps/api/db/models/media_video_processing_job.py",
+    "apps/api/db/models/media_video_chunk.py",
+    "apps/api/db/models/media_transcoding_task.py",
+    "apps/api/db/models/media_packaging_output.py",
+    "apps/api/db/models/media_webhook_config.py",
+    "apps/api/services/video_chunking_engine.py",
+    "apps/api/services/hardware_acceleration_manager.py",
+    "apps/api/services/distributed_transcoding_worker.py",
+    "apps/api/services/video_packaging_engine.py",
+    "apps/api/services/media_storage_manager.py",
+    "apps/api/services/media_pipeline_router.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

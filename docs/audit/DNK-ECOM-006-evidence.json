@@ -1,0 +1,41 @@
+{
+  "task_id": "DNK-ECOM-006",
+  "title": "Shopify Checkout UI Extensions, Post-Purchase Engine & Conversion Analytics",
+  "status": "Completed",
+  "branch": "feature/dnk-ecom-006-checkout-postpurchase-engine",
+  "commit_sha": "bc187e4353",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/43",
+  "generated_at": "2026-08-29T06:46:18.322390+00:00",
+  "components": [
+    "apps/api/db/models/checkout_extension.py",
+    "apps/api/db/models/post_purchase_offer.py",
+    "apps/api/db/models/upsell_rule.py",
+    "apps/api/db/models/checkout_conversion_event.py",
+    "apps/api/db/models/shopify_webhook_event.py",
+    "apps/api/services/checkout_extension_engine.py",
+    "apps/api/services/post_purchase_funnel_engine.py",
+    "apps/api/services/shopify_webhook_ingestor.py",
+    "apps/api/services/checkout_conversion_analytics.py",
+    "apps/api/routers/checkout_postpurchase_router.py",
+    "apps/api/routers/checkout_analytics_ws.py",
+    "tests/ecom/test_checkout_postpurchase_models.py",
+    "tests/ecom/test_checkout_extension_engine.py",
+    "tests/ecom/test_post_purchase_funnel_engine.py",
+    "tests/ecom/test_shopify_webhook_ingestor.py",
+    "tests/ecom/test_checkout_conversion_analytics.py",
+    "tests/ecom/test_checkout_postpurchase_api_and_ws.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

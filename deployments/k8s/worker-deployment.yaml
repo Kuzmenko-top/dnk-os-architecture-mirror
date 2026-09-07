@@ -1,0 +1,68 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/worker-deployment.yaml"
+# purpose: "Kubernetes Deployment manifest for DNK OS TaskDNA & Event Stream Background Workers"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnk-worker
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-worker
+    app.kubernetes.io/component: worker
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dnk-worker
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dnk-worker
+        app.kubernetes.io/component: worker
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: dnk-worker
+          image: ghcr.io/kuzmenko-top/dnk-os/worker:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          envFrom:
+            - configMapRef:
+                name: dnk-config
+            - secretRef:
+                name: dnk-secrets
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "512Mi"
+            limits:
+              cpu: "1000m"
+              memory: "1536Mi"
+          lifecycle:
+            preStop:
+              exec:
+                command: ["/bin/sh", "-c", "sleep 10"]

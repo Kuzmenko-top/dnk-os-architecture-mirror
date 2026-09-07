@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include \"dnk-os.fullname\" . }}-api"
+  labels:
+    app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-api"
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  replicas: {{ .Values.api.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-api"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-api"
+        app.kubernetes.io/component: backend
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+      containers:
+        - name: api
+          image: "{{ .Values.api.image.repository }}:{{ .Values.api.image.tag }}"
+          imagePullPolicy: {{ .Values.api.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.api.service.port }}
+              protocol: TCP
+          envFrom:
+            - configMapRef:
+                name: "{{ include \"dnk-os.fullname\" . }}-config"
+            - secretRef:
+                name: "{{ include \"dnk-os.fullname\" . }}-secrets"
+          resources:
+            limits:
+              cpu: "{{ .Values.api.resources.limits.cpu }}"
+              memory: "{{ .Values.api.resources.limits.memory }}"
+            requests:
+              cpu: "{{ .Values.api.resources.requests.cpu }}"
+              memory: "{{ .Values.api.resources.requests.memory }}"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.api.service.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: {{ .Values.api.service.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 5

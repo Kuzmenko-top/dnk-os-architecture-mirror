@@ -1,0 +1,45 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/herich_librarian/agent_card.yaml"
+# purpose: "A2A Agent Card specification for herich_librarian (Knowledge Brain & Memory Librarian)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "herich_librarian"
+name: "herich_librarian (Chief Knowledge Brain & SCONES Librarian)"
+description: "DNK OS Master Librarian managing knowledge graphs, SCONES memory, ADR indexes, and repository catalog"
+version: "1.0.0"
+domain: "knowledge"
+owner: "Head of Knowledge"
+
+capabilities:
+  - "knowledge_graph_curation"
+  - "scones_memory_retrieval"
+  - "adr_architecture_indexing"
+  - "repository_assimilation_catalog"
+
+auth:
+  type: "system_worker"
+  scope: "tenant"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      query: {"type": "string"}
+    required: ["query"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      knowledge_nodes: {"type": "array"}
+
+safety_gates:
+  high_risk_actions: []
+  token_budget_cap_usd: 2.00
+  require_hitl: false

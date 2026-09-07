@@ -1,0 +1,47 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_erp_supply/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_erp_supply (Inventory & Supply Chain)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_erp_supply"
+name: "dnk_erp_supply (Operations & Supply Chain Director)"
+description: "DNK OS specialist for Bill of Materials (BOM), SKU inventories, 3PL fulfillment tracking, and reorder point alerts"
+version: "1.0.0"
+domain: "operations"
+owner: "Head of Operations"
+
+capabilities:
+  - "bom_spec_generation"
+  - "sku_inventory_balancing"
+  - "supplier_lead_time_tracking"
+  - "stockout_risk_monitoring"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      sku: {"type": "string"}
+      action: {"type": "string"}
+    required: ["sku"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      current_stock: {"type": "integer"}
+      reorder_needed: {"type": "boolean"}
+
+safety_gates:
+  high_risk_actions: ["purchase_order_commit"]
+  token_budget_cap_usd: 3.00
+  require_hitl: false

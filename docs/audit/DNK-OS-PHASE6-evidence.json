@@ -1,0 +1,30 @@
+{
+  "task_id": "DNK-OS-PHASE6",
+  "title": "Phase 6: Remotion Shorts Compiler & Shopify Media API Integration",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "00187b328c",
+  "pull_request_url": null,
+  "generated_at": "2026-09-03T18:30:00.000000+00:00",
+  "components": [
+    "services/dnk_video_ai_creator/remotion_compiler.py",
+    "services/dnk_shopify/media_api.py",
+    "apps/web/components/canvas/RemotionPlayer.tsx",
+    "apps/web/components/canvas/nodes/VideoCreatorNode.tsx",
+    "tests/verification/test_remotion_compiler.py",
+    "tests/verification/test_shopify_media_api.py"
+  ],
+  "tests": {
+    "remotion_compiler": "3/3 passed (100% Green)",
+    "shopify_media_api": "3/3 passed (100% Green)",
+    "video_audit_core": "2/2 passed (100% Green)",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths (PB-002 Compliant)",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

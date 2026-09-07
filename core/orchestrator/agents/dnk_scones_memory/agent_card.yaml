@@ -1,0 +1,46 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_scones_memory/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_scones_memory (Cognitive Long-Term Memory)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_scones_memory"
+name: "dnk_scones_memory (Cognitive Knowledge & Memory Custodian)"
+description: "DNK OS custodian for SCONES long-term cognitive memory, pgvector embeddings, entity graphs, and error distillation indexing"
+version: "1.0.0"
+domain: "memory"
+owner: "Head of AI Architecture"
+
+capabilities:
+  - "scones_memory_indexing"
+  - "pgvector_semantic_search"
+  - "entity_graph_traversal"
+  - "context_compaction_and_sanitization"
+
+auth:
+  type: "system_worker"
+  scope: "tenant"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      query: {"type": "string"}
+      workspace_id: {"type": "string"}
+    required: ["query"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      retrieved_memories: {"type": "array"}
+
+safety_gates:
+  high_risk_actions: ["memory_purge", "tenant_cross_query"]
+  token_budget_cap_usd: 2.00
+  require_hitl: false

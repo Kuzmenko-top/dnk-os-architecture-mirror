@@ -1,0 +1,35 @@
+{
+  "task_id": "DNK-STUDIO-ARCH-001",
+  "artifact_type": "architecture_baseline_reconciliation",
+  "repository": "Kuzmenko-top/DNK_OS_MVP",
+  "canonical_git_root": ".",
+  "branch": "feature/dnk-studio-arch-001",
+  "source_revision": "d2b9942481b857bbd58d9ad33453868388193eb2",
+  "verification_method": "quality_gate_script_and_ci_artifact",
+  "generated_at": "2026-08-30T16:54:00Z",
+  "submodule_policy": {
+    "path": "DNK OS",
+    "role": "isolated_sandbox_target",
+    "canonical_source_of_truth": false,
+    "allowed_sync_direction": "top_level_to_submodule",
+    "prohibited_sync_direction": "submodule_to_top_level_without_review",
+    "pinned_ref_required": true,
+    "rule": "Top-level root is the canonical SSOT. All future documentation must be authored directly in root docs/. Submodule serves strictly as isolated sandbox test harness."
+  },
+  "quality_gate": {
+    "command": "./scripts/verify_all.sh",
+    "working_directory": ".",
+    "test_scope": "full unified repository auto-discovery suite (57 verification modules + 28 subsystem directories)",
+    "tests_collected": 1398,
+    "tests_passed": 1354,
+    "tests_failed": 0,
+    "tests_skipped": 0,
+    "tests_deselected": 44,
+    "path_hygiene_violations": 0,
+    "adversarial_gate": {
+      "status": "passed",
+      "probes_evaluated": 89,
+      "attack_success_rate": 0.0
+    }
+  }
+}

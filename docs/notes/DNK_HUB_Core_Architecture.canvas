@@ -1,0 +1,506 @@
+{
+  "nodes": [
+    {
+      "id": "grp_workers",
+      "type": "group",
+      "label": "🤖 Autonomous Swarm Workers",
+      "x": 0,
+      "y": 1500,
+      "width": 540,
+      "height": 800,
+      "color": "1"
+    },
+    {
+      "id": "grp_gates",
+      "type": "group",
+      "label": "🛡️ System Quality Gates & Automation",
+      "x": 600,
+      "y": 750,
+      "width": 540,
+      "height": 800,
+      "color": "3"
+    },
+    {
+      "id": "grp_frontend",
+      "type": "group",
+      "label": "🖥️ Web Frontend (apps/web)",
+      "x": 0,
+      "y": 750,
+      "width": 540,
+      "height": 800,
+      "color": "4"
+    },
+    {
+      "id": "grp_backend",
+      "type": "group",
+      "label": "⚡ FastAPI Backend & Routers",
+      "x": 600,
+      "y": 0,
+      "width": 540,
+      "height": 920,
+      "color": "5"
+    },
+    {
+      "id": "grp_core",
+      "type": "group",
+      "label": "👑 Core Orchestration & Swarm Hub",
+      "x": 0,
+      "y": 0,
+      "width": 540,
+      "height": 1040,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_control_plane_py",
+      "type": "text",
+      "text": "### `control_plane.py`\n**Classes**: `NodeState, TaskNode, StateCheckpointer`\n**Path**: `core/orchestrator/control_plane.py` | **LOC**: 324\n*Status*: Active SSOT",
+      "x": 30,
+      "y": 60,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_swarm_health_py",
+      "type": "text",
+      "text": "### `swarm_health.py`\n**Classes**: `SwarmHealthEngine`\n**Path**: `core/orchestrator/swarm_health.py` | **LOC**: 330\n*Status*: Active SSOT",
+      "x": 30,
+      "y": 180,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_accounting_engine_py",
+      "type": "text",
+      "text": "### `accounting_engine.py`\n*Virtual reference: core/orchestrator/accounting_engine.py*",
+      "x": 30,
+      "y": 300,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_visual_canvas_control_py",
+      "type": "text",
+      "text": "### `visual_canvas_control.py`\n**Classes**: `VisualCanvasControlEngine`\n**Path**: `core/orchestrator/visual_canvas_control.py` | **LOC**: 774\n*Status*: Active SSOT",
+      "x": 30,
+      "y": 420,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_session_sentinel_py",
+      "type": "text",
+      "text": "### `session_sentinel.py`\n**Classes**: `AnomalySeverity, AnomalyCategory, DetectedAnomaly`\n**Path**: `core/orchestrator/session_sentinel.py` | **LOC**: 960\n*Status*: Active SSOT",
+      "x": 30,
+      "y": 540,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_dna_assimilation_py",
+      "type": "text",
+      "text": "### `dna_assimilation.py`\n*Virtual reference: core/orchestrator/dna_assimilation.py*",
+      "x": 30,
+      "y": 660,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_task_forest_py",
+      "type": "text",
+      "text": "### `task_forest.py`\n*Virtual reference: core/orchestrator/task_forest.py*",
+      "x": 30,
+      "y": 780,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_core_orchestrator_mcp_slim_guard_py",
+      "type": "text",
+      "text": "### `mcp_slim_guard.py`\n**Classes**: `MCPSlimGuard`\n**Path**: `core/orchestrator/mcp_slim_guard.py` | **LOC**: 193\n*Status*: Active SSOT",
+      "x": 30,
+      "y": 900,
+      "width": 480,
+      "height": 100,
+      "color": "6"
+    },
+    {
+      "id": "n_apps_api_main_py",
+      "type": "text",
+      "text": "### `main.py`\n**Classes**: `Module`\n**Path**: `apps/api/main.py` | **LOC**: 124\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 60,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_api_routers_workspace_py",
+      "type": "text",
+      "text": "### `workspace.py`\n**Classes**: `Module`\n**Path**: `apps/api/routers/workspace.py` | **LOC**: 210\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 180,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_api_routers_agent_py",
+      "type": "text",
+      "text": "### `agent.py`\n**Classes**: `AgentRunPayload, AgentRunResponse, SwarmTaskItem`\n**Path**: `apps/api/routers/agent.py` | **LOC**: 235\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 300,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_api_routers_health_py",
+      "type": "text",
+      "text": "### `health.py`\n**Classes**: `TriggerAlertRequest, SwarmHealRequest`\n**Path**: `apps/api/routers/health.py` | **LOC**: 155\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 420,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_api_routers_swarm_ws_py",
+      "type": "text",
+      "text": "### `swarm_ws.py`\n**Classes**: `SwarmConnectionManager`\n**Path**: `apps/api/routers/swarm_ws.py` | **LOC**: 399\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 540,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_api_routers_canvas_bridge_py",
+      "type": "text",
+      "text": "### `canvas_bridge.py`\n**Classes**: `CanvasBridgeConnectionManager, SwarmHudEventRequest, SwarmHudEventResponse`\n**Path**: `apps/api/routers/canvas_bridge.py` | **LOC**: 545\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 660,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_api_routers_a2a_mesh_router_py",
+      "type": "text",
+      "text": "### `a2a_mesh_router.py`\n**Classes**: `RegisterAgentRequest, EvaluateProposalRequest, InitiateNegotiationRequest`\n**Path**: `apps/api/routers/a2a_mesh_router.py` | **LOC**: 363\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 780,
+      "width": 480,
+      "height": 100,
+      "color": "5"
+    },
+    {
+      "id": "n_apps_web_types_apiProtocol_ts",
+      "type": "text",
+      "text": "### `apiProtocol.ts`\n**Symbols**: `Types/Utils`\n**Path**: `apps/web/types/apiProtocol.ts` | **LOC**: 55\n*Tier*: 1 (Web SSOT)",
+      "x": 30,
+      "y": 810,
+      "width": 480,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "n_apps_web_types_apiGenerated_ts",
+      "type": "text",
+      "text": "### `apiGenerated.ts`\n**Symbols**: `Types/Utils`\n**Path**: `apps/web/types/apiGenerated.ts` | **LOC**: 37895\n*Tier*: 1 (Web SSOT)",
+      "x": 30,
+      "y": 930,
+      "width": 480,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "n_apps_web_components_workspace_WorkspaceShell_tsx",
+      "type": "text",
+      "text": "### `WorkspaceShell.tsx`\n**Symbols**: `WorkspaceShell`\n**Path**: `apps/web/components/workspace/WorkspaceShell.tsx` | **LOC**: 296\n*Tier*: 1 (Web SSOT)",
+      "x": 30,
+      "y": 1050,
+      "width": 480,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "n_apps_web_components_canvas_ObsidianSyncBar_tsx",
+      "type": "text",
+      "text": "### `ObsidianSyncBar.tsx`\n**Symbols**: `ObsidianSyncBar`\n**Path**: `apps/web/components/canvas/ObsidianSyncBar.tsx` | **LOC**: 217\n*Tier*: 1 (Web SSOT)",
+      "x": 30,
+      "y": 1170,
+      "width": 480,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "n_apps_web_components_canvas_TimeTravelRail_tsx",
+      "type": "text",
+      "text": "### `TimeTravelRail.tsx`\n**Symbols**: `TimeTravelRail`\n**Path**: `apps/web/components/canvas/TimeTravelRail.tsx` | **LOC**: 300\n*Tier*: 1 (Web SSOT)",
+      "x": 30,
+      "y": 1290,
+      "width": 480,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "n_apps_web_lib_api_swarm_health_client_ts",
+      "type": "text",
+      "text": "### `swarm_health_client.ts`\n**Symbols**: `Types/Utils`\n**Path**: `apps/web/lib/api/swarm_health_client.ts` | **LOC**: 187\n*Tier*: 1 (Web SSOT)",
+      "x": 30,
+      "y": 1410,
+      "width": 480,
+      "height": 100,
+      "color": "4"
+    },
+    {
+      "id": "n_scripts_verify_all_sh",
+      "type": "text",
+      "text": "### `verify_all.sh`\n**Type**: Shell Gatekeeper / Orchestrator\n**Path**: `scripts/verify_all.sh` | **LOC**: 188\n*Verification*: Master Quality Gate",
+      "x": 630,
+      "y": 810,
+      "width": 480,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "n_scripts_system_auto_precommit_guard_py",
+      "type": "text",
+      "text": "### `auto_precommit_guard.py`\n**Classes**: `GuardCheckResult, AutoPreCommitGuard`\n**Path**: `scripts/system/auto_precommit_guard.py` | **LOC**: 183\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 930,
+      "width": 480,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "n_scripts_system_blast_radius_analyzer_py",
+      "type": "text",
+      "text": "### `blast_radius_analyzer.py`\n**Classes**: `BlastRadiusReport, BlastRadiusAnalyzer`\n**Path**: `scripts/system/blast_radius_analyzer.py` | **LOC**: 201\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 1050,
+      "width": 480,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "n_scripts_system_generate_frontend_types_py",
+      "type": "text",
+      "text": "### `generate_frontend_types.py`\n**Classes**: `Module`\n**Path**: `scripts/system/generate_frontend_types.py` | **LOC**: 168\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 1170,
+      "width": 480,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "n_scripts_system_sync_codebase_to_canvas_py",
+      "type": "text",
+      "text": "### `sync_codebase_to_canvas.py`\n**Classes**: `CodebaseASTScanner, CanvasSyncEngine`\n**Path**: `scripts/system/sync_codebase_to_canvas.py` | **LOC**: 326\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 1290,
+      "width": 480,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "n_scripts_system_repo_map_py",
+      "type": "text",
+      "text": "### `repo_map.py`\n**Classes**: `Module`\n**Path**: `scripts/system/repo_map.py` | **LOC**: 291\n*Status*: Active SSOT",
+      "x": 630,
+      "y": 1410,
+      "width": 480,
+      "height": 100,
+      "color": "3"
+    },
+    {
+      "id": "n_core_orchestrator_agents_gerych_prime_SOUL_md",
+      "type": "text",
+      "text": "### 🤖 `gerych_prime`\n**Role**: Specialized DNK OS Swarm Agent\n**Specification**: `core/orchestrator/agents/gerych_prime/SOUL.md`\n*Status*: Autonomous Worker",
+      "x": 30,
+      "y": 1560,
+      "width": 480,
+      "height": 100,
+      "color": "1"
+    },
+    {
+      "id": "n_core_orchestrator_agents_gerych_builder_SOUL_md",
+      "type": "text",
+      "text": "### 🤖 `gerych_builder`\n**Role**: Specialized DNK OS Swarm Agent\n**Specification**: `core/orchestrator/agents/gerych_builder/SOUL.md`\n*Status*: Autonomous Worker",
+      "x": 30,
+      "y": 1680,
+      "width": 480,
+      "height": 100,
+      "color": "1"
+    },
+    {
+      "id": "n_core_orchestrator_agents_gerych_researcher_SOUL_md",
+      "type": "text",
+      "text": "### 🤖 `gerych_researcher`\n**Role**: Specialized DNK OS Swarm Agent\n**Specification**: `core/orchestrator/agents/gerych_researcher/SOUL.md`\n*Status*: Autonomous Worker",
+      "x": 30,
+      "y": 1800,
+      "width": 480,
+      "height": 100,
+      "color": "1"
+    },
+    {
+      "id": "n_core_orchestrator_agents_gerych_auditor_SOUL_md",
+      "type": "text",
+      "text": "### 🤖 `gerych_auditor`\n**Role**: Specialized DNK OS Swarm Agent\n**Specification**: `core/orchestrator/agents/gerych_auditor/SOUL.md`\n*Status*: Autonomous Worker",
+      "x": 30,
+      "y": 1920,
+      "width": 480,
+      "height": 100,
+      "color": "1"
+    },
+    {
+      "id": "n_core_orchestrator_agents_dnk_dev_fullstack_SOUL_md",
+      "type": "text",
+      "text": "### 🤖 `dnk_dev_fullstack`\n**Role**: Specialized DNK OS Swarm Agent\n**Specification**: `core/orchestrator/agents/dnk_dev_fullstack/SOUL.md`\n*Status*: Autonomous Worker",
+      "x": 30,
+      "y": 2040,
+      "width": 480,
+      "height": 100,
+      "color": "1"
+    },
+    {
+      "id": "n_core_orchestrator_agents_dnk_shopify_SOUL_md",
+      "type": "text",
+      "text": "### 🤖 `dnk_shopify`\n**Role**: Specialized DNK OS Swarm Agent\n**Specification**: `core/orchestrator/agents/dnk_shopify/SOUL.md`\n*Status*: Autonomous Worker",
+      "x": 30,
+      "y": 2160,
+      "width": 480,
+      "height": 100,
+      "color": "1"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge_arch_1",
+      "fromNode": "n_scripts_verify_all_sh",
+      "fromSide": "right",
+      "toNode": "n_scripts_system_blast_radius_analyzer_py",
+      "toSide": "left",
+      "label": "evaluates"
+    },
+    {
+      "id": "edge_arch_2",
+      "fromNode": "n_scripts_verify_all_sh",
+      "fromSide": "right",
+      "toNode": "n_scripts_system_auto_precommit_guard_py",
+      "toSide": "left",
+      "label": "executes"
+    },
+    {
+      "id": "edge_arch_3",
+      "fromNode": "n_scripts_system_generate_frontend_types_py",
+      "fromSide": "right",
+      "toNode": "n_apps_api_main_py",
+      "toSide": "left",
+      "label": "extracts OpenAPI"
+    },
+    {
+      "id": "edge_arch_4",
+      "fromNode": "n_scripts_system_generate_frontend_types_py",
+      "fromSide": "right",
+      "toNode": "n_apps_web_types_apiGenerated_ts",
+      "toSide": "left",
+      "label": "generates"
+    },
+    {
+      "id": "edge_arch_5",
+      "fromNode": "n_apps_web_types_apiProtocol_ts",
+      "fromSide": "right",
+      "toNode": "n_apps_web_types_apiGenerated_ts",
+      "toSide": "left",
+      "label": "re-exports"
+    },
+    {
+      "id": "edge_arch_6",
+      "fromNode": "n_apps_api_main_py",
+      "fromSide": "right",
+      "toNode": "n_apps_api_routers_workspace_py",
+      "toSide": "left",
+      "label": "mounts"
+    },
+    {
+      "id": "edge_arch_7",
+      "fromNode": "n_apps_api_main_py",
+      "fromSide": "right",
+      "toNode": "n_apps_api_routers_health_py",
+      "toSide": "left",
+      "label": "mounts"
+    },
+    {
+      "id": "edge_arch_8",
+      "fromNode": "n_apps_api_main_py",
+      "fromSide": "right",
+      "toNode": "n_apps_api_routers_swarm_ws_py",
+      "toSide": "left",
+      "label": "mounts"
+    },
+    {
+      "id": "edge_arch_9",
+      "fromNode": "n_apps_api_routers_health_py",
+      "fromSide": "right",
+      "toNode": "n_core_orchestrator_swarm_health_py",
+      "toSide": "left",
+      "label": "queries"
+    },
+    {
+      "id": "edge_arch_10",
+      "fromNode": "n_apps_api_routers_swarm_ws_py",
+      "fromSide": "right",
+      "toNode": "n_core_orchestrator_control_plane_py",
+      "toSide": "left",
+      "label": "streams"
+    },
+    {
+      "id": "edge_arch_11",
+      "fromNode": "n_apps_web_lib_api_swarm_health_client_ts",
+      "fromSide": "right",
+      "toNode": "n_apps_api_routers_health_py",
+      "toSide": "left",
+      "label": "fetches"
+    },
+    {
+      "id": "edge_arch_12",
+      "fromNode": "n_core_orchestrator_control_plane_py",
+      "fromSide": "right",
+      "toNode": "n_core_orchestrator_accounting_engine_py",
+      "toSide": "left",
+      "label": "tracks cost"
+    },
+    {
+      "id": "edge_arch_13",
+      "fromNode": "n_core_orchestrator_control_plane_py",
+      "fromSide": "right",
+      "toNode": "n_core_orchestrator_visual_canvas_control_py",
+      "toSide": "left",
+      "label": "renders"
+    },
+    {
+      "id": "edge_arch_14",
+      "fromNode": "n_core_orchestrator_agents_gerych_prime_SOUL_md",
+      "fromSide": "right",
+      "toNode": "n_core_orchestrator_control_plane_py",
+      "toSide": "left",
+      "label": "orchestrates"
+    },
+    {
+      "id": "edge_arch_15",
+      "fromNode": "n_core_orchestrator_agents_gerych_auditor_SOUL_md",
+      "fromSide": "right",
+      "toNode": "n_scripts_verify_all_sh",
+      "toSide": "left",
+      "label": "validates"
+    }
+  ]
+}

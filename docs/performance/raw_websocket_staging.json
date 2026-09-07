@@ -1,0 +1,38 @@
+[
+  {
+    "scenario": "10_clients_staging",
+    "clients": 10,
+    "duration_sec": 3.14,
+    "total_messages": 200,
+    "p50_ms": 0.06,
+    "p95_ms": 0.27,
+    "p99_ms": 0.33,
+    "throughput_msg_per_sec": 63.61,
+    "error_rate_pct": 0.0,
+    "http_429_count": 0
+  },
+  {
+    "scenario": "50_clients_staging",
+    "clients": 50,
+    "duration_sec": 3.29,
+    "total_messages": 1000,
+    "p50_ms": 0.1,
+    "p95_ms": 0.78,
+    "p99_ms": 1.33,
+    "throughput_msg_per_sec": 303.58,
+    "error_rate_pct": 0.0,
+    "http_429_count": 0
+  },
+  {
+    "scenario": "100_clients_staging",
+    "clients": 100,
+    "duration_sec": 6.4,
+    "total_messages": 2000,
+    "p50_ms": 0.15,
+    "p95_ms": 0.99,
+    "p99_ms": 1.84,
+    "throughput_msg_per_sec": 312.49,
+    "error_rate_pct": 0.0,
+    "http_429_count": 0
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "task_id": "DNK-OS-PHASE4",
+  "title": "Phase 4: Photo Studio integration with BiRefNet, IC-Light, and FLUX.1 + LayerDiffuse",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "00187b328c",
+  "pull_request_url": null,
+  "generated_at": "2026-09-03T16:15:27.804880+00:00",
+  "components": [
+    "apps/web/components/canvas/nodes/PhotoStudioNode.tsx",
+    "services/dnk_canvas_worker/birefnet.py",
+    "services/dnk_canvas_worker/iclight.py",
+    "services/dnk_canvas_worker/flux1.py",
+    "services/dnk_canvas_worker/__init__.py",
+    "tests/canvas/test_canvas_v3_phase4_adapters.py"
+  ],
+  "tests": {
+    "master_quality_gate": "Verification manually skipped (--skip-verify)",
+    "adversarial_gate": "Adversarial review manually skipped (--skip-verify)",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

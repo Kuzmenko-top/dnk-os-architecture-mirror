@@ -1,0 +1,29 @@
+{
+  "task_id": "TASK-SWARM-CANVAS-WS-001",
+  "title": "CanvasRuntimeBridge Swarm WebSocket Gateway Streaming Integration",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "a060c236cd",
+  "pull_request_url": null,
+  "generated_at": "2026-09-04T14:11:33.694743+00:00",
+  "components": [
+    "core/canvas_runtime_bridge.py",
+    "core/runtime_events.py",
+    "apps/api/routers/swarm_ws.py",
+    "core/hermes_agent/tools/dnk_swarm_tool.py",
+    "tests/verification/test_swarm_canvas_bridge_ws.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Passed (0 issues confirmed, 0 refuted)",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

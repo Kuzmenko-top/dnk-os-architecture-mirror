@@ -1,0 +1,37 @@
+{
+  "task_id": "VIDEO-AUDIT-PIPELINE-001E-C",
+  "title": "Gemini/Claude Provider Adapters",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "e3baa14d0f",
+  "pull_request_url": null,
+  "generated_at": "2026-09-02T21:11:22.737503+00:00",
+  "components": [
+    "services/dnk_video_ai_creator/infrastructure/llm/shared/provider-port.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/shared/provider-errors.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/shared/retry-policy.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/shared/token-budget.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/shared/telemetry.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/gemini/client.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/gemini/adapter.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/gemini/mapper.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/claude/client.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/claude/adapter.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/claude/mapper.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/index.ts",
+    "services/dnk_video_ai_creator/infrastructure/llm/tests/provider-adapters.test.ts"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Passed (0 issues confirmed, 0 refuted)",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

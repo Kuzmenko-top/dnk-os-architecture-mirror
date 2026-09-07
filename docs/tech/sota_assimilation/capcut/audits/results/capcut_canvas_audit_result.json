@@ -1,0 +1,124 @@
+{
+  "audit_id": "CAPCUT-CANVAS-AUDIT-001",
+  "timestamp": "2026-09-02T14:25:00+03:00",
+  "target_url": "https://www.capcut.com/ai-design",
+  "browser_engine": "Chromium 139 / Google Chrome / AppleWebKit 537.36",
+  "resolution": {
+    "viewport": { "width": 1680, "height": 962 },
+    "canvas_backing_store": { "width": 3360, "height": 1924, "pixel_ratio": 2 }
+  },
+  "verdict_summary": {
+    "rendering_engine": "Konva.js 2D Scene Graph Engine (Multi-Layer HTML5 Canvas) + WebGL Inpaint/Cutout Offscreen pipelines",
+    "state_management": "ByteDance TEA Visual Editor SDK + VSCode-style Inversify/Service Container DI + React Fiber Component Hierarchy",
+    "text_engine": "Tiptap / ProseMirror ContentEditable Integration for Prompt & Typography Layout",
+    "wasm_support": true,
+    "canvas_layers_count": 3
+  },
+  "scene_graph_hierarchy": {
+    "stage_id": "Konva.Stage[0]",
+    "dimensions": { "width": 1680, "height": 962 },
+    "layers": [
+      {
+        "index": 0,
+        "id": "MainLayer",
+        "role": "Background Canvas & Canvas Bounds Guide",
+        "nodes": [
+          { "id": "MainBackground-Background", "type": "Rect", "width": 1680, "height": 962 },
+          { "type": "Group", "transform": { "matrix": [0.2, 0, 0, 0.2, 482, 350.8] }, "purpose": "Artboard Canvas Projection" },
+          { "id": "stage-debug-safe-zone", "type": "Rect", "purpose": "Export / Safe Margin Visualizer" },
+          { "id": "stage-debug-content-bounds", "type": "Rect", "purpose": "Artboard Bounding Box" }
+        ]
+      },
+      {
+        "index": 1,
+        "id": "BackgroundLayer",
+        "role": "Static Background & Color Buffer",
+        "nodes": [
+          { "type": "Shape", "width": 1680, "height": 962 }
+        ]
+      },
+      {
+        "index": 2,
+        "id": "FeatureLayer",
+        "role": "Active Interactive AI Graphic Nodes & Generative Tool Modules",
+        "nodes": [
+          { "id": "Interactive", "type": "Group", "purpose": "Hit Testing and Active Selection" },
+          { "id": "imageCutOut", "type": "Group", "purpose": "AI Background Removal / Mask Layer" },
+          { "id": "imageContainerCutOut", "type": "Group", "purpose": "Masked Container / Clipping Nodes" },
+          { "id": "gridCutOut", "type": "Group", "purpose": "Layout Grid & Alignment Guides" },
+          { "id": "canvasBgImageCutOut", "type": "Group", "purpose": "Generative Canvas Background Layer" },
+          { "id": "ruler", "type": "Group", "purpose": "Viewport Rulers (Top 20px, Left 20px, Corner 20x20)" },
+          { "id": "inpaintEditor", "type": "Group", "purpose": "AI Inpainting Brush & Bounding Mask Canvas" },
+          { "id": "imageFrameEditor", "type": "Group", "purpose": "Smart Vector / Image Aspect Ratio Frame" }
+        ]
+      },
+      {
+        "index": 3,
+        "id": "GizmoLayer",
+        "role": "Selection Transformer, Resize Anchors & Guidelines",
+        "nodes": [
+          { "type": "Konva.Transformer", "purpose": "Node selection, rotation, scaling handles" }
+        ]
+      }
+    ]
+  },
+  "dom_architecture": {
+    "root_container": "#csr-root -> #ai-design",
+    "editor_canvas": "#graphic-editor-render -> #__editor_container_id__",
+    "render_root": ".render-root (houses 3 stacked <canvas> elements)",
+    "auxiliary_canvases": [
+      { "id": "#offscreenCanvas", "width": 750, "height": 81, "purpose": "Font measurement & glyph metrics" },
+      { "class": ".pencil-wheel-canvas", "purpose": "Color gamut picker wheel" }
+    ],
+    "toolbars": [
+      "#__editor_edit_tool_container_id__",
+      "#__editor_edit_suspend_tool_bar_id__",
+      "#__editor_edit_canvas_tool_bar_id__",
+      "#__editor_edit_contextmenu_id__",
+      "#__editor_edit_page_text_box_id__"
+    ],
+    "prompt_input": ".emptyCanvasOnboarding-zwJdSd .editor-V1Lw3o[contenteditable=\"true\"] (ProseMirror/Tiptap)"
+  },
+  "network_telemetry_and_api": {
+    "total_captured_requests": 63,
+    "key_endpoints": [
+      {
+        "endpoint": "https://edit-api-sg.capcut.com/cc/v1/workspace/get_all_everphoto_user",
+        "method": "POST",
+        "purpose": "Asset library & Everphoto cloud storage sync"
+      },
+      {
+        "endpoint": "https://edit-api-sg.capcut.com/cc/v1/workspace/mget_workspace_info",
+        "method": "POST",
+        "purpose": "Workspace metadata & project permissions fetch"
+      },
+      {
+        "endpoint": "https://commerce-api-sg.capcut.com/commerce/v1/subscription/user_info",
+        "method": "GET",
+        "purpose": "Credit balance & subscription tier validation"
+      },
+      {
+        "endpoint": "https://commerce-api-sg.capcut.com/commerce/v1/subscription/workspace/space_list",
+        "method": "GET",
+        "purpose": "Multi-tenant workspace quota and team spaces"
+      },
+      {
+        "endpoint": "https://commerce-api-sg.capcut.com/commerce/v1/resource_position",
+        "method": "GET",
+        "purpose": "AI template positioning & resource slot indexing"
+      },
+      {
+        "endpoint": "https://mon-sg.capcutapi.com/monitor_web/settings/browser-settings?bid=webmssdk&store=1",
+        "method": "GET",
+        "purpose": "ByteDance APM Slardar real-time crash & telemetry reporting"
+      }
+    ],
+    "sdk_bundles": [
+      "vendor-main-konva.ed279cf676.js",
+      "initial-canvas-render.cd644a7350.js",
+      "initial-canvas-support.dfca157fa4.js",
+      "initial-graphic-sdk.786f0a8f67.js",
+      "vendor-main-tea-sdk.3459a67751.js"
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "DNK-ANALYTICS-005",
+  "title": "Predictive Capacity Planning & ML Forecasting V2",
+  "status": "Completed",
+  "branch": "feature/dnk-analytics-005-predictive-capacity",
+  "commit_sha": "fa09c5176c",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/41",
+  "generated_at": "2026-08-28T20:28:17.046378+00:00",
+  "components": [
+    "apps/api/db/models/capacity_snapshot.py",
+    "apps/api/db/models/load_forecast.py",
+    "apps/api/db/models/queue_metric.py",
+    "apps/api/db/models/anomaly_alert.py",
+    "apps/api/db/models/scaling_recommendation.py",
+    "apps/api/db/models/cost_optimization_report.py",
+    "apps/api/services/capacity_forecasting_engine.py",
+    "apps/api/services/queue_anomaly_detector.py",
+    "apps/api/services/capacity_autoscaler_recommender.py",
+    "apps/api/routers/capacity_analytics_router.py",
+    "apps/api/routers/capacity_analytics_ws.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

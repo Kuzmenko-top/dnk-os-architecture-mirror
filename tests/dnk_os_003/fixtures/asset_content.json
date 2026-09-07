@@ -1,0 +1,12 @@
+{
+  "asset": {
+    "key": "layout/theme.liquid",
+    "public_url": null,
+    "value": "<!doctype html>\n<html class=\"no-js\" lang=\"{{ request.locale.iso_code }}\">\n  <head>\n    <meta charset=\"utf-8\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n    <title>{{ page_title }}</title>\n    {{ content_for_header }}\n    {{ 'base.css' | asset_url | stylesheet_tag }}\n  </head>\n  <body>\n    <main id=\"MainContent\" class=\"content-for-layout focus-none\" role=\"main\" tabindex=\"-1\">\n      {{ content_for_layout }}\n    </main>\n  </body>\n</html>",
+    "created_at": "2026-01-15T08:00:00Z",
+    "updated_at": "2026-08-28T09:30:00Z",
+    "content_type": "text/x-liquid",
+    "size": 435,
+    "theme_id": 160000001
+  }
+}

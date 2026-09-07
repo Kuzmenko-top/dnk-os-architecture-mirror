@@ -1,0 +1,9 @@
+{
+  "t0_timestamp": 1788449166.2468538,
+  "t1_restore_pointer_duration": 0.00010085105895996094,
+  "t2_restore_env_duration": 0.0005409717559814453,
+  "t3_start_duration": 0.9927539825439453,
+  "t4_healthcheck_duration": 0.1453390121459961,
+  "total_duration_seconds": 1.1388561725616455,
+  "passed": true
+}

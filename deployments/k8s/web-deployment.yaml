@@ -1,0 +1,92 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/web-deployment.yaml"
+# purpose: "Kubernetes Deployment manifest for DNK OS Next.js Frontend with Rolling Updates and Health Probes"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dnk-web
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-web
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: dnk-web
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: dnk-web
+        app.kubernetes.io/component: frontend
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+        seccompProfile:
+          type: RuntimeDefault
+      containers:
+        - name: dnk-web
+          image: ghcr.io/kuzmenko-top/dnk-os/web:latest
+          imagePullPolicy: IfNotPresent
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          env:
+            - name: PORT
+              value: "3000"
+            - name: NODE_ENV
+              value: "production"
+            - name: NEXT_PUBLIC_API_URL
+              value: "/api"
+          resources:
+            requests:
+              cpu: "150m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "768Mi"
+          startupProbe:
+            httpGet:
+              path: /
+              port: 3000
+            failureThreshold: 20
+            periodSeconds: 3
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 5
+            periodSeconds: 15
+            timeoutSeconds: 3
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 3000
+            initialDelaySeconds: 3
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 2

@@ -1,0 +1,41 @@
+{
+  "task_id": "TELEPROMPTER-WEB-001",
+  "package_versions": {
+    "@dnk/teleprompter-core": "1.0.0",
+    "@dnk/video-audit-core": "1.0.0",
+    "next": "14.2.5"
+  },
+  "git_commit": "f8171aa322d6fb5bfbbfc9224302ba2a0f6e95ea",
+  "test_command": "npm test (packages/teleprompter-core) && bash scripts/verify_all.sh",
+  "typecheck_command": "npm run typecheck (packages/teleprompter-core)",
+  "lint_command": "bash scripts/verify_all.sh",
+  "browser_adapter_tests": {
+    "total": 21,
+    "passed": 21,
+    "failed": 0,
+    "coverage": [
+      "ASRProviderPort lifecycle",
+      "monotonic sequence verification",
+      "duplicate hypothesis rejection/idempotency",
+      "out-of-order hypothesis rejection",
+      "MediaRecorderPort start/pause/resume/stop",
+      "MIME fallback detection (webm/mp4)",
+      "BrowserCapabilitiesProbe (secureContext, indexedDb, mediaRecorder, speechRecognition, wakeLock)",
+      "IndexedDbSessionStore memory fallback",
+      "Wake Lock graceful degradation",
+      "Vibration API graceful degradation"
+    ]
+  },
+  "integration_tests": {
+    "total": 1438,
+    "passed": 1438,
+    "failed": 0
+  },
+  "master_gate_result": "PASSED",
+  "timestamp": "2026-09-02T18:45:00Z",
+  "known_limitations": [
+    "Web Speech API uk-UA acoustic accuracy varies across Chromium and WebKit mobile builds; MockASRStreamProvider provides deterministic baseline fallback",
+    "iOS Safari requires explicit user interaction gesture before starting MediaStream and AudioContext",
+    "MediaRecorder container MIME type detection is performed at runtime via MediaRecorder.isTypeSupported (preferring video/webm;codecs=vp9 -> video/webm -> video/mp4)"
+  ]
+}

@@ -1,0 +1,47 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/helm/dnk-os/values-staging.yaml"
+# purpose: "Staging environment values override for DNK OS Helm Chart"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+global:
+  environment: staging
+  domain: staging.dnk-e.com
+
+api:
+  replicaCount: 1
+  autoscaling:
+    enabled: false
+
+web:
+  replicaCount: 1
+  autoscaling:
+    enabled: false
+
+worker:
+  replicaCount: 1
+
+ingress:
+  hosts:
+    - host: app.staging.dnk-e.com
+      paths:
+        - path: /api
+          pathType: Prefix
+          service: api
+        - path: /
+          pathType: Prefix
+          service: web
+    - host: api.staging.dnk-e.com
+      paths:
+        - path: /
+          pathType: Prefix
+          service: api
+  tls:
+    - secretName: dnk-staging-tls-secret
+      hosts:
+        - app.staging.dnk-e.com
+        - api.staging.dnk-e.com

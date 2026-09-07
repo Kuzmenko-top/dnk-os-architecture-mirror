@@ -1,0 +1,44 @@
+# Prometheus Alerting Rules Template
+groups:
+  - name: api_alerts
+    interval: 15s
+    rules:
+      - alert: HighAPILatency
+        expr: api:latency_p95:histogram_quantile > 2.0
+        for: 5m
+        labels:
+          severity: warning
+          team: backend
+        annotations:
+          summary: "High API latency on endpoint"
+          description: "API P95 latency is above 2.0s for >5m. Value: {{ $value }}s"
+
+      - alert: CriticalAPILatency
+        expr: api:latency_p99:histogram_quantile > 5.0
+        for: 2m
+        labels:
+          severity: critical
+          team: backend
+        annotations:
+          summary: "Critical API latency detected"
+          description: "API P99 latency is above 5.0s for >2m. Value: {{ $value }}s"
+
+      - alert: HighAPIErrorRate
+        expr: sum(rate(app_requests_total{status="error"}[5m])) / sum(rate(app_requests_total[5m])) > 0.05
+        for: 5m
+        labels:
+          severity: warning
+          team: backend
+        annotations:
+          summary: "High API error rate (>5%)"
+          description: "Error rate is above 5% for >5m. Value: {{ $value | humanizePercentage }}"
+
+      - alert: APIDown
+        expr: up{job="api"} == 0
+        for: 1m
+        labels:
+          severity: critical
+          team: backend
+        annotations:
+          summary: "API instance {{ $labels.instance }} down"
+          description: "Service has been unreachable for >1m."

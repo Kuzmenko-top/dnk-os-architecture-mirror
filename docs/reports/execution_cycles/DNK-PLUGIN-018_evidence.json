@@ -1,0 +1,51 @@
+{
+  "task_id": "DNK-PLUGIN-018",
+  "title": "Test Plugin Pilot & Operational Verification",
+  "timestamp": "2026-08-22T16:30:00Z",
+  "base_commit": "1eaa590e4e3c72c3a22478688474776011739b99",
+  "test_plugin": {
+    "plugin_id": "dnk-test-health",
+    "version": "0.1.0",
+    "fixture_location": "plugins/dnk_test_health/plugin.py",
+    "permissions": ["health.read", "audit.write"],
+    "key_lifecycle": "ephemeral_ed25519_in_memory"
+  },
+  "scenarios": {
+    "positive_scenarios": {
+      "passed": 13,
+      "total": 13,
+      "test_suite": "tests/plugins/test_operational_pilot.py",
+      "command": "PYTHONPATH=. uv run pytest tests/plugins/test_operational_pilot.py tests/plugins/test_install_lifecycle.py tests/plugins/test_plugin_activation.py"
+    },
+    "negative_scenarios": {
+      "passed": 15,
+      "total": 15,
+      "test_suite": "tests/plugins/test_plugin_negative_security.py",
+      "command": "PYTHONPATH=. uv run pytest tests/plugins/test_plugin_negative_security.py -k 'not permission'"
+    },
+    "permission_scenarios": {
+      "passed": 10,
+      "total": 10,
+      "test_suite": "tests/plugins/test_plugin_negative_security.py",
+      "command": "PYTHONPATH=. uv run pytest tests/plugins/test_plugin_negative_security.py -k 'permission or containment or workspace'"
+    }
+  },
+  "verification_outcomes": {
+    "rollback": "PASSED",
+    "audit_retention": "PASSED",
+    "secret_scan": "CLEAN",
+    "full_regression": "47/47 passed",
+    "operational_gaps": [],
+    "canary_recommendation": "PROCEED"
+  },
+  "evidence_reproducibility": {
+    "fixture_path": "plugins/dnk_test_health/plugin.py",
+    "positive_command": "PYTHONPATH=. uv run pytest tests/plugins/test_operational_pilot.py tests/plugins/test_install_lifecycle.py tests/plugins/test_plugin_activation.py",
+    "negative_command": "PYTHONPATH=. uv run pytest tests/plugins/test_plugin_negative_security.py",
+    "permission_command": "PYTHONPATH=. uv run pytest tests/plugins/test_plugin_negative_security.py -k 'permission or workspace'",
+    "full_suite_command": "PYTHONPATH=. uv run pytest tests/plugins/ core/tests/test_discourse_assimilation.py core/tests/test_dna_assimilation.py",
+    "evidence_json_path": "docs/reports/execution_cycles/DNK-PLUGIN-018_evidence.json",
+    "ephemeral_key_lifecycle_proof": "Generated via TrustKeyRegistry in pytest conftest/fixtures; private keys are never written to disk or logs.",
+    "secret_scan_proof": "git diff main..HEAD | grep -E 'BEGIN (RSA|EC|OPENSSH|PRIVATE KEY)' -> 0 matches"
+  }
+}

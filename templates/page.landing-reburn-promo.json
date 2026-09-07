@@ -1,0 +1,23 @@
+{
+  "wrapper": "div",
+  "sections": {
+    "custom_hero-banner_0": {
+      "type": "hero-banner",
+      "settings": {
+        "title": "ReBurn-Promo - Hero-banner",
+        "heading_size": "h2"
+      }
+    },
+    "custom_product-grid_1": {
+      "type": "product-grid",
+      "settings": {
+        "title": "ReBurn-Promo - Product-grid",
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "custom_hero-banner_0",
+    "custom_product-grid_1"
+  ]
+}

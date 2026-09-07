@@ -1,0 +1,31 @@
+{
+  "auction": {
+    "task_id": "task_auction_001",
+    "task_name": "Synthesize Architecture ADR",
+    "initiator_agent_id": "gerych_architect",
+    "required_capabilities": ["codegen", "security_audit"],
+    "max_budget_units": 150.0,
+    "auction_duration_seconds": 10.0,
+    "payload": {
+      "target_repo": "DNK_HUB",
+      "target_spec": "DNK-A2A-003"
+    }
+  },
+  "bid": {
+    "bidder_agent_id": "gerych_builder",
+    "bid_price_units": 75.0,
+    "estimated_duration_ms": 350.0,
+    "current_load_percentage": 20.0,
+    "agent_reputation": 1.25,
+    "bid_metadata": {
+      "cpu_cores": 8,
+      "ram_gb": 32
+    }
+  },
+  "scoring_weights": {
+    "price_weight": 0.30,
+    "latency_weight": 0.25,
+    "load_weight": 0.25,
+    "reputation_weight": 0.20
+  }
+}

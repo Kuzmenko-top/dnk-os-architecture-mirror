@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "DNKEventEnvelopeV1",
+  "description": "Standardized Realtime Event Envelope for Structured Execution Traces across DNK OS Studio",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "event_id",
+    "event_type",
+    "occurred_at",
+    "workspace_id",
+    "trace_id",
+    "actor",
+    "payload"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "enum": ["1.0.0"],
+      "description": "Contract schema version for envelope evolution"
+    },
+    "event_id": {
+      "type": "string",
+      "pattern": "^evt_[0-9a-zA-Z]{16,36}$",
+      "description": "Unique event identifier"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "agent.task.assigned",
+        "agent.tool.invoked",
+        "agent.artifact.generated",
+        "agent.test.started",
+        "agent.test.result",
+        "agent.retry.scheduled",
+        "agent.task.completed",
+        "agent.task.failed",
+        "workflow.node.status_changed",
+        "workflow.node.mutated",
+        "workflow.edge.connected",
+        "workflow.edge.disconnected",
+        "approval.gate.requested",
+        "approval.gate.resolved",
+        "canvas.presence.updated",
+        "canvas.cursor.moved",
+        "system.dlq.alert",
+        "system.occ.conflict"
+      ],
+      "description": "Structured execution lifecycle event"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp"
+    },
+    "tenant_id": {
+      "type": "string",
+      "description": "Tenant isolation scope"
+    },
+    "workspace_id": {
+      "type": "string",
+      "description": "Workspace scope identifier"
+    },
+    "project_id": {
+      "type": "string",
+      "description": "Project scope identifier"
+    },
+    "canvas_id": {
+      "type": "string",
+      "description": "Target canvas identifier"
+    },
+    "workflow_id": {
+      "type": "string",
+      "description": "Associated TaskDNA workflow identifier"
+    },
+    "execution_id": {
+      "type": "string",
+      "description": "Specific execution run instance"
+    },
+    "trace_id": {
+      "type": "string",
+      "description": "Distributed tracing ID for A2A and audit logs"
+    },
+    "correlation_id": {
+      "type": "string",
+      "description": "Causality tracking ID linking trigger event to downstream actions"
+    },
+    "idempotency_key": {
+      "type": "string",
+      "description": "Client-generated key for safe mutation retries"
+    },
+    "actor": {
+      "type": "object",
+      "required": ["type", "id"],
+      "properties": {
+        "type": { "type": "string", "enum": ["user", "agent", "system", "worker"] },
+        "id": { "type": "string", "description": "User email, agent ID (e.g. dnk_shopify), or service name" }
+      }
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific data payload (Free of secrets, raw tokens, and personal data)"
+    }
+  }
+}

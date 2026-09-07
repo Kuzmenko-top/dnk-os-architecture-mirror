@@ -1,0 +1,32 @@
+{
+  "task_id": "TASK-DNK-OPEN-DESIGN-CORE-001",
+  "title": "Unify Open Design as Official DNK OS Visual Shell & Backend Gateway Bridge",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "8c2958c6b5",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/55",
+  "generated_at": "2026-08-30T20:40:15.957077+00:00",
+  "components": [
+    "visual_shell/open_design/apps/web/app/layout.tsx",
+    "visual_shell/open_design/apps/web/src/state/appearance.ts",
+    "visual_shell/open_design/apps/web/src/lib/dnk-api.ts",
+    "visual_shell/open_design/apps/web/src/constants/swarm.ts",
+    "apps/web/app/layout.tsx",
+    "apps/web/lib/dnk-api.ts",
+    "apps/web/lib/swarm.ts",
+    "apps/web/components/canvas/StitchLeftChatPanel.tsx"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Passed (0 issues confirmed, 0 refuted)",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

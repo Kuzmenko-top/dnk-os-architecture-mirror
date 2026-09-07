@@ -1,0 +1,31 @@
+{
+  "wrapper": "div",
+  "sections": {
+    "custom_main-product_0": {
+      "type": "main-product",
+      "settings": {
+        "title": "koptylnya-mudriy-craftiar-pro - Main-product",
+        "heading_size": "h2"
+      }
+    },
+    "custom_product-compare-chart_1": {
+      "type": "product-compare-chart",
+      "settings": {
+        "title": "koptylnya-mudriy-craftiar-pro - Product-compare-chart",
+        "heading_size": "h2"
+      }
+    },
+    "custom_facebook-reviews_2": {
+      "type": "facebook-reviews",
+      "settings": {
+        "title": "koptylnya-mudriy-craftiar-pro - Facebook-reviews",
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "custom_main-product_0",
+    "custom_product-compare-chart_1",
+    "custom_facebook-reviews_2"
+  ]
+}

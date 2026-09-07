@@ -1,0 +1,45 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/bricks/brick_05_video_ai/brick.manifest.yaml"
+# purpose: "Manifest for Brick 05: Autonomous Video AI UGC Pipeline."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym"
+# --- END DNK-MRH-HEADER ---
+
+id: "brick_05_video_ai"
+name: "Video AI UGC Pipeline"
+version: "1.0.0"
+mrh_id: "core/bricks/brick_05_video_ai/brick.manifest.yaml"
+category: "video_generation"
+description: "Remotion timeline synthesis, dynamic keyframe animation, FFmpeg audio sync, and UGC viral video generation."
+
+paths:
+  - "services/dnk_video_ai_creator"
+  - "apps/api/routers/video.py"
+
+dependencies:
+  internal:
+    - "brick_02_scones_memory"
+  external:
+    python:
+      - "fastapi>=0.110.0"
+      - "pydantic>=2.7.0"
+    npm:
+      - "remotion"
+      - "@remotion/bundler"
+
+contracts:
+  python_schema: "core/bricks/brick_05_video_ai/contracts/schemas.py"
+  typescript_types: "core/bricks/brick_05_video_ai/contracts/types.ts"
+
+entrypoints:
+  api_router: "apps.api.routers.video:router"
+  service: "services.dnk_video_ai_creator.main:app"
+
+quality_gate:
+  test_suite: "tests/services/test_video_service.py"
+  min_coverage: 85

@@ -1,0 +1,3 @@
+# 🔌 Shopify Extension Configuration
+type = "theme_app_extension"
+name = "reburn-conversion-booster"

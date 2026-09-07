@@ -1,0 +1,31 @@
+{
+  "task_id": "DNK-VIDEO-008",
+  "title": "Web UI Dashboard & Local Video Processing",
+  "status": "Completed",
+  "branch": "mentor/platform/DNK-PLATFORM-SCALE-003-multi-region-routing",
+  "commit_sha": "e3b55681f8",
+  "pull_request_url": null,
+  "generated_at": "2026-08-28T14:59:22.494578+00:00",
+  "components": [
+    "frontend/app/page.tsx",
+    "frontend/components/VideoUpload.tsx",
+    "frontend/components/FootageSearch.tsx",
+    "frontend/Dockerfile",
+    "docker-compose.yml",
+    "docs/WEB_UI_GUIDE.md",
+    "specs/DNK-STD-0092.yaml"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

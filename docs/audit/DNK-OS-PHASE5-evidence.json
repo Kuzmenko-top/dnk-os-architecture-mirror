@@ -1,0 +1,34 @@
+{
+  "task_id": "DNK-OS-PHASE5",
+  "title": "Phase 5: Video Intelligence Integration with @dnk/video-audit-core",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "00187b328c",
+  "pull_request_url": null,
+  "generated_at": "2026-09-03T16:29:21.466909+00:00",
+  "components": [
+    "apps/web/components/canvas/nodes/VideoAuditReportNode.tsx",
+    "packages/video_audit_core/transcription_adapter.py",
+    "packages/video_audit_core/scene_extraction_worker.py",
+    "packages/video_audit_core/ocr_worker.py",
+    "packages/video_audit_core/audio_feature_worker.py",
+    "packages/video_audit_core/hook_retention_analysis.py",
+    "packages/video_audit_core/claim_verification.py",
+    "packages/video_audit_core/__init__.py",
+    "packages/video-audit-core/src/index.ts",
+    "tests/media/test_video_audit_core.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Passed (0 issues confirmed, 0 refuted)",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

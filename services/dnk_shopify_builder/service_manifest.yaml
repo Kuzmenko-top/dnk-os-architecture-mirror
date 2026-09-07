@@ -1,0 +1,25 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "services/dnk_shopify_builder/service_manifest.yaml"
+# purpose: "Canonical service manifest for dnk_shopify_builder microservice."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-09"
+# --- END DNK-MRH-HEADER ---
+
+service_id: "dnk_shopify_builder"
+name: "Shopify Builder Microservice"
+port: 8081
+domain: "shopify"
+status: "Active"
+version: "1.0.0"
+entrypoint: "services.dnk_shopify_builder.main:app"
+endpoints:
+  - path: "/api/v1/build"
+    method: "POST"
+    handler: "build_theme_section"
+  - path: "/api/v1/canvas/node"
+    method: "GET"
+    handler: "get_canvas_node"

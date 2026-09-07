@@ -1,0 +1,334 @@
+{
+  "UI Canvas": [
+    {
+      "name": "langchain-ai/open-canvas",
+      "description": "Powerful node-based interactive Canvas UI for code editing, artifacts visualization, React Flow and ProseMirror editor integrations.",
+      "category": "UI Canvas",
+      "stars": 4200
+    },
+    {
+      "name": "xyflow/xyflow",
+      "description": "Extremely robust node-based UI flow editor for building interactive agent nodes, interactive node visualizer, and React Flow Canvas layouts.",
+      "category": "UI Canvas",
+      "stars": 18500
+    },
+    {
+      "name": "davidkogit/shopify-quiz-builder",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "frontvibe/fluid",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "atef1995/shopify-quiz-app",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "nagayamats-rgb/fdsi-quiz-hub",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "octipus/shopify-ui-extension-markdown",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "aumlytics/shopify-liquid-snippets",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "Michelvandersterren/design-flow",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    },
+    {
+      "name": "askinne2/alle-drops-quiz-app",
+      "description": "GitHub scanned repository details.",
+      "category": "UI Canvas",
+      "stars": 50
+    }
+  ],
+  "Shopify CRO": [
+    {
+      "name": "Shopify/theme-tools",
+      "description": "Shopify theme development suite, Liquid parsing, tiered discounts, PDP bundles, cart upsell widgets, and conversions.",
+      "category": "Shopify CRO",
+      "stars": 1500
+    },
+    {
+      "name": "PrathamITHub/dsers-mcp-product",
+      "description": "Shopify bundles, PDP tiered discounts, cart upsell widget engines, product variant mapping, and sales optimization tools.",
+      "category": "Shopify CRO",
+      "stars": 820
+    },
+    {
+      "name": "Marion-s-Kitchen-Group/MK-Shopify",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "djebar-rayan/hermes-agent-shopify",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "barrel/shopify-vite",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "Shopify/shopify-app-bridge",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "thealirazadev/shopify-bulk-editor",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "Shopify/skeleton-theme",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "montalvomiguelo/theme-extension-vite",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "VatsalRangoonwala/Shopify-AI-Search-Recommendation-App",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "BankrBot/bankr-skill-shopify",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "Shopify/shopify/app",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "ArcIcarus97/shopify-app-store-analysis",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "wottz-inc/shopify-hermes-oauth",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "gadget-inc/shopify-webhook-schemas",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "sandeepsharma-z/Shopify-Store-Assistant-App",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "taras-polishchuk/interactive-shopify-theme-dev-roadmap",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "moiz-ahmed-malik/Shopify-Order-Management-App",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "subhankar-codeclouds/shopify-ecom",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "gadget-inc/shopify-cli",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    },
+    {
+      "name": "gadget-inc/shopify-app-bridge-react",
+      "description": "GitHub scanned repository details.",
+      "category": "Shopify CRO",
+      "stars": 50
+    }
+  ],
+  "Agent Orchestration": [
+    {
+      "name": "langchain-ai/managed-deepagents",
+      "description": "Dockerized Agent Runtime, sandboxed executions, and isolated secure filesystem.",
+      "category": "Agent Orchestration",
+      "stars": 3100
+    }
+  ],
+  "Memory": [
+    {
+      "name": "langchain-ai/openwiki",
+      "description": "Markdown-based wiki-graph memory (OKF) with directory synchronization and visual explorer.",
+      "category": "Memory",
+      "stars": 2400
+    }
+  ],
+  "Vector DB": [
+    {
+      "name": "chroma-core/chroma",
+      "description": "Vector database for cognitive agent memory, long-term embeddings, SCONES caching, and similarity checks.",
+      "category": "Vector DB",
+      "stars": 12400
+    },
+    {
+      "name": "pgvector/pgvector",
+      "description": "PostgreSQL extension for vector similarity search, long-term cognitive episodic memory, and reflective recall.",
+      "category": "Vector DB",
+      "stars": 9800
+    }
+  ],
+  "ERP": [
+    {
+      "name": "erpnext/erpnext",
+      "description": "Open-source ERP system, manufacturing BOM, inventory tracking, financial ledger integration, and Shopify sync adapters.",
+      "category": "ERP",
+      "stars": 16500
+    }
+  ],
+  "Other": [
+    {
+      "name": "pipecat-ai/pipecat",
+      "description": "Open-source framework for voice and multimodal AI agents.",
+      "category": "Other",
+      "stars": 100
+    },
+    {
+      "name": "unscanned/group1/run",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "batch/run",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "chattermate/chattermate.chat",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "muchisx/mock-bridge",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "devidlabel/devidlabel-ai-assistant-backend",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "wanAyuniIsmail/Recofy",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "Aetheria-Labs1/storefront-skills",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "ottho-nocode/ottho-shop",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "hajirshariati/hajirai",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "abdouudrh/Vomoda-cod-form",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "LaviPun/super-app-ai",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "barrel/devkit",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "MohdKashifShaikh/GEO-AI",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "PrathamITHub/dsers-mcp-product-py",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "npmiaman/AutoAEO",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    },
+    {
+      "name": "ifrederico/quadruapp",
+      "description": "GitHub scanned repository details.",
+      "category": "Other",
+      "stars": 50
+    }
+  ]
+}

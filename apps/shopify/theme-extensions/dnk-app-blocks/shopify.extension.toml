@@ -1,0 +1,6 @@
+name = "dnk-app-blocks"
+type = "theme_app_extension"
+
+[theme_app_extension]
+name = "DNK App Blocks"
+handle = "dnk-app-blocks"

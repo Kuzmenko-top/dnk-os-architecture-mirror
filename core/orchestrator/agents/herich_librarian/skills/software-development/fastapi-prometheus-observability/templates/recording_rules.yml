@@ -1,0 +1,12 @@
+groups:
+  - name: api_recording_rules
+    interval: 15s
+    rules:
+      - record: api:requests_per_second:rate5m
+        expr: sum(rate(app_requests_total[5m])) by (endpoint)
+
+      - record: api:errors_per_second:rate5m
+        expr: sum(rate(app_requests_total{status="error"}[5m])) by (endpoint)
+
+      - record: api:latency_p95:histogram_quantile
+        expr: histogram_quantile(0.95, sum(rate(app_request_latency_seconds_bucket[5m])) by (le, endpoint))

@@ -1,0 +1,46 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_marketing_cmo/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_marketing_cmo (Go-To-Market & Meta Ads)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_marketing_cmo"
+name: "dnk_marketing_cmo (Chief Marketing Officer)"
+description: "DNK OS specialist for Go-To-Market launches, Meta Ads creative angles, copywriting, and retention email flows"
+version: "1.0.0"
+domain: "marketing"
+owner: "Head of Marketing"
+
+capabilities:
+  - "gtm_launch_strategy"
+  - "meta_ads_angle_generation"
+  - "high_converting_copywriting"
+  - "klaviyo_email_flow_design"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      product_name: {"type": "string"}
+      target_audience: {"type": "string"}
+    required: ["product_name"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      campaign_angles: {"type": "array"}
+
+safety_gates:
+  high_risk_actions: ["live_ad_budget_dispatch"]
+  token_budget_cap_usd: 5.00
+  require_hitl: false

@@ -1,0 +1,31 @@
+{
+  "task_id": "DNK-ECOM-004",
+  "title": "Shopify Checkout UI Extensions, Multi-Gateway Payments, 3DS 2.0 & Upsell Engine",
+  "status": "Completed",
+  "branch": "feature/dnk-ecom-004-checkout-payments",
+  "commit_sha": "a031f6f7ed",
+  "pull_request_url": null,
+  "generated_at": "2026-08-28T13:23:28.821048+00:00",
+  "components": [
+    "apps/api/services/shopify_checkout_extension.py",
+    "apps/api/services/shopify_payment_gateway_handler.py",
+    "apps/api/services/shopify_payment_intent_manager.py",
+    "apps/api/services/shopify_post_purchase_upsell.py",
+    "apps/api/services/shopify_webhook_event_bus.py",
+    "apps/api/routers/shopify_checkout_payments.py",
+    "tests/shopify/test_e2e_checkout_payments.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

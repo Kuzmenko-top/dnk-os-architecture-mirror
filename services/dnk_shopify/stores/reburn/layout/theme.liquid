@@ -1,0 +1,48 @@
+{% comment %}
+# --- DNK-MRH-HEADER ---
+# mrh_id: "services/dnk_shopify/stores/reburn/layout/theme.liquid"
+# purpose: "Shopify Theme Layout template with custom head integrations."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-06"
+# --- END DNK-MRH-HEADER ---
+{% endcomment %}
+<!doctype html>
+<html class="no-js" lang="{{ request.locale.iso_code }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#ff4500">
+    <link rel="canonical" href="{{ canonical_url }}">
+    
+    <title>
+      {{ page_title }}
+      {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
+      {%- if current_page != 1 %} &ndash; Page {{ current_page }}{% endif -%}
+      {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{% endunless -%}
+    </title>
+
+    {% if page_description %}
+      <meta name="description" content="{{ page_description | escape }}">
+    {% endif %}
+
+    {{ content_for_header }}
+  </head>
+  <body>
+    <header class="reburn-header">
+      <div class="header-logo">{{ shop.name | default: "ReBurn Store" }}</div>
+    </header>
+    
+    <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
+      {{ content_for_layout }}
+    </main>
+
+    <footer class="reburn-footer">
+      <p>&copy; {{ 'now' | date: "%Y" }} ReBurn Smoker Manufacturing. All rights reserved.</p>
+    </footer>
+  </body>
+</html>

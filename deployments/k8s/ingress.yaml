@@ -1,0 +1,60 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/ingress.yaml"
+# purpose: "Kubernetes Ingress configuration with TLS cert-manager, WebSocket support, and path routing"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dnk-ingress
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-ingress
+    app.kubernetes.io/part-of: dnk-platform
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+    nginx.ingress.kubernetes.io/ssl-redirect: "true"
+    nginx.ingress.kubernetes.io/proxy-body-size: "64m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+    nginx.ingress.kubernetes.io/websocket-services: "dnk-api-service"
+spec:
+  tls:
+    - hosts:
+        - app.dnk-e.com
+        - api.dnk-e.com
+      secretName: dnk-tls-secret
+  rules:
+    - host: app.dnk-e.com
+      http:
+        paths:
+          - path: /api
+            pathType: Prefix
+            backend:
+              service:
+                name: dnk-api-service
+                port:
+                  number: 8000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dnk-web-service
+                port:
+                  number: 3000
+    - host: api.dnk-e.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: dnk-api-service
+                port:
+                  number: 8000

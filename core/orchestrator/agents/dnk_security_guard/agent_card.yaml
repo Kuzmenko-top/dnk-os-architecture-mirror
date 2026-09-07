@@ -1,0 +1,48 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_security_guard/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_security_guard (Context Firewall & Secret Isolation)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_security_guard"
+name: "dnk_security_guard (Context Firewall & Security Guard)"
+description: "DNK OS guardian enforcing multi-tenant isolation, secret redaction, and 2-stage destructive action verification"
+version: "1.0.0"
+domain: "security"
+owner: "Head of Security"
+
+capabilities:
+  - "context_firewall_enforcement"
+  - "secret_leak_detection"
+  - "destructive_action_interception"
+  - "tenant_isolation_audit"
+
+auth:
+  type: "system_worker"
+  scope: "tenant"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      task_id: {"type": "string"}
+      action_type: {"type": "string"}
+      payload: {"type": "object"}
+    required: ["action_type"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      allowed: {"type": "boolean"}
+      reason: {"type": "string"}
+
+safety_gates:
+  high_risk_actions: []
+  token_budget_cap_usd: 2.00
+  require_hitl: false

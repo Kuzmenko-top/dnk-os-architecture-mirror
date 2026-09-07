@@ -1,0 +1,49 @@
+/* ─────────────────────────────────────────────────────────────────────────
+ * apps/web/styles/shopify-tokens.css
+ *
+ * Authentic Shopify Design System Tokens from Open Design
+ * Dark cinematic theatre, deep forest-teal surfaces, neon green #36F4A4 accent,
+ * full pill geometry (rounded-full 9999px), and high-contrast typography.
+ * ─────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Surfaces & Canvas */
+  --shopify-bg:               #000000;
+  --shopify-surface:          #02090a;
+  --shopify-surface-warm:     #061a1c;
+  --shopify-surface-elevated: #102620;
+  
+  /* Borders */
+  --shopify-border:           #1e2c31;
+  --shopify-border-soft:      #3f3f46;
+  --shopify-border-glow:      rgba(54, 244, 164, 0.3);
+
+  /* Foreground & Typography */
+  --shopify-fg:               #ffffff;
+  --shopify-muted:            #a1a1aa;
+  --shopify-meta:             #71717a;
+
+  /* Signature Accents */
+  --shopify-accent:           #36f4a4;
+  --shopify-accent-on:        #000000;
+  --shopify-accent-hover:     #2de097;
+  --shopify-aloe:             #c1fbd4;
+  --shopify-pistachio:        #d4f9e0;
+
+  /* Pill Geometry */
+  --shopify-radius-pill:      9999px;
+  --shopify-radius-card:      24px;
+}
+
+/* Utility Helper Classes */
+.bg-shopify-bg { background-color: var(--shopify-bg); }
+.bg-shopify-surface { background-color: var(--shopify-surface); }
+.bg-shopify-surface-warm { background-color: var(--shopify-surface-warm); }
+.bg-shopify-surface-elevated { background-color: var(--shopify-surface-elevated); }
+
+.border-shopify-border { border-color: var(--shopify-border); }
+.border-shopify-soft { border-color: var(--shopify-border-soft); }
+.border-shopify-accent { border-color: var(--shopify-accent); }
+
+.text-shopify-accent { color: var(--shopify-accent); }
+.bg-shopify-accent { background-color: var(--shopify-accent); color: var(--shopify-accent-on); }

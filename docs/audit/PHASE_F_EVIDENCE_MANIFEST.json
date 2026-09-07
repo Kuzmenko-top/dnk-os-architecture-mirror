@@ -1,0 +1,54 @@
+{
+  "manifest_version": "1.0.0",
+  "task_id": "DNK-HUB-ARCH-002",
+  "phase": "Phase F \u2014 Canary Review and Promotion Decision",
+  "generated_at": "2026-09-03T15:26:08.634050+00:00",
+  "candidate": {
+    "name": "hermes-agent",
+    "version": "v0.21.0",
+    "staging_path": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/core/hermes_agent_staging",
+    "staging_home": "/Users/kuzmenko.top/.hermes_staging"
+  },
+  "current_production": {
+    "name": "hermes-agent",
+    "version": "v0.20.5",
+    "production_home": "/Users/kuzmenko.top/.hermes",
+    "launcher": "/Users/kuzmenko.top/.local/bin/hermes",
+    "state_db_sha256": "b88df733b78288d3aba920482810bde4efccf97ccb32fa43ae53ab53c82ce1b5",
+    "config_sha256": "5be7f02f4e57b4a85c199e121640ebd52a2419b59fe5f1a7eca560ce019421e1",
+    "binary_sha256": "e64d642e8ee322186a2909261835da69f971b3fc396ccded0039e51c603ecf00"
+  },
+  "verified_evidence_files": [
+    {
+      "path": "docs/audit/CANARY-PHASE-E-evidence.json",
+      "sha256": "8c42b642d5cb6f5b17c14e55cac2a49571edc07976c457e6e16c676bf2079bd1",
+      "purpose": "Enriched execution evidence for 7 integration scenarios with PIDs, exit codes, commands, and SHA-256."
+    },
+    {
+      "path": "docs/verification/evidence/rollback_drill_results.json",
+      "sha256": "c253c1aba31389aa801e5bd00f5305b42125c11f4271b1fd97695ace19cdee1c",
+      "purpose": "Measured 30-second rollback drill benchmark output."
+    },
+    {
+      "path": "core/registry/runtime_registry.yaml",
+      "sha256": "66a7ffc0846bf0b24b6ac9d955bc67c7955f4899026dadc326f2e320a49e30a6",
+      "purpose": "Authoritative registry declaring v0.20.5 production baseline and v0.21.0 staging candidate."
+    },
+    {
+      "path": "core/contracts/hermes_event_contract.yaml",
+      "sha256": "2acaf0bf2bf8339d54d398ebeb2ced16d0d92f44a8b2d0eb3247f0635d632783",
+      "purpose": "Unified event contract for peer messaging and telemetry."
+    }
+  ],
+  "verifications_summary": {
+    "evidence_independence": "CERTIFIED",
+    "secret_boundary_c5": "CERTIFIED (RAW SECRET NEVER ENTERED MODEL CONTEXT, STDOUT, EVENT BUS, CHECKPOINT, OR SESSION DB)",
+    "shopify_mutation_boundary": "CERTIFIED (BLOCKED AT POLICY GATEWAY, 0 OUTBOUND REQUESTS SENT)",
+    "cost_accounting_invariants": "CERTIFIED (PARENT = OWN + ACCEPTED CHILD + ACCEPTED TOOL; RETRY STATUS=FAILED RECORDED)",
+    "rollback_preservation": "CERTIFIED (0.205s SLA, CANARY AUDIT TRAIL PRESERVED, PROD UNTOUCHED)"
+  },
+  "promotion_gate_status": {
+    "status": "BLOCKED",
+    "reason": "Explicit Human Approval Required. Production modification, merge, and launcher replacement are prohibited."
+  }
+}

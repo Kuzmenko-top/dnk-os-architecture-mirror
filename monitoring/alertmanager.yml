@@ -1,0 +1,22 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "alertmanager_config"
+# purpose: "Alertmanager notification routing configuration"
+# author: "DNK-e.com Maksym"
+# license: "DNK-INTERNAL"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-11"
+# --- END DNK-MRH-HEADER ---
+
+global:
+  resolve_timeout: 5m
+
+route:
+  group_by: ['alertname']
+  group_wait: 10s
+  group_interval: 10s
+  repeat_interval: 1h
+  receiver: 'null'
+
+receivers:
+- name: 'null'

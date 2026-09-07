@@ -1,0 +1,21 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/namespace.yaml"
+# purpose: "Kubernetes Namespace definition for DNK OS production workloads"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-os
+    app.kubernetes.io/part-of: dnk-platform
+    environment: production
+    pod-security.kubernetes.io/enforce: restricted
+    pod-security.kubernetes.io/audit: restricted
+    pod-security.kubernetes.io/warn: restricted

@@ -1,0 +1,307 @@
+{
+  "annotations": {
+    "list": []
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 1,
+  "id": null,
+  "links": [],
+  "liveNow": true,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "title": "Gemini System Health Status",
+      "type": "stat",
+      "description": "1 = Healthy, 0 = Active Drift Alarms Detected",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [
+            {
+              "options": {
+                "0": {
+                  "color": "red",
+                  "text": "CRITICAL / DRIFT"
+                },
+                "1": {
+                  "color": "green",
+                  "text": "HEALTHY"
+                }
+              },
+              "type": "value"
+            }
+          ],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "green",
+                "value": 1
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "expr": "dnk_gemini_is_healthy",
+          "legendFormat": "Health Status",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 2,
+      "title": "JSON Validity Ratio",
+      "type": "gauge",
+      "description": "Ratio of generation outputs conforming to strict JSON format",
+      "fieldConfig": {
+        "defaults": {
+          "max": 1,
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "yellow",
+                "value": 0.8
+              },
+              {
+                "color": "green",
+                "value": 0.95
+              }
+            ]
+          },
+          "unit": "percentunit"
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "expr": "dnk_gemini_json_valid_ratio",
+          "legendFormat": "JSON Valid Ratio",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 12,
+        "y": 0
+      },
+      "id": 3,
+      "title": "Total Outputs Evaluated",
+      "type": "stat",
+      "description": "Cumulative count of model responses analyzed by drift monitor",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "expr": "dnk_gemini_samples_total",
+          "legendFormat": "Total Analyzed",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 4,
+        "w": 6,
+        "x": 18,
+        "y": 0
+      },
+      "id": 4,
+      "title": "Self-Healing Retry Loops",
+      "type": "stat",
+      "description": "Total retry iterations triggered by autonomous self-healer",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          }
+        },
+        "overrides": []
+      },
+      "targets": [
+        {
+          "expr": "dnk_gemini_retries_total",
+          "legendFormat": "Total Retries",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "id": 5,
+      "title": "Shannon Entropy vs Welford Baseline & EMA",
+      "type": "timeseries",
+      "description": "Entropy collapse indicates repetitive generation loops (hallucinations/stuck loops)",
+      "targets": [
+        {
+          "expr": "dnk_gemini_entropy_mean",
+          "legendFormat": "Current Window Mean Entropy",
+          "refId": "A"
+        },
+        {
+          "expr": "dnk_gemini_entropy_ema",
+          "legendFormat": "Online EMA Entropy",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 6,
+      "title": "Character Length Distribution (Welford & EMA)",
+      "type": "timeseries",
+      "description": "Drastic length shifts detect runaway verbosity or sudden prompt truncated returns",
+      "targets": [
+        {
+          "expr": "dnk_gemini_char_length_mean",
+          "legendFormat": "Current Window Mean Length",
+          "refId": "A"
+        },
+        {
+          "expr": "dnk_gemini_char_length_ema",
+          "legendFormat": "Online EMA Length",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 12
+      },
+      "id": 7,
+      "title": "Lexical Diversity (Type-Token Ratio)",
+      "type": "timeseries",
+      "description": "Type-token ratio tracking lexical richness and vocabulary degradation",
+      "targets": [
+        {
+          "expr": "dnk_gemini_ttr_mean",
+          "legendFormat": "Mean TTR",
+          "refId": "A"
+        },
+        {
+          "expr": "dnk_gemini_ttr_ema",
+          "legendFormat": "EMA TTR",
+          "refId": "B"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 12
+      },
+      "id": 8,
+      "title": "Drift Alarms Triggered Rate",
+      "type": "timeseries",
+      "description": "Rate of drift alarms categorized by alarm type and severity",
+      "targets": [
+        {
+          "expr": "sum by (alarm_type, severity) (rate(dnk_gemini_drift_alarms_total[5m]))",
+          "legendFormat": "{{alarm_type}} ({{severity}})",
+          "refId": "A"
+        }
+      ]
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 12
+      },
+      "id": 9,
+      "title": "Self-Healing Fallback Operations",
+      "type": "timeseries",
+      "description": "Rate of self-healing actions executed by strategy and status",
+      "targets": [
+        {
+          "expr": "sum by (strategy, status) (rate(dnk_gemini_self_healings_total[5m]))",
+          "legendFormat": "{{strategy}} ({{status}})",
+          "refId": "A"
+        }
+      ]
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 38,
+  "style": "dark",
+  "tags": [
+    "dnk-os",
+    "gemini",
+    "drift",
+    "self-heal",
+    "telemetry"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "browser",
+  "title": "DNK OS - Gemini Output Drift & Self-Healing Telemetry",
+  "uid": "gemini-drift-telemetry",
+  "version": 1
+}

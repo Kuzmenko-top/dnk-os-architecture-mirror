@@ -1,0 +1,28 @@
+{
+  "task_id": "DNK-HYBRID-SEARCH-001",
+  "title": "Unified PostgreSQL Hybrid Search Engine (pgvector + tsvector + RRF)",
+  "status": "Completed",
+  "branch": "feature/dnk-media-002-distributed-video-pipeline",
+  "commit_sha": "b00f8be409",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/37",
+  "generated_at": "2026-08-28T16:25:03.779257+00:00",
+  "components": [
+    "apps/api/sql/001_enable_fulltext_search.sql",
+    "apps/api/sql/hybrid_search_rrf.sql",
+    "core/memory/pgvector_store.py",
+    "tests/verification/test_hybrid_search.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

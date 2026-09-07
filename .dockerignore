@@ -1,0 +1,57 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: ".dockerignore"
+# purpose: "Ignore massive non-production directories from Docker build context"
+# author: "DNK-e.com Maksym"
+# status: "Active"
+# version: "2.0.0"
+# --- END DNK-MRH-HEADER ---
+
+# Dependency directories
+**/.venv
+**/venv
+**/node_modules
+**/__pycache__
+**/*.pyc
+**/*.pyo
+**/*.pyd
+
+# Version control
+**/.git
+**/.github
+
+# Build artifacts & caches
+**/.next
+**/out
+**/dist
+**/build
+**/.pytest_cache
+**/.coverage
+**/htmlcov
+**/.turbo
+**/.cache
+**/.hermes
+
+# Data & database files
+**/*.sqlite
+**/*.sqlite3
+**/*.db
+**/*.db-wal
+**/*.db-shm
+**/*.log
+*.log
+
+# Media & large assets
+**/*.mp4
+**/*.mov
+**/*.avi
+**/*.tar.gz
+**/*.zip
+
+# OS files
+**/.DS_Store
+Thumbs.db
+
+# Internal orchestrator runtime cache
+core/orchestrator/agents/**/sessions
+core/orchestrator/agents/**/terminal-sessions
+core/orchestrator/agents/**/cache

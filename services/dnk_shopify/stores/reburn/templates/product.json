@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "main": {
+      "type": "reburn-smoker-specs",
+      "settings": {
+        "title": "Технічні Характеристики Продукції ReBurn"
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

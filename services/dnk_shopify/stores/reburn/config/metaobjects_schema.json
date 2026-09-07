@@ -1,0 +1,46 @@
+{
+  "metaobjects": [
+    {
+      "type": "reburn_smoker_specification",
+      "name": "ReBurn Smoker Specifications",
+      "fields": [
+        {
+          "key": "capacity",
+          "name": "Smoker Capacity (kg)",
+          "type": "single_line_text_field"
+        },
+        {
+          "key": "heating_element",
+          "name": "Heating Element Power",
+          "type": "single_line_text_field"
+        },
+        {
+          "key": "chamber_material",
+          "name": "Chamber Material",
+          "type": "single_line_text_field"
+        },
+        {
+          "key": "temp_controller",
+          "name": "Controller Model",
+          "type": "single_line_text_field"
+        }
+      ]
+    },
+    {
+      "type": "reburn_smoker_faq",
+      "name": "ReBurn Smoker FAQ",
+      "fields": [
+        {
+          "key": "question",
+          "name": "Question",
+          "type": "single_line_text_field"
+        },
+        {
+          "key": "answer",
+          "name": "Answer",
+          "type": "multi_line_text_field"
+        }
+      ]
+    }
+  ]
+}

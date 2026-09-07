@@ -1,0 +1,49 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_shopify/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_shopify (E-commerce & Liquid Architect)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_shopify"
+name: "dnk_shopify (Shopify & Liquid Architect)"
+description: "DNK OS specialist for Shopify themes, Liquid AST validation, section schemas, and PDP bundle optimization"
+version: "1.0.0"
+domain: "ecommerce"
+owner: "Head of Commerce"
+
+capabilities:
+  - "liquid_ast_parsing"
+  - "shopify_theme_inspection"
+  - "pdp_bundle_engineering"
+  - "conversion_rate_optimization"
+  - "vite_shopify_bundling"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      task_id: {"type": "string"}
+      specification: {"type": "string"}
+      theme_path: {"type": "string"}
+    required: ["specification"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      sections_modified: {"type": "array"}
+      summary: {"type": "string"}
+
+safety_gates:
+  high_risk_actions: ["live_theme_publish", "checkout_mutation"]
+  token_budget_cap_usd: 5.00
+  require_hitl: false

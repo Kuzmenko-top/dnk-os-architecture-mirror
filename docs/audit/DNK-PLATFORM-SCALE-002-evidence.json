@@ -1,0 +1,34 @@
+{
+  "task_id": "DNK-PLATFORM-SCALE-002",
+  "title": "Auto-scaling & Worker Pool Orchestration",
+  "timestamp": "2026-08-28T16:00:00Z",
+  "author": "DNK-e.com Maksym",
+  "status": "PASSED",
+  "summary": {
+    "total_tests": 52,
+    "passed_tests": 52,
+    "failed_tests": 0,
+    "mrh_compliance": "100%"
+  },
+  "components": [
+    "apps/api/db/models/worker_pool.py",
+    "apps/api/db/models/worker_instance.py",
+    "apps/api/db/models/task_queue.py",
+    "apps/api/db/models/task_dlq.py",
+    "apps/api/db/models/scaling_event.py",
+    "apps/api/services/queue_telemetry_service.py",
+    "apps/api/services/worker_pool_orchestrator.py",
+    "apps/api/services/task_priority_scheduler.py",
+    "apps/api/services/resilience_engine.py",
+    "apps/api/routers/worker_management.py",
+    "apps/web/lib/api/worker_client.ts",
+    "apps/web/components/worker/WorkerPoolDashboard.tsx",
+    "apps/web/components/worker/QueueDepthChart.tsx",
+    "apps/web/components/worker/ScalingEventsTimeline.tsx",
+    "apps/web/components/worker/DLQManager.tsx",
+    "tests/worker/test_pool_orchestration.py",
+    "tests/worker/test_queue_telemetry.py",
+    "tests/worker/test_priority_scheduler.py",
+    "tests/worker/test_resilience_engine.py"
+  ]
+}

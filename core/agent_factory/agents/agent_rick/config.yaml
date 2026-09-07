@@ -1,0 +1,7 @@
+domain_scope: skills/
+model: meta/llama-3.3-70b-instruct
+name: agent_rick
+provider: nvidia_nim
+role: Skill Distiller & Tool Scout
+sandbox_enabled: true
+temperature: 0.2

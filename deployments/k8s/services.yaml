@@ -1,0 +1,48 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/k8s/services.yaml"
+# purpose: "Kubernetes Services for DNK OS internal service discovery and networking"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: dnk-api-service
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-api-service
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: dnk-api
+  ports:
+    - name: http
+      port: 8000
+      targetPort: 8000
+      protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dnk-web-service
+  namespace: dnk-os
+  labels:
+    app.kubernetes.io/name: dnk-web-service
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: dnk-web
+  ports:
+    - name: http
+      port: 3000
+      targetPort: 3000
+      protocol: TCP

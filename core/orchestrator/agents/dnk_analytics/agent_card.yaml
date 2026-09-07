@@ -1,0 +1,46 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_analytics/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_analytics (Data Intelligence & Telemetry)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_analytics"
+name: "dnk_analytics (Data & Growth Intelligence)"
+description: "DNK OS specialist for business telemetry, funnels, cohort analysis, ROAS calculation, and token spending metrics"
+version: "1.0.0"
+domain: "analytics"
+owner: "Head of Growth"
+
+capabilities:
+  - "telemetry_cost_aggregation"
+  - "funnel_conversion_analysis"
+  - "roas_and_ltv_modeling"
+  - "postgres_analytics_queries"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      workspace_id: {"type": "string"}
+      query_type: {"type": "string"}
+    required: ["query_type"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      metrics: {"type": "object"}
+
+safety_gates:
+  high_risk_actions: []
+  token_budget_cap_usd: 3.00
+  require_hitl: false

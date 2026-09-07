@@ -1,0 +1,66 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core_contracts_hermes_event_contract"
+# purpose: "Schema contract for normalizing Hermes Agent runtime events into DNK_HUB Control Plane events."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: ["DNK-HUB-ARCH-002"]
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-03"
+# author: "Gerych (Hermes Prime) & Maksym"
+# --- END DNK-MRH-HEADER ---
+
+contract:
+  name: "HermesRuntimeEventNormalization"
+  version: "1.0.0"
+  target_bus: "DNK_EVENT_LOG"
+
+event_mappings:
+  - hermes_event: "hermes.peer_message"
+    dnk_event: "dnk.swarm.peer_event"
+    required_fields:
+      - sender_profile
+      - recipient_profile
+      - message_content
+      - timestamp
+      - task_id
+    governance_rule: "Emit normalized event to TaskDNA audit trail; prohibit untracked direct messaging."
+
+  - hermes_event: "hermes.cron_tick"
+    dnk_event: "dnk.ops.cron_execution"
+    required_fields:
+      - job_id
+      - owner_profile
+      - continuity_state_hash
+      - delta_detected
+      - memory_scope
+    governance_rule: "Enforce write_to_l3: false; store diffs only in local ephemeral buffer."
+
+  - hermes_event: "hermes.delegation_steer"
+    dnk_event: "dnk.taskdna.steer_event"
+    required_fields:
+      - parent_task_id
+      - child_task_id
+      - directive
+      - original_goal
+      - actor_profile
+    governance_rule: "Steering must preserve allocated token budget and parent DAG constraints."
+
+  - hermes_event: "hermes.tool_execution"
+    dnk_event: "dnk.audit.tool_call"
+    required_fields:
+      - tool_name
+      - parameters
+      - execution_duration_ms
+      - exit_code
+      - workspace_scope
+    governance_rule: "Audit against docs/security/HERMES_PERMISSION_MATRIX.md; alert on violations."
+
+  - hermes_event: "hermes.approval_request"
+    dnk_event: "dnk.security.approval_prompt"
+    required_fields:
+      - target_resource
+      - reason
+      - requesting_profile
+      - risk_level
+    governance_rule: "Fail-closed; require human sign-off for system instruction or production store writes."

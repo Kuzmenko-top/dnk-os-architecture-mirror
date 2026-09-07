@@ -1,0 +1,198 @@
+{
+  "run_agent.py": {
+    "tier": "Tier 0: Agent Loop & CLI Runner",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 9216,
+      "lines_staging": 9413,
+      "diff_lines": 623,
+      "lines_added": 333,
+      "lines_removed": 136,
+      "diff_preview": "--- prod/run_agent.py\n+++ staging/run_agent.py\n@@ -170,7 +170,6 @@\n     build_skills_system_prompt,\n     build_context_files_prompt,\n     build_environment_hints,\n-    build_nous_subscription_prompt,\n     load_soul_md,\n )\n from agent.process_bootstrap import _get_proxy_from_env  # noqa: F401\n@@ -184,6 +183,7 @@\n     _strip_non_ascii,\n     _sanitize_messages_non_ascii,\n     _sanitize_tools_non_ascii,\n+    _looks_like_image_content_rejection,\n     _strip_images_from_messages,\n     _sanitize_structure_non_ascii,\n     coalesce_tool_call_id as _sanitize_coalesce_tool_call_id,\n@@ -523,6 +523,7 @@\n         checkpoint_max_file_size_mb: int = 10,\n         pass_session_id: bool = False,\n         requested_provider: str = None,\n+        capabilities: Dict[str, bool] | None = None,\n     ):\n         \"\"\"Forwarder \u2014 see ``agent.agent_init.init_agent``.\"\"\"\n         if tool_delay is not None:\n@@ -539,6 +540,7 @@\n             api_key=api_key,\n             provider=provider,\n             requested_provider=requested_provider,\n+            capabilities=capabilities,\n             api_mode=api_mode,\n             acp_command=acp_command,\n             acp_args=acp_args,\n@@ -654,8 +656,13 @@\n             try:\n                 from hermes_cli.profiles import get_active_profile_name\n                 _profile_for_session = get_active_profile_name()\n-                if _profile_for_session == \"default\":\n-                    _profile_for_session = None\n"
+    }
+  },
+  "tools/delegate_tool.py": {
+    "tier": "Tier 0: Delegation & Subagent Dispatch",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 4963,
+      "lines_staging": 5258,
+      "diff_lines": 855,
+      "lines_added": 443,
+      "lines_removed": 148,
+      "diff_preview": "--- prod/tools/delegate_tool.py\n+++ staging/tools/delegate_tool.py\n@@ -160,6 +160,63 @@\n # delegation attribution even though the live registry entry is gone.\n _RECENT_SUBAGENTS_CAP = 200\n _recent_subagents: Dict[str, Dict[str, Any]] = {}\n+\n+\n+# Terminal child statuses that mean \"the subagent did NOT deliver a usable\n+# result\". Shared by the CLI spinner echo, the gateway failure notice, and\n+# the parent-facing failure summary so every surface agrees on what counts\n+# as a failure.\n+SUBAGENT_FAILURE_STATUSES = frozenset({\"failed\", \"error\", \"timeout\"})\n+\n+\n+def _clean_error_text(error: Any, max_chars: int = 200) -> str:\n+    \"\"\"Reduce an arbitrary error payload to one clean human-readable line.\n+\n+    Provider/SDK errors routinely arrive as multi-line tracebacks or JSON\n+    walls. For a chat-facing notice we want the single most informative\n+    line: the exception message (last line of a traceback) or the first\n+    non-empty line otherwise, hard-capped in length.\n+    \"\"\"\n+    text = str(error or \"\").strip()\n+    if not text:\n+        return \"\"\n+    lines = [ln.strip() for ln in text.splitlines() if ln.strip()]\n+    if not lines:\n+        return \"\"\n+    # A traceback's last line is the actual exception message.\n+    line = lines[-1] if lines[0].startswith(\"Traceback\") else lines[0]\n+    if len(line) > max_chars:\n+        line = line[: max_chars - 3] + \"...\"\n+    return line\n+\n+\n+def format_subagent_failure_line(\n+    goal: Optional[str],\n+    status: Optional[str],\n+    error: Any = None,\n"
+    }
+  },
+  "tools/approval.py": {
+    "tier": "Tier 0: Approval Engine",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 5727,
+      "lines_staging": 5971,
+      "diff_lines": 357,
+      "lines_added": 247,
+      "lines_removed": 3,
+      "diff_preview": "--- prod/tools/approval.py\n+++ staging/tools/approval.py\n@@ -265,6 +265,32 @@\n         return env_var_enabled(\"HERMES_CRON_SESSION\")\n \n \n+#: Gateway platforms that are programmatic/unattended: no human is on the\n+#: other end to answer an approval prompt, and the adapter has no\n+#: ``send_exec_approval`` / ``/approve`` surface. Approval decisions for\n+#: these sessions are governed by ``approvals.unattended_mode`` config\n+#: (default deny), mirroring ``approvals.cron_mode`` \u2014 never by an\n+#: interactive round-trip that would block for the full approval timeout\n+#: with nobody to answer (#37284, #87509).\n+_UNATTENDED_APPROVAL_PLATFORMS = frozenset({\n+    \"webhook\",\n+    \"msgraph_webhook\",\n+    \"api_server\",\n+})\n+\n+\n+def _is_unattended_platform_approval_context() -> bool:\n+    \"\"\"True when the session platform is a programmatic/unattended surface.\n+\n+    Webhook, msgraph_webhook, and api_server sessions bind\n+    ``HERMES_SESSION_PLATFORM`` like chat gateways do, but there is no human\n+    who can resolve a pending approval. Treating them as gateway approval\n+    contexts blocks the session for the full approval timeout (60-300s) and\n+    then fails closed anyway \u2014 the deadlock in #37284/#87509.\n+    \"\"\"\n+    return _get_session_platform() in _UNATTENDED_APPROVAL_PLATFORMS\n+\n+\n def _is_single_query_approval_context() -> bool:\n     \"\"\"True when the current approval decision is from a single-query (-q) session.\n \n@@ -303,8 +329,18 @@\n     ``approvals.cron_mode`` config, not interactive resolve \u2014 letting cron\n     fall through to the gateway branch would submit a pending approval\n     with no listener and block the job indefinitely.\n+\n"
+    }
+  },
+  "tools/write_approval.py": {
+    "tier": "Tier 1: Write Approval & Path Guard",
+    "analysis": {
+      "status": "identical",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 493,
+      "lines_staging": 493,
+      "diff_lines": 0,
+      "lines_added": 0,
+      "lines_removed": 0,
+      "diff_preview": ""
+    }
+  },
+  "hermes_state.py": {
+    "tier": "Tier 0: State DB & Session Persistence",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 14650,
+      "lines_staging": 15847,
+      "diff_lines": 2921,
+      "lines_added": 1583,
+      "lines_removed": 386,
+      "diff_preview": "--- prod/hermes_state.py\n+++ staging/hermes_state.py\n@@ -55,7 +55,7 @@\n from hermes_cli.sqlite_runtime import (\n     is_sqlite_wal_reset_vulnerable as _is_sqlite_wal_reset_vulnerable,\n )\n-from typing import Any, Callable, Dict, List, Optional, Set, Tuple, TypeVar\n+from typing import Any, Callable, Dict, Iterator, List, Optional, Set, Tuple, TypeVar, cast\n \n from hermes_state_common import (  # noqa: F401  (re-exported for back-compat)\n     _BRANCH_CHILD_SQL,\n@@ -67,6 +67,7 @@\n     _PREVIEW_RAW_SELECT,\n     _RECOVERABLE_END_REASONS,\n     _RECOVERABLE_END_REASONS_SQL,\n+    is_automatic_end_reason,\n     _RESET_END_REASONS,\n     _RESET_END_REASONS_SQL,\n     _ephemeral_child_sql,\n@@ -366,8 +367,9 @@\n # query; short enough that transient fd pressure doesn't strand the read pool.\n _READ_OPEN_RETRY_SECONDS = 60.0\n \n-# Hard ceiling on read-only connections ALIVE at once per SessionDB \u2014 pooled\n-# idle ones and checked-out ones together.\n+# Hard ceiling on read-only connections ALIVE at once against one database\n+# FILE \u2014 pooled idle ones and checked-out ones together, summed over every\n+# SessionDB in this process that points at that file. See _PathReadBudget.\n #\n # Deliberately one constant for both the pool's maxsize and the permit count,\n # because bounding only the pool bounds the wrong thing. A LifoQueue caps how\n@@ -383,6 +385,276 @@\n # connection instead of opening more descriptors \u2014 slower under load, which is\n # the correct trade against a process-wide wedge the supervisor cannot see.\n _READ_POOL_MAX = 8\n+\n+# Hard ceiling on read-only connections ALIVE at once in this PROCESS, across\n+# every state.db it has open.\n+#\n+# _READ_POOL_MAX bounds one file. A multiplexed gateway serves N profiles from\n"
+    }
+  },
+  "hermes_state_schema.py": {
+    "tier": "Tier 0: SQLite Schema & Migrations",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 1529,
+      "lines_staging": 1563,
+      "diff_lines": 95,
+      "lines_added": 47,
+      "lines_removed": 13,
+      "diff_preview": "--- prod/hermes_state_schema.py\n+++ staging/hermes_state_schema.py\n@@ -8,11 +8,14 @@\n module-level constants live in hermes_state_common.\n \"\"\"\n \n+import datetime\n import logging\n import json\n import sqlite3\n import time\n+import uuid\n from typing import Dict, Optional, Sequence\n+\n \n from hermes_constants import get_hermes_home\n from hermes_state_common import (\n@@ -385,18 +388,38 @@\n         try:\n             cursor.execute(f\"SELECT * FROM {table_name} LIMIT 0\")\n             return True\n-        except sqlite3.OperationalError as exc:\n-            if self._is_fts5_unavailable_error(exc):\n-                # Only disable FTS entirely when the whole module is missing.\n-                # A missing trigram tokenizer only affects trigram searches.\n-                if self._is_trigram_unavailable_error(exc):\n-                    self._warn_trigram_unavailable(exc)\n-                else:\n-                    self._warn_fts5_unavailable(exc)\n-                return None\n-            if \"no such table\" in str(exc).lower():\n-                return False\n-            raise\n+        except (sqlite3.OperationalError, UnicodeDecodeError) as exc:\n+            # UnicodeDecodeError can occur when FTS shadow tables or content\n+            # columns hold invalid UTF-8 bytes. On some Python/SQLite builds\n+            # it surfaces as a bare UnicodeDecodeError (ValueError subclass,\n+            # not sqlite3.Error); on others as OperationalError(\"Could not\n+            # decode to UTF-8 column ...\"). Catch both so the probe never\n+            # kills the connection or raises to writable-init/recovery flows.\n"
+    }
+  },
+  "hermes_constants.py": {
+    "tier": "Tier 0: Runtime Constants & Defaults",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 1739,
+      "lines_staging": 1878,
+      "diff_lines": 172,
+      "lines_added": 141,
+      "lines_removed": 2,
+      "diff_preview": "--- prod/hermes_constants.py\n+++ staging/hermes_constants.py\n@@ -225,6 +225,114 @@\n                 result = env_path\n     _default_hermes_root_memo = (str(native_home), env_home, result)\n     return result\n+\n+\n+# Named-profile deletion must survive stale mkdir from live serve/logging.\n+# The marker lives beside the profile dir, not inside it, so rmtree cannot\n+# erase the fact that the profile was deleted.\n+_DELETED_PROFILES_DIR = \".deleted\"\n+\n+# Files whose presence marks a directory as a real Hermes home. A fresh home\n+# always gains at least one of these on first use (config save, env backfill,\n+# session DB), while arbitrary directories that merely contain a ``profiles``\n+# path segment (e.g. ``/srv/profiles/buildcache``) do not.\n+_HERMES_HOME_MARKERS = (\"config.yaml\", \".env\", \"state.db\")\n+\n+\n+def _is_hermes_profiles_root(profiles_dir: Path) -> bool:\n+    \"\"\"Return True when *profiles_dir* is a canonical ``<hermes-home>/profiles``.\n+\n+    Anchors named-profile recognition so it only fires for directories that\n+    provably live under a Hermes home: the classic ``~/.hermes`` layout, a\n+    root carrying Hermes-home marker files (Docker/custom ``HERMES_HOME``\n+    like ``/opt/data``), a ``profiles/.deleted`` tombstone directory (only\n+    ever created by ``hermes profile delete``), or the process's resolved\n+    default Hermes root.\n+    \"\"\"\n+    root = profiles_dir.parent\n+    if root.name == \".hermes\":\n+        return True\n+    try:\n+        if (profiles_dir / _DELETED_PROFILES_DIR).is_dir():\n+            return True\n+        if any((root / marker).exists() for marker in _HERMES_HOME_MARKERS):\n+            return True\n+    except OSError:\n+        pass\n"
+    }
+  },
+  "toolsets.py": {
+    "tier": "Tier 0: Tool Dispatch & Registration",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 1103,
+      "lines_staging": 1062,
+      "diff_lines": 93,
+      "lines_added": 10,
+      "lines_removed": 51,
+      "diff_preview": "--- prod/toolsets.py\n+++ staging/toolsets.py\n@@ -85,27 +85,6 @@\n     \"kanban_attach\", \"kanban_attach_url\", \"kanban_attachments\",\n     # Computer use (macOS, gated on cua-driver being installed via check_fn)\n     \"computer_use\",\n-    # DNK OS Multi-Agent Swarm Orchestration & Domain Tools\n-    \"dnk_swarm_dispatch\",\n-    \"dnk_swarm_parallel\",\n-    \"dnk_swarm_pipeline\",\n-    \"dnk_swarm_status\",\n-    \"dnk_decompose_task_dna\",\n-    \"scones_get_memories\",\n-    \"scones_add_memory\",\n-    \"dnk_query_error_solutions\",\n-    \"dnk_record_error_solution\",\n-    \"dnk_run_adversarial_review\",\n-    \"dnk_run_research_flow\",\n-    \"dnk_shopify_validate_liquid\",\n-    \"dnk_video_generate_composition\",\n-    \"dnk_vault_get_secret\",\n-    \"dnk_vault_set_secret\",\n-    \"dnk_visual_context_query\",\n-    \"dnk_workspace_occ_merge\",\n-    \"dnk_one_click_product_launch\",\n-    \"dnk_get_workspace_spending\",\n-    \"dnk_assimilate_repo\",\n ]\n \n # Webhook events may originate from untrusted third-party content (for example,\n@@ -122,32 +101,6 @@\n # Core toolset definitions\n # These can include individual tools or reference other toolsets\n TOOLSETS = {\n-    \"dnk_swarm\": {\n-        \"description\": \"DNK OS autonomous multi-agent swarm orchestration, TaskDNA DAG, SCONES memory, Distiller, and specialized workers\",\n-        \"tools\": [\n-            \"dnk_swarm_dispatch\",\n-            \"dnk_swarm_parallel\",\n-            \"dnk_swarm_pipeline\",\n"
+    }
+  },
+  "agent/redact.py": {
+    "tier": "Tier 1: Secret Redaction & Token Masking",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 1427,
+      "lines_staging": 1438,
+      "diff_lines": 31,
+      "lines_added": 12,
+      "lines_removed": 1,
+      "diff_preview": "--- prod/agent/redact.py\n+++ staging/agent/redact.py\n@@ -158,8 +158,12 @@\n # Lowercase env names: only underscore-boundary forms (``openai_key=\u2026``,\n # ``FAL_KEY=\u2026``, ``db_pw=\u2026``) \u2014 NOT bare ``password=``/``token=``/``secret=``,\n # which appear in prose, URLs, and form bodies (issue #77484).\n+# Anchor each attempt to the start of an identifier run.  Without the\n+# lookbehind, ``re.sub`` retries the greedy ``[a-z0-9_]+`` prefix at every byte\n+# of a long non-matching opaque payload, making strict compaction redaction\n+# quadratic while holding the GIL (#99255).\n _ENV_ASSIGN_LOWER_RE = re.compile(\n-    rf\"([a-z0-9_]+(?:_|^)(?:key|pass|pw|token|secret|password|passwd|credential|auth)(?=[^a-z0-9_]|$))\\s*=\\s*(['\\\"]?)(\\S+)\\2\",\n+    rf\"(?<![a-z0-9_])([a-z0-9_]+(?:_|^)(?:key|pass|pw|token|secret|password|passwd|credential|auth)(?=[^a-z0-9_]|$))\\s*=\\s*(['\\\"]?)(\\S+)\\2\",\n     re.IGNORECASE,\n )\n \n@@ -200,7 +204,14 @@\n # ``(?:[A-Za-z0-9_\\-]+\\.)+`` (exponential backtracking on long dotted runs).\n # The ``*`` runs bordering {_SECRET_CFG_NAMES} must stay backtrackable\n # (secret words are matchable by the class, e.g. ``app.api.key=\u2026``).\n+# The lookbehind anchors each attempt to the start of a key run: without it,\n+# ``re.sub`` retries the backtrackable ``*`` prefix at every byte of a long\n+# non-matching dotted run, making the sub quadratic whenever the text contains\n+# a secret keyword anywhere (the ``_CFG_SECRET_WORD_RE`` pre-gate only skips\n+# secret-free text). Match set is unchanged \u2014 any match starting mid-run\n+# implies a leftmost match starting at the run start (#99255).\n _CFG_DOTTED_RE = re.compile(\n+    rf\"(?<![A-Za-z0-9_.\\-])\"\n     rf\"([A-Za-z0-9_\\-]++\\.[A-Za-z0-9_.\\-]*{_SECRET_CFG_NAMES}[A-Za-z0-9_.\\-]*+\"\n     rf\"|[A-Za-z0-9_.\\-]*{_SECRET_CFG_NAMES}[A-Za-z0-9_.\\-]*\\.[A-Za-z0-9_.\\-]++)\"\n     rf\"={_CFG_VALUE}\",\n"
+    }
+  },
+  "tools/process_registry.py": {
+    "tier": "Tier 0: Background Process Guard",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 3315,
+      "lines_staging": 3491,
+      "diff_lines": 366,
+      "lines_added": 188,
+      "lines_removed": 12,
+      "diff_preview": "--- prod/tools/process_registry.py\n+++ staging/tools/process_registry.py\n@@ -379,6 +379,10 @@\n     id: str                                     # Unique session ID (\"proc_xxxxxxxxxxxx\")\n     command: str                                 # Original command string\n     task_id: str = \"\"                           # Task/sandbox isolation key\n+    owner_task_id: str = \"\"                     # RAW spawning task id (e.g. subagent \"sa-...\");\n+                                                # task_id is the CONTAINER key and may be collapsed\n+                                                # to \"default\"/session key by _resolve_container_task_id,\n+                                                # so ownership checks must use this field (#child-notify)\n     session_key: str = \"\"                       # Gateway session key (for reset protection)\n     pid: Optional[int] = None                   # OS process ID\n     process: Optional[subprocess.Popen] = None  # Popen handle (local only)\n@@ -622,6 +626,8 @@\n                 self.completion_queue.put({\n                     \"session_id\": session.id,\n                     \"session_key\": session.session_key,\n+                    \"task_id\": session.task_id,\n+                    \"owner_task_id\": session.owner_task_id or session.task_id,\n                     \"command\": session.command,\n                     \"type\": \"watch_disabled\",\n                     \"suppressed\": session._watch_suppressed,\n@@ -660,6 +666,7 @@\n             \"session_id\": session.id,\n             \"session_key\": session.session_key,\n             \"task_id\": session.task_id,\n+            \"owner_task_id\": session.owner_task_id or session.task_id,\n             \"command\": session.command,\n             \"type\": \"watch_match\",\n             \"pattern\": matched_pattern,\n@@ -685,6 +692,8 @@\n         self.completion_queue.put({\n             \"session_id\": session.id,\n             \"session_key\": session.session_key,\n+            \"task_id\": session.task_id,\n+            \"owner_task_id\": session.owner_task_id or session.task_id,\n             \"command\": session.command,\n             \"type\": \"watch_disabled\",\n             \"suppressed\": 0,\n@@ -1036,6 +1045,7 @@\n"
+    }
+  },
+  "cron/scheduler.py": {
+    "tier": "Tier 2: Cron Lifecycle & Continuity",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 7708,
+      "lines_staging": 8277,
+      "diff_lines": 1929,
+      "lines_added": 1026,
+      "lines_removed": 457,
+      "diff_preview": "--- prod/cron/scheduler.py\n+++ staging/cron/scheduler.py\n@@ -37,7 +37,7 @@\n     except ImportError:\n         msvcrt = None\n from pathlib import Path\n-from typing import Any, List, Optional, Protocol\n+from typing import Any, Callable, List, Optional, Protocol\n \n # Add parent directory to path for imports BEFORE repo-level imports.\n # Without this, standalone invocations (e.g. after `hermes update` reloads\n@@ -189,6 +189,106 @@\n         f\"Fix its prompt/config, or pause it with `hermes cron pause {job_ref}` \"\n         \"(resume/remove also available) to stop the noise.\"\n     )\n+\n+\n+def _detect_gateway_code_skew() -> tuple[str, str] | None:\n+    \"\"\"Boot-vs-disk revision skew for THIS process, or None.\n+\n+    Thin wrapper over ``gateway.code_skew.detect_code_skew`` so the failure\n+    summarizer stays a pure function under test (monkeypatch this seam) and\n+    a broken import can never take the delivery path down with it.\n+    \"\"\"\n+    try:\n+        from gateway.code_skew import detect_code_skew\n+\n+        return detect_code_skew()\n+    except Exception:\n+        return None\n+\n+\n+class CronTickYielded(RuntimeError):\n+    \"\"\"A stale-code ticker yielded this tick to a fresh gateway.\n+\n+    Raised by ``tick()`` BEFORE the tick lock is acquired when the process is\n+    provably running stale code (boot fingerprint \u2260 disk), it does NOT own the\n+    gateway runtime lock, and that lock is held by another (fresh) process.\n+    Fresh code picks the job up within one tick interval, so the stale process\n+    must stay out of the dispatch race entirely \u2014 including lock contention,\n"
+    }
+  },
+  "cron/lifecycle_guard.py": {
+    "tier": "Tier 2: Cron State Guard",
+    "analysis": {
+      "status": "identical",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 1271,
+      "lines_staging": 1271,
+      "diff_lines": 0,
+      "lines_added": 0,
+      "lines_removed": 0,
+      "diff_preview": ""
+    }
+  },
+  "hermes_cli/main.py": {
+    "tier": "Tier 0: Launcher Integration",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 14285,
+      "lines_staging": 14834,
+      "diff_lines": 896,
+      "lines_added": 601,
+      "lines_removed": 52,
+      "diff_preview": "--- prod/hermes_cli/main.py\n+++ staging/hermes_cli/main.py\n@@ -433,6 +433,7 @@\n import shutil\n import stat\n import subprocess\n+import tempfile\n from pathlib import Path\n from typing import Optional\n \n@@ -632,17 +633,55 @@\n \n     # 2. If no flag, check active_profile in the hermes root.\n     #\n-    # EXCEPTION: a supervised s6 gateway child (exported by the container\n-    # run-script as HERMES_S6_SUPERVISED_CHILD=1) must NOT follow the sticky\n-    # active_profile. Each supervised slot has a fixed profile identity: named\n-    # slots pass ``-p <name>`` explicitly (handled in step 1 above), and the\n-    # reserved ``gateway-default`` slot runs bare ``hermes gateway run`` to mean\n-    # \"the root HERMES_HOME profile\". If the reserved default child read\n-    # active_profile here, switching the active profile (e.g. via the dashboard)\n-    # would silently redirect the default gateway into that profile \u2014 yielding a\n-    # duplicate gateway for the active profile and no real default gateway. See\n-    # the \"Docker & Profiles & Dashboard\" report.\n-    if profile_name is None and not os.environ.get(\"HERMES_S6_SUPERVISED_CHILD\"):\n+    # EXCEPTION: a supervisor-launched gateway child must NOT follow the\n+    # sticky active_profile. Each supervised slot has a fixed profile\n+    # identity: named slots pass ``-p <name>`` explicitly (handled in step 1\n+    # above) or pin ``HERMES_HOME`` to the profile directory (step 1.5), and\n+    # a bare invocation means \"the root HERMES_HOME profile\". If a supervised\n+    # default-profile child read active_profile here, switching the active\n+    # profile (e.g. via the dashboard or ``hermes profile use``) would\n+    # silently redirect the default gateway into that profile \u2014 the default\n+    # gateway then assumes the other profile's identity/credentials (logs\n+    # under the other profile's tree, connects with its Telegram bot token)\n+    # and double-polls a token already owned by that profile's own gateway.\n+    # See issue #74872 and the \"Docker & Profiles & Dashboard\" report.\n+    #\n+    # Supervisor markers honored (see gateway/restart.py\n+    # ``is_gateway_supervisor_process`` for the sibling detection used by\n"
+    }
+  },
+  "hermes_cli/config.py": {
+    "tier": "Tier 0: Config Loading & Env Parsing",
+    "analysis": {
+      "status": "modified",
+      "exists_prod": true,
+      "exists_staging": true,
+      "lines_prod": 6072,
+      "lines_staging": 6386,
+      "diff_lines": 843,
+      "lines_added": 425,
+      "lines_removed": 111,
+      "diff_preview": "--- prod/hermes_cli/config.py\n+++ staging/hermes_cli/config.py\n@@ -15,6 +15,7 @@\n \"\"\"\n \n import copy\n+from decimal import Decimal, InvalidOperation\n from hermes_cli.cli_output import line_input\n import json\n import logging\n@@ -139,6 +140,12 @@\n             f\"Failed to parse {config_path}: {exc}. \"\n             f\"Keeping the previously loaded config for this process \u2014 \"\n             f\"edits to config.yaml are being IGNORED until the YAML is fixed.\"\n+        )\n+    elif fallback == \"refuse-write\":\n+        msg = (\n+            f\"Failed to parse {config_path}: {exc}. \"\n+            f\"REFUSING to write config.yaml so the existing file is preserved. \"\n+            f\"Fix the YAML (hermes config edit) and retry.\"\n         )\n     else:\n         msg = (\n@@ -215,7 +222,32 @@\n     # NOT a HERMES_* blanket: integration credentials (HERMES_GEMINI_*,\n     # HERMES_LANGFUSE_*, HERMES_SPOTIFY_*, ...) ARE allowed.\n     \"HERMES_HOME\", \"HERMES_PROFILE\", \"HERMES_CONFIG\", \"HERMES_ENV\",\n+    \"HERMES_CONFIG_PATH\", \"HERMES_ENV_PATH\",\n+    # MCP catalog trust root. Package-manager wrappers may still provide this\n+    # in the process environment; only generic persistence writes are blocked.\n+    \"HERMES_OPTIONAL_MCPS\",\n+    # Local ACP subprocess selection. Existing operator/package-manager values\n+    # remain readable; generic writers cannot acquire executable/argv authority.\n+    \"HERMES_COPILOT_ACP_COMMAND\", \"HERMES_COPILOT_ACP_ARGS\",\n+    # Hermes security policy / approval-routing context. These remain available\n+    # through their dedicated CLI/config/session controls, but a generic\n+    # credential writer must not persist them for the next process startup.\n+    \"HERMES_YOLO_MODE\", \"HERMES_ACCEPT_HOOKS\", \"HERMES_REDACT_SECRETS\",\n+    \"HERMES_INTERACTIVE\", \"HERMES_EXEC_ASK\", \"HERMES_GATEWAY_SESSION\",\n+    \"HERMES_CRON_SESSION\", \"HERMES_SINGLE_QUERY_SESSION\",\n"
+    }
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "task_id": "DNK-ANALYTICS-002",
+  "title": "Alerting, Anomaly Detection & SLA/SLO Monitoring",
+  "status": "Completed",
+  "branch": "main",
+  "commit_sha": "f59a089b01",
+  "generated_at": "2026-08-28T08:35:10.145735+00:00",
+  "components": [
+    "apps/api/services/analytics_alerting_service.py",
+    "apps/api/services/anomaly_detection_service.py",
+    "apps/api/services/slo_calculator.py",
+    "apps/api/db/models/analytics_alert_rule.py",
+    "apps/api/db/models/analytics_alert_event.py",
+    "apps/api/db/models/analytics_slo_snapshot.py",
+    "apps/api/db/models/analytics_anomaly_score.py",
+    "apps/api/routers/analytics_alerting.py",
+    "apps/web/components/analytics/AlertsConfigCard.tsx",
+    "apps/web/components/analytics/SLOStatusTracker.tsx",
+    "apps/web/components/analytics/AnomalyHeatmap.tsx",
+    "tests/analytics/test_alerting_engine.py",
+    "tests/analytics/test_anomaly_detection.py",
+    "tests/analytics/test_slo_monitoring.py"
+  ],
+  "tests": {
+    "quality_gate": "147/147 passed (100% Green)",
+    "syntax": "5869 files AST clean"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

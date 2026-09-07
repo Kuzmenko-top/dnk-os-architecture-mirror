@@ -1,0 +1,40 @@
+{
+  "task_id": "DNK-OS-002",
+  "title": "Server-Side GitHub Read-Only Adapter",
+  "mode": "SERVER_SIDE_READ_ONLY",
+  "security_invariants": {
+    "github_writes": "forbidden",
+    "shopify_writes": "forbidden",
+    "customer_data": "forbidden",
+    "network_policy": "ALLOWLISTED_READ_ONLY",
+    "security_middleware": "PRISTINE_RESTORED"
+  },
+  "git_metadata": {
+    "base_branch": "main",
+    "base_sha": "4c64fe3848d0237de36861d3025f9f6bc6b21717",
+    "head_branch": "feature/dnk-os-002-github-adapter-clean",
+    "head_sha": "d0aa0604170e1919cfb4c266c83d7e5807d43724"
+  },
+  "test_results": {
+    "total_tests": 22,
+    "passed": 22,
+    "failed": 0,
+    "status": "PASSED"
+  },
+  "file_inventory": [
+    "apps/api/services/github_models.py",
+    "apps/api/services/github_transport.py",
+    "apps/api/services/github_adapter.py",
+    "apps/api/routers/github.py",
+    "apps/api/routers/__init__.py",
+    "apps/api/main.py",
+    "tests/dnk_os_002/test_github_adapter.py",
+    "tests/dnk_os_002/test_github_adapter_contract.py",
+    "tests/dnk_os_002/test_github_router.py",
+    "tests/dnk_os_002/test_github_transport.py",
+    "tests/dnk_os_002/test_taskdna_adapter_integration.py",
+    "docs/audit/DNK-OS-002-evidence.json",
+    "docs/handoffs/HANDOFF_DNK-OS-002-2026-08-27.md"
+  ],
+  "timestamp": "2026-08-27T21:00:00Z"
+}

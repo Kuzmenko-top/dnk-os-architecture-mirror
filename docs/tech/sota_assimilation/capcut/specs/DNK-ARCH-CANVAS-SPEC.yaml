@@ -1,0 +1,38 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "docs/tech/sota_assimilation/capcut/specs/DNK-ARCH-CANVAS-SPEC.yaml"
+# purpose: "Architectural Specification for DNK OS AI Canvas Engine & State Architecture."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: ["CAPCUT-CANVAS-AUDIT-001"]
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym & Gerych"
+# --- END DNK-MRH-HEADER ---
+
+schema_version: "1.0.0"
+spec_id: "DNK-ARCH-CANVAS-SPEC"
+title: "DNK OS Canvas Engine & Layer State Architecture"
+
+architecture:
+  core_principles:
+    - "Hierarchical Scene Graph (Nodes, Groups, Multi-layer)"
+    - "Deterministic Undo/Redo Event Sourcing"
+    - "Hybrid Rendering (DOM/SVG preview + WebGL2/WebGPU/Wasm accelerated export)"
+    - "AI Mutation Protocol (Generative in-painting, Seedream/Flux layer injection, AST synchronization)"
+
+layer_model:
+  node_types:
+    - id: "image"
+      properties: ["src", "transform", "filters", "mask", "ai_prompt_metadata"]
+    - id: "vector"
+      properties: ["svg_path", "fill", "stroke", "transforms"]
+    - id: "text"
+      properties: ["font_family", "size", "weight", "alignment", "effects"]
+    - id: "group"
+      properties: ["children_ids", "transform", "opacity", "blend_mode"]
+
+state_management:
+  target_engine: "Zustand + Immer / Signals"
+  crdt_ready: true
+  persistence: "IndexedDB + Cloud SSOT REST/WebSocket"

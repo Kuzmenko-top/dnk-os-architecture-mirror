@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: "{{ include \"dnk-os.fullname\" . }}-config"
+  labels:
+    app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}"
+    app.kubernetes.io/part-of: dnk-platform
+data:
+  ENVIRONMENT: "{{ .Values.global.environment }}"
+  LOG_LEVEL: "{{ .Values.config.logLevel }}"
+  CORS_ORIGINS: "{{ .Values.config.corsOrigins }}"

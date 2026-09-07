@@ -1,0 +1,23 @@
+{
+  "wrapper": "div",
+  "sections": {
+    "custom_main-product_0": {
+      "type": "main-product",
+      "settings": {
+        "title": "dymogenerator-mudriy-craftiar-aksesuary - Main-product",
+        "heading_size": "h2"
+      }
+    },
+    "custom_promo-popup_1": {
+      "type": "promo-popup",
+      "settings": {
+        "title": "dymogenerator-mudriy-craftiar-aksesuary - Promo-popup",
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "custom_main-product_0",
+    "custom_promo-popup_1"
+  ]
+}

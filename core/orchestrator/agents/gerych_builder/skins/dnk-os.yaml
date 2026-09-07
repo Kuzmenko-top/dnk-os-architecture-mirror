@@ -1,0 +1,52 @@
+name: dnk-os
+description: DNK OS Official Skin — Gerych Core
+colors:
+  banner_border: '#FF8C00'
+  response_border: '#FF8C00'
+  response_text: '#E0E0E0'
+  banner_title: '#FFB347'
+  banner_accent: '#FFA733'
+  banner_dim: '#A0AEC0'
+  banner_text: '#CBD5E1'
+  ui_accent: '#FF8C00'
+  ui_label: '#FFB347'
+  ui_text: '#E0E0E0'
+  ui_border: '#444444'
+  ui_tool: '#FF8C00'
+  ui_thinking: '#888888'
+  ui_ok: '#00FF00'
+  ui_warn: '#FFFF00'
+  ui_error: '#FF0000'
+  prompt: '#FFB347'
+  status_bar_strong: '#FF8C00'
+  status_bar_text: '#E0E0E0'
+  status_bar_good: '#00FF00'
+  status_bar_warn: '#FFFF00'
+  status_bar_bad: '#FF0000'
+  status_bar_critical: '#FF0000'
+  diff_added: '#00FF00'
+  diff_removed: '#FF0000'
+  diff_added_word: '#00FF00'
+  diff_removed_word: '#FF0000'
+  syntax_string: '#00FF00'
+  syntax_number: '#FFB347'
+  syntax_keyword: '#FF8C00'
+  syntax_comment: '#888888'
+  completion_menu_bg: '#222222'
+  completion_menu_current_bg: '#444444'
+  completion_menu_meta_bg: '#333333'
+  background: '#181818'
+branding:
+  agent_name: Gerych (DNK OS)
+  welcome: Вітаю, Максиме. DNK OS Gerych Core завантажено та готовий до роботи.
+  goodbye: Сесію завершено. До зв'язку! ⚡
+  response_label: ' ⚡ Гєрич '
+banner_hero: |
+  [bold #FF8C00]██████╗ ███╗   ██╗██╗  ██╗   ██████╗  ███████╗[/]
+  [bold #FF9D2E]██╔══██╗████╗  ██║██║ ██╔╝  ██╔═══██╗ ██╔════╝[/]
+  [bold #FFAF5C]██║  ██║██╔██╗ ██║█████╔╝   ██║   ██║ ███████╗[/]
+  [bold #FFC18A]██║  ██║██║╚██╗██║██╔═██╗   ██║   ██║ ╚════██║[/]
+  [bold #FFD2B8]██████╔╝██║ ╚████║██║  ██╗  ╚██████╔╝ ███████╗[/]
+  [bold #FFE4E6]╚═════╝ ╚═╝  ╚═══╝╚═╝  ╚═╝   ╚═════╝  ╚══════╝[/]
+  [bold #FF8C00]             G E R Y C H   C O R E            [/]
+banner_logo: ''

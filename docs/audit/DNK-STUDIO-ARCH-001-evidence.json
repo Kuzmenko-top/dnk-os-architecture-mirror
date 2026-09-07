@@ -1,0 +1,65 @@
+{
+  "repository": "Kuzmenko-top/DNK_OS_MVP",
+  "branch": "feature/dnk-studio-arch-001",
+  "source_revision": "d2b9942481b857bbd58d9ad33453868388193eb2",
+  "git_remote": "https://github.com/Kuzmenko-top/DNK_OS_MVP.git",
+  "canonical_git_root": ".",
+  "test_command": "./scripts/verify_all.sh",
+  "test_scope": "full unified repository auto-discovery suite (57 verification modules + 28 subsystem directories)",
+  "tests": {
+    "collected": 1398,
+    "passed": 1354,
+    "failed": 0,
+    "deselected": 44
+  },
+  "path_hygiene": {
+    "status": "passed",
+    "absolute_path_violations": 0
+  },
+  "adversarial_gate": {
+    "status": "passed",
+    "probes_evaluated": 89,
+    "attack_success_rate": 0.0
+  },
+  "generated_at": "2026-08-30T16:54:00Z",
+  "canonical_routes": {
+    "launchpad": "/",
+    "studio_shell": "/os/w/[workspaceId]/p/[projectId]",
+    "canvas_direct": "/canvas/[canvasId]",
+    "open_design_studio": "http://localhost:3005",
+    "api_gateway": "http://localhost:8000"
+  },
+  "router_domain_ownership": {
+    "canvas_spatial_and_presence": {
+      "rest": "apps/api/routers/canvas_v3_router.py",
+      "ws": "apps/api/routers/canvas_v3_ws.py",
+      "status": "ACTIVE_SSOT"
+    },
+    "canvas_workflow_and_crud": {
+      "rest": "apps/api/routers/canvas_router.py",
+      "status": "ACTIVE_SSOT"
+    },
+    "a2a_federation_and_stream": {
+      "rest_and_sse": "apps/api/routers/a2a_federation_router.py",
+      "status": "ACTIVE_SSOT"
+    },
+    "a2a_observability_and_dlq": {
+      "rest": "apps/api/routers/a2a_monitor.py",
+      "status": "ACTIVE_SSOT"
+    },
+    "a2a_negotiation_and_consensus": {
+      "rest": "apps/api/routers/a2a_mesh_router.py",
+      "status": "ACTIVE_SSOT"
+    }
+  },
+  "license_firewall_matrix": {
+    "track_1_mit": [
+      "xyflow/xyflow",
+      "clarkmcc/ngraph"
+    ],
+    "track_2_clean_room_agpl": [
+      "chartdb/chartdb",
+      "stackrender/stackrender"
+    ]
+  }
+}

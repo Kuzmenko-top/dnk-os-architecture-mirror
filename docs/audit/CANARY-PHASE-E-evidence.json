@@ -1,0 +1,171 @@
+{
+  "task_id": "DNK-HUB-ARCH-002",
+  "phase": "Phase E Canary & Phase F Review",
+  "environment": "isolated_staging_canary",
+  "runtime_version": "v0.21.0",
+  "upstream_tag": "v2026.8.31",
+  "runtime_path": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/core/hermes_agent_staging/.venv/bin/python",
+  "launcher_path": "/Users/kuzmenko.top/.local/bin/hermes",
+  "model_provider": "vertex:gemini-3.8-flash (isolated staging harness)",
+  "timestamps": {
+    "started_at": "2026-09-03T15:26:00.539015+00:00",
+    "completed_at": "2026-09-03T15:26:08.634050+00:00",
+    "epoch_start": 1788449160.5390131,
+    "epoch_end": 1788449168.6340292,
+    "duration_seconds": 8.095
+  },
+  "scenarios": [
+    {
+      "test_id": "C1",
+      "name": "supervisor_task_decomposition",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c1_supervisor_task_decomposition_and_dag",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "TASK-DNA-CANARY-001",
+      "event_id": "evt_c1_decomp_001",
+      "status": "PASSED"
+    },
+    {
+      "test_id": "C2",
+      "name": "multi_worker_delegation_lifecycle",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c2_multi_worker_delegation_and_live_lifecycle",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "TASK-CANARY-DEL-002",
+      "event_id": "evt_c2_steer_002",
+      "status": "PASSED"
+    },
+    {
+      "test_id": "C3",
+      "name": "peer_communication_and_event_bus",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c3_peer_communication_and_event_bus",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "TASK-CANARY-PEER-003",
+      "event_id": "msg_003_audit_sync",
+      "status": "PASSED"
+    },
+    {
+      "test_id": "C4",
+      "name": "cron_continuity_deduplication",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c4_cron_job_memory_and_continuity",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "CRON-WATCHDOG-004",
+      "event_id": "cron_tick_002_suppressed",
+      "status": "PASSED"
+    },
+    {
+      "test_id": "C5",
+      "name": "security_boundaries_and_redaction",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c5_security_boundaries_and_secret_redaction",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "TASK-SEC-AUDIT-005",
+      "event_id": "evt_c5_sec_denied_005",
+      "status": "PASSED"
+    },
+    {
+      "test_id": "C6",
+      "name": "cost_accounting_token_attribution",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c6_cost_accounting_and_token_attribution",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "TASK-COST-ACC-006",
+      "event_id": "evt_c6_cost_agg_006",
+      "status": "PASSED"
+    },
+    {
+      "test_id": "C7",
+      "name": "crash_recovery_and_rollback_drill",
+      "command": "/Users/kuzmenko.top/Kuzmenko/MY_LIFE_WORK/DNK_HUB/.venv/bin/python -m unittest tests/staging/test_hermes_v0210_canary_integration.py:TestHermesV0210CanaryIntegration.test_c7_crash_recovery_and_rollback_drill",
+      "exit_code": 0,
+      "runner_pid": 63127,
+      "task_id": "TASK-ROLLBACK-DRILL-007",
+      "event_id": "evt_c7_rec_checkpoint_007",
+      "status": "PASSED"
+    }
+  ],
+  "thresholds": {
+    "orphan_processes": 0,
+    "production_state_writes": 0,
+    "production_credential_reads": 0,
+    "security_boundary_bypasses": 0,
+    "unaccounted_tool_calls": 0,
+    "duplicate_cron_alerts": 0,
+    "unreconciled_events": 0
+  },
+  "checksums": {
+    "prod_state_db": "b88df733b78288d3aba920482810bde4efccf97ccb32fa43ae53ab53c82ce1b5",
+    "prod_config": "5be7f02f4e57b4a85c199e121640ebd52a2419b59fe5f1a7eca560ce019421e1",
+    "prod_binary": "e64d642e8ee322186a2909261835da69f971b3fc396ccded0039e51c603ecf00",
+    "all_intact": true
+  },
+  "secret_boundary_c5": {
+    "attempted": true,
+    "raw_secret_exposed_to_agent": false,
+    "raw_secret_exposed_to_logs": false,
+    "access_denied": true,
+    "redaction_applied": true,
+    "sinks_verified": {
+      "model_context_clean": true,
+      "stdout_stderr_clean": true,
+      "event_bus_clean": true,
+      "checkpoint_clean": true,
+      "session_db_clean": true
+    }
+  },
+  "shopify_mutation_boundary": {
+    "mutation_attempted": true,
+    "request_sent_to_production": false,
+    "policy_decision": "denied",
+    "audit_recorded": true,
+    "audit_event": {
+      "event_id": "evt_shopify_deny_1788449166233",
+      "timestamp": "2026-09-03T15:26:06.233819+00:00",
+      "actor": "dnk_shopify",
+      "target_store": "dnk-e.myshopify.com",
+      "action": "product_update",
+      "decision": "DENIED",
+      "reason": "403 SHOPIFY_PILOT_WRITE_FORBIDDEN: Live production store mutations strictly barred per HERMES_PERMISSION_MATRIX."
+    }
+  },
+  "cost_accounting": {
+    "invariant": "parent_cost = own_cost + accepted_child_costs + accepted_tool_costs",
+    "own_cost": 500,
+    "accepted_child_costs": 400,
+    "accepted_tool_costs": 200,
+    "parent_cost": 1100,
+    "total_consumed_with_retries": 1450,
+    "double_counting_detected": false,
+    "attempts": [
+      {
+        "task_id": "child_subtask_01",
+        "attempt_num": 1,
+        "cost_tokens": 350,
+        "status": "failed",
+        "cost_recorded": true,
+        "success_event_emitted": false
+      },
+      {
+        "task_id": "child_subtask_01",
+        "attempt_num": 2,
+        "cost_tokens": 400,
+        "status": "accepted",
+        "cost_recorded": true,
+        "success_event_emitted": true
+      }
+    ]
+  },
+  "rollback_preservation": {
+    "rollback_duration_seconds": 1.1388561725616455,
+    "sla_met": true,
+    "canary_audit_events_preserved": true,
+    "checkpoint_preserved": false,
+    "prod_session_resume_verified": true,
+    "latest_prod_session_id": "bca47e7c-26bb-4d26-af0e-9a85160a0ee5",
+    "prod_artifacts_untouched": true
+  },
+  "promotion_allowed": false,
+  "verdict": "CANARY_EVIDENCE_INDEPENDENTLY_CERTIFIED"
+}

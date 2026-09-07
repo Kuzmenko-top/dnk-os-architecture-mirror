@@ -1,0 +1,31 @@
+{
+  "wrapper": "div",
+  "sections": {
+    "custom_hero-banner_0": {
+      "type": "hero-banner",
+      "settings": {
+        "title": "top-5-prychyn-kupyty-dymogenerator - Hero-banner",
+        "heading_size": "h2"
+      }
+    },
+    "custom_promo-popup_1": {
+      "type": "promo-popup",
+      "settings": {
+        "title": "top-5-prychyn-kupyty-dymogenerator - Promo-popup",
+        "heading_size": "h2"
+      }
+    },
+    "custom_product-grid_2": {
+      "type": "product-grid",
+      "settings": {
+        "title": "top-5-prychyn-kupyty-dymogenerator - Product-grid",
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "custom_hero-banner_0",
+    "custom_promo-popup_1",
+    "custom_product-grid_2"
+  ]
+}

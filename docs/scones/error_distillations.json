@@ -1,0 +1,3222 @@
+[
+  {
+    "pattern": "(socket|network|egress|getaddrinfo|connection refused|block_network)",
+    "category": "NETWORK_SOCKET_EGRESS",
+    "root_cause": "Outbound socket call during isolated test environment violating zero egress invariant.",
+    "solution": "Set FIXTURE_MODE=true or implement mock transport override in service constructor (_is_test_mode)."
+  },
+  {
+    "pattern": "(ModuleNotFoundError|No module named 'apps\\.)",
+    "category": "MODULE_IMPORT_PATH",
+    "root_cause": "Module exists in apps/ but was not synced to root apps/ or PYTHONPATH.",
+    "solution": "Sync the service/router from apps to root apps/ using cp, or ensure rootdir pytest config includes both."
+  },
+  {
+    "pattern": "(404|Not Found.*router|router.*404)",
+    "category": "FASTAPI_ROUTER_UNMOUNTED",
+    "root_cause": "FastAPI router was created but not registered via app.include_router() in apps/api/main.py.",
+    "solution": "Import the router in apps/api/main.py and add app.include_router(module.router, prefix='/api/...')."
+  },
+  {
+    "pattern": "(Redis.*connection|ConnectionRefusedError.*6379|redis\\.exceptions)",
+    "category": "REDIS_FALLBACK_MISCONFIGURATION",
+    "root_cause": "Redis live client attempted connection to localhost:6379 during unit tests.",
+    "solution": "Use InMemoryRedisFallback when _is_test_mode() is True, and ensure is_connected returns True in fallback."
+  },
+  {
+    "pattern": "(Vault.*8200|is_authenticated.*live)",
+    "category": "VAULT_HEALTHCHECK_LIVE_HTTP",
+    "root_cause": "VaultClient is_healthy() made a live network call to port 8200 instead of checking cached status.",
+    "solution": "Return self._is_vault_connected cached boolean rather than calling self._client.is_authenticated()."
+  },
+  {
+    "pattern": "(AttributeError:.*model_dump|\\.dict\\(\\))",
+    "category": "PYDANTIC_V2_MIGRATION",
+    "root_cause": "Using legacy Pydantic v1 .dict() method instead of v2 .model_dump().",
+    "solution": "Replace .dict() with .model_dump() across all domain model calls."
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788354538,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788354538,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788354933,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788354933,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788355020,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788355020,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788355142,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788355142,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788355891,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788355891,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788356095,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788356096,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788356440,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788356440,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788356631,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788356631,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788357189,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788357189,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788357508,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788357508,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788358329,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788358330,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788360138,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788360138,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788360809,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788360809,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788360809,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788360991,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788360991,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788361044,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788361044,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788364300,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788364300,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788364459,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788364459,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788364522,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788364522,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788364671,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788364671,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788366413,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788366414,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788367763,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788367763,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788368445,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788368445,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788374571,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788374571,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788374618,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788374618,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788375100,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788375100,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788376016,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788376016,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788376074,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788376074,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788377289,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788377290,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788378218,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788378218,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788378972,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788378972,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788379342,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788379342,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788380778,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788380778,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788380857,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788380857,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788381050,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788381051,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788383194,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788383194,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788383351,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788383352,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788383409,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788383410,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788383470,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788383470,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788424389,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788424389,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788428766,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788428766,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788428824,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788428825,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788429781,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788429783,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788429838,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788429838,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788435149,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788435149,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788435252,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788435252,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788436576,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788436576,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788436752,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788436752,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788440326,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788440326,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788440410,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788440410,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788441043,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788441043,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788441958,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788441958,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788442148,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788442148,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788442221,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788442221,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788444355,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788444355,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788444452,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788444452,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788445110,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788445110,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788447780,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788447780,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788447931,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788447931,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788449573,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788449573,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788449728,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788449728,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788449792,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788449792,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788449957,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788449957,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788451624,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788451624,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788452261,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788452261,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788452381,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788452381,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788452940,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788452940,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788453171,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788453172,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788453198,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788453198,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788453544,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788453545,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788453729,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788453729,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788454178,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788454178,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788454272,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788454272,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788458411,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788458411,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788458503,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788458503,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788459055,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788459055,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788459154,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788459154,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788459354,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788459354,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788511629,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788511629,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788511763,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788511764,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788515682,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788515682,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788515927,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788515927,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788516050,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788516050,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788516769,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788516769,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788516952,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788516952,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788517674,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788517675,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788517896,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788517896,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788517983,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788517983,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788518003,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788518003,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788518026,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788518026,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788518107,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788518107,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788518115,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788518115,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788518799,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788518800,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788519338,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788519338,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788521117,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788521117,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788521480,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788521480,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788529286,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788529286,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788529645,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788529646,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788530979,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788530979,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788531059,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788531059,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788531427,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788531427,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788533313,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788533313,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788535032,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788535033,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "(cannot import name 'RuntimeEventBus' from 'core\\.canvas_runtime_bridge')",
+    "category": "MODULE_IMPORT_LOCATION",
+    "root_cause": "RuntimeEventBus is defined in core.runtime_events, not core.canvas_runtime_bridge.",
+    "solution": "Import RuntimeEventBus directly from core.runtime_events. CanvasRuntimeBridge lives in core.canvas_runtime_bridge.",
+    "recorded_at": 1788536000,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "(No edit was applied because old_string and new_string are identical|Could not find a match for old_string)",
+    "category": "PATCH_INDENTATION_MISMATCH",
+    "root_cause": "Model generated patch with differing whitespace, indentation or identical content.",
+    "solution": "Inspect the exact line range with a python slice open() before generating patch to capture exact whitespace.",
+    "recorded_at": 1788536000,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788535991,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788535991,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788536848,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788536848,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788536983,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788536983,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788537384,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788537385,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788537564,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788537564,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788538013,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788538013,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "(TypeError:.*got an unexpected keyword argument|unexpected keyword argument 'task_id')",
+    "category": "TOOL_HANDLER_SIGNATURE_MISMATCH",
+    "root_cause": "Hermes runner injects context kwargs (task_id, session_id, user_task) into tool handlers, or in-memory module cache holds an old function signature.",
+    "solution": "1. Ensure tool handlers in tools/*.py accept *args, **kwargs. 2. tools/registry.py automatically filters unsupported kwargs via inspect.signature. 3. If testing in live session, run via python subshell in .venv.",
+    "recorded_at": 1788540000,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "(Target: core -> Passed: False|total_attack_findings.*4[0-9]{4}|Confirmed.*4[0-9]{4})",
+    "category": "ADVERSARIAL_REVIEW_UNBOUNDED_SCAN",
+    "root_cause": "AdversarialReviewEngine review_target() scanned entire core/ folder including 3,200 vendored files in core/hermes_agent without DNK-MRH headers.",
+    "solution": "1. review_target() now defaults to scanning only modified git files (git status --porcelain). 2. Excluded vendor directories (hermes_agent, node_modules, .venv).",
+    "recorded_at": 1788540000,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788538462,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788538462,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788538599,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788538599,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788538777,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788538777,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788540537,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788540537,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788547503,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788547503,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788548828,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788548828,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788549173,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788549173,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788554576,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788554576,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788557293,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788557293,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788557556,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788557556,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788557817,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788557818,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788558007,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788558008,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788600814,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788600815,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788600883,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788600883,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788600990,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788600990,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788601076,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788601076,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788601159,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788601159,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788601176,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788601176,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788601279,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788601279,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788601503,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788601503,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788602008,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788602008,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788602674,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788602674,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788603764,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788603764,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788604008,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788604008,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788605284,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788605284,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788606030,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788606030,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788606119,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788606120,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788606424,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788606425,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788606728,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788606728,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788608850,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788608850,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788609000,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788609001,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788609952,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788609953,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788610085,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788610085,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788610219,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788610219,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788610508,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788610508,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788610695,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788610695,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788610811,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788610811,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "urllib3.util.ssl_ RecursionError",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "RecursionError during Locust import on Python 3.14 due to gevent/urllib3 monkeypatching",
+    "solution": "Use conditional import under if 'locust' in sys.argv[0].lower(): or isolate Locust CLI execution from standard test runner.",
+    "recorded_at": 1788611288,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "Starlette TestClient race condition ThreadPoolExecutor",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Starlette TestClient is not thread-safe when shared across concurrent threads in ThreadPoolExecutor",
+    "solution": "Isolate client instances per worker thread using threading.local() or instantiate TestClient per task.",
+    "recorded_at": 1788611293,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "uvicorn.Server.run() hanging daemon thread",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "uvicorn.Server.run() does not terminate cleanly when executed inside background daemon threads during load tests",
+    "solution": "Enforce hard timeout (e.g. timeout 45s) or invoke os._exit(0) upon test completion in test runner.",
+    "recorded_at": 1788611293,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "SecurityMiddleware HTTP 429 Too Many Requests rate limit in tests",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "SecurityMiddleware rate limiter blocks high-throughput load and stress tests with HTTP 429",
+    "solution": "Set os.environ['TESTING'] = '1' to bypass rate limiting during load tests.",
+    "recorded_at": 1788611293,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788611388,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788611388,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788612862,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788612862,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788613014,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788613014,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788614106,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788614106,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788617917,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788617917,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788618596,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788618596,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788618760,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788618760,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788620083,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788620083,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788620328,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788620328,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788621716,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788621716,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788621750,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788621750,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788621983,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788621983,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788622103,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788622103,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788622205,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788622206,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788622292,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788622292,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788622368,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788622368,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788622554,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788622554,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788622785,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788622785,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788624590,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788624590,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788624781,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788624781,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788624956,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788624956,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "Unexpected token 'I', \"Internal S\"... is not valid JSON on Next.js rewrites in D",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Next.js rewrites were hardcoded to http://localhost:8000. In Docker, localhost refers to the frontend container itself, causing connect ECONNREFUSED 127.0.0.1:8000 and HTTP 500 HTML response. Calling res.json() threw a SyntaxError.",
+    "solution": "Set BACKEND_INTERNAL_URL=\"http://backend:8000\" in Dockerfile.frontend and docker-compose.yml, and configure next.config.mjs to use process.env.BACKEND_INTERNAL_URL. In nodeTasksStore.ts, read res.text() on !res.ok before parsing JSON.",
+    "recorded_at": 1788625299,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "TypeError: Cannot read properties of undefined (reading 'idea') in NodeTaskGraph",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Backend /api/v3/node_tasks/graph returns GraphStatistics with ideas_count, epics_count, tasks_count flat fields instead of by_type object. In NodeTaskGraphCanvas.tsx, stats.by_type was undefined, cau...[truncated]",
+    "solution": "1. In NodeTaskGraphCanvas.tsx, guarded stats access with nullish coalescing: stats.ideas_count ?? stats.by_type?.idea ?? 0. 2. In nodeTasksStore.ts, added normalizedStats mapping so both formats are fully popu...[truncated]",
+    "recorded_at": 1788626166,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788634242,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788634242,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788634415,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788634415,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788635851,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788635851,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788635851,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788636141,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788636141,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788636829,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788636829,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788636970,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788636970,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788684871,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788684872,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788686254,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788686255,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788708305,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788708305,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788709060,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788709060,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788709200,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788709200,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788709252,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788709253,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788709694,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788709695,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788709882,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788709882,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788710260,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788710260,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788713448,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788713448,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788713742,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788713742,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788721153,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788721153,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788721314,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788721315,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "RuntimeError: Executable doesn't exist at ... Playwright/Patchright browser bina",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Patchright requires chromium driver binaries installed via 'patchright install chromium' or mock_mode=True fallback in headless CI/CD environments.",
+    "solution": "Run 'patchright install chromium' in virtual environment, or initialize DNKPatchrightAdapter with mock_mode=True (or fallback to requests/httpx if browser binary is missing).",
+    "recorded_at": 1788725992,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788726385,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788726385,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788731944,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788731945,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788733251,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788733251,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788734128,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788734129,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788734256,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788734256,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "sqlite3.ProgrammingError: You can only execute one statement at a time in sqlite",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "sqlite3 cursor.execute() was called with multiple semicoloned SQL DDL statements (CREATE TABLE ...; CREATE TABLE ...) which requires cursor.executescript().",
+    "solution": "Change cursor.execute() to cursor.executescript() when running multiple SQL statements in Python sqlite3.",
+    "recorded_at": 1788780597,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788780641,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788780643,
+    "workspace_id": "ws-alpha-001"
+  },
+  {
+    "pattern": "CustomShopifyASTNodeMismatch_test_9999",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Outdated AST node format.",
+    "solution": "Use MechanicalTranspiler with Liquid AST visitor.",
+    "recorded_at": 1788781061,
+    "workspace_id": "ws-test-001"
+  },
+  {
+    "pattern": "TestApiEndpointError_4444",
+    "category": "DYNAMIC_AGENT_DISTILLED",
+    "root_cause": "Unmounted router",
+    "solution": "Mount the router in main.py",
+    "recorded_at": 1788781061,
+    "workspace_id": "ws-alpha-001"
+  }
+]

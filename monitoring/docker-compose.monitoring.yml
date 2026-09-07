@@ -1,0 +1,45 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "docker_compose_monitoring"
+# purpose: "Monitoring stack docker-compose file (Prometheus, Grafana, Loki, Alertmanager)"
+# author: "DNK-e.com Maksym"
+# license: "DNK-INTERNAL"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-11"
+# --- END DNK-MRH-HEADER ---
+
+version: "3.9"
+
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./alerts.yml:/etc/prometheus/alerts.yml
+    ports:
+      - "9090:9090"
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin_pass
+    depends_on:
+      - prometheus
+
+  loki:
+    image: grafana/loki:latest
+    ports:
+      - "3100:3100"
+
+  alertmanager:
+    image: prom/alertmanager:latest
+    ports:
+      - "9093:9093"
+    volumes:
+      - ./alertmanager.yml:/etc/alertmanager/alertmanager.yml
+    command:
+      - '--config.file=/etc/alertmanager/alertmanager.yml'

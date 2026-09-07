@@ -1,0 +1,41 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "alerts_rules"
+# purpose: "Prometheus alert rules for high error rates and latency"
+# author: "DNK-e.com Maksym"
+# license: "DNK-INTERNAL"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-11"
+# --- END DNK-MRH-HEADER ---
+
+groups:
+  - name: dnk_os_alerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status="500"}[5m]) > 0.05
+        for: 5m
+        annotations:
+          summary: "High error rate detected"
+
+      - alert: HighResponseTime
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        annotations:
+          summary: "High response time detected"
+      - alert: HighMemoryUsage
+        expr: (node_memory_MemTotal_bytes - node_memory_MemAvailable_bytes) / node_memory_MemTotal_bytes > 0.9
+        for: 5m
+        annotations:
+          summary: "Memory usage > 90%"
+
+      - alert: DBConnectionsExhausted
+        expr: db_connections_active > 80
+        for: 2m
+        annotations:
+          summary: "DB connections > 80%"
+
+      - alert: RAGHighLatency
+        expr: rag_query_duration_seconds > 5
+        for: 5m
+        annotations:
+          summary: "RAG query latency > 5s"

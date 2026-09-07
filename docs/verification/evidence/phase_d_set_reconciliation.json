@@ -1,0 +1,19 @@
+{
+  "mathematical_reconciliation": {
+    "set_A_upstream_only": 3884,
+    "set_B_dnk_only": 988,
+    "set_C_identical": 6232,
+    "set_D_modified": 772,
+    "total_universe": 11876,
+    "formula_verified": true,
+    "staging_upstream_total": 10888,
+    "prod_fork_total": 7992
+  },
+  "set_D_tier_breakdown": {
+    "Tier 0: Core Runtime": 206,
+    "Tier 1: Security & Control": 23,
+    "Tier 2: Orchestration": 38,
+    "Tier 3: Providers & MCP": 193,
+    "Tier 4: Desktop, UX & Skills": 312
+  }
+}

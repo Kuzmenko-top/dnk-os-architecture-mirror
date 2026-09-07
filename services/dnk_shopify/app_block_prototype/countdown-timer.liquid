@@ -1,0 +1,29 @@
+<!-- 🛍️ App Block Prototype: ReBurn Conversion Booster (countdown-timer) -->
+<div class="reburn-countdown-timer-block" data-end-date="{{ block.settings.end_date }}">
+  <div class="timer-title">{{ block.settings.title }}</div>
+  <div class="timer-display">
+    <span class="days">00</span>д : <span class="hours">00</span>г : <span class="minutes">00</span>хв : <span class="seconds">00</span>с
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ReBurn Countdown",
+  "target": "section",
+  "templates": ["product", "index"],
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Заголовок таймера",
+      "default": "Встигни замовити коптильню зі знижкою!"
+    },
+    {
+      "type": "text",
+      "id": "end_date",
+      "label": "Кінцева дата (YYYY-MM-DD)",
+      "default": "2026-08-31"
+    }
+  ]
+}
+{% endschema %}

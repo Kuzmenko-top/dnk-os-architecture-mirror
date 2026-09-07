@@ -1,0 +1,39 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "SecurityRemediationEvidence",
+  "type": "object",
+  "required": [
+    "incident_id",
+    "status",
+    "old_token_revoked",
+    "new_token_least_privilege",
+    "secret_scan_current_tree",
+    "secret_scan_reachable_history",
+    "pr_diff_secret_scan",
+    "storage_mechanism",
+    "test_scope",
+    "generated_at"
+  ],
+  "properties": {
+    "incident_id": { "type": "string" },
+    "status": { "type": "string", "enum": ["remediated", "pending"] },
+    "old_token_revoked": { "type": "boolean" },
+    "new_token_least_privilege": {
+      "type": "object",
+      "properties": {
+        "metadata": { "type": "string" },
+        "contents": { "type": "string" },
+        "pull_requests": { "type": "string" },
+        "admin_scopes": { "type": "boolean" }
+      },
+      "required": ["metadata", "contents", "pull_requests", "admin_scopes"]
+    },
+    "secret_scan_current_tree": { "type": "string", "enum": ["passed", "failed"] },
+    "secret_scan_reachable_history": { "type": "string" },
+    "pr_diff_secret_scan": { "type": "string", "enum": ["passed", "failed"] },
+    "storage_mechanism": { "type": "string" },
+    "test_scope": { "type": "string" },
+    "generated_at": { "type": "string", "format": "date-time" }
+  },
+  "additionalProperties": false
+}

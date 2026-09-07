@@ -1,0 +1,46 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/dnk_dev_fullstack/agent_card.yaml"
+# purpose: "A2A Agent Card specification for dnk_dev_fullstack (Backend & Cloud Integrations)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "dnk_dev_fullstack"
+name: "dnk_dev_fullstack (Senior Backend Engineer)"
+description: "DNK OS specialist for FastAPI routers, PostgreSQL schemas, Celery task workers, and real-time WebSocket streams"
+version: "1.0.0"
+domain: "backend"
+owner: "Head of Engineering"
+
+capabilities:
+  - "fastapi_router_architecture"
+  - "sqlalchemy_postgresql_schemas"
+  - "redis_queue_management"
+  - "async_websocket_streaming"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      endpoint: {"type": "string"}
+      spec: {"type": "string"}
+    required: ["spec"]
+  output_schema:
+    type: "object"
+    properties:
+      status: {"type": "string"}
+      router_path: {"type": "string"}
+
+safety_gates:
+  high_risk_actions: ["db_drop_table", "raw_sql_migration"]
+  token_budget_cap_usd: 6.00
+  require_hitl: false

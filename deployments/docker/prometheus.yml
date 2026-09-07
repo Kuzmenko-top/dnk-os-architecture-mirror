@@ -1,0 +1,27 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/docker/prometheus.yml"
+# purpose: "Prometheus scraping configuration for DNK OS production services"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+scrape_configs:
+  - job_name: "dnk_api"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets: ["api:8000"]
+
+  - job_name: "dnk_gateway"
+    static_configs:
+      - targets: ["gateway:80"]
+
+  - job_name: "prometheus"
+    static_configs:
+      - targets: ["localhost:9090"]

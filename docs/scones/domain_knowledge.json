@@ -1,0 +1,912 @@
+[
+  {
+    "task_id": "DNK-ANALYTICS-003",
+    "title": "Predictive Analytics & ML Forecasting",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/predictive_forecasting_engine.py",
+      "apps/api/services/workload_predictor.py"
+    ],
+    "indexed_at": "2026-08-28T09:35:01.479693+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-UX-003",
+    "title": "Cabinet UX File Diff Tree, Visual Diff & AST Changes Viewer",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/diff_parser.py",
+      "apps/api/services/ast_diff.py",
+      "apps/api/routers/github.py",
+      "apps/web/components/cabinet/FileDiffTree.tsx",
+      "apps/web/components/cabinet/DiffViewer.tsx",
+      "apps/web/components/cabinet/ASTChangesBadge.tsx",
+      "apps/web/components/cabinet/PRInspectorTab.tsx",
+      "apps/web/lib/api_client.ts",
+      "tests/dnk_ux_003/test_diff_tree_and_ast.py"
+    ],
+    "indexed_at": "2026-08-28T11:03:34.905690+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-PLATFORM-SCALE-003",
+    "title": "Multi-Region Scaling, Cross-Region Replication & Shopify AST CDN Pipeline",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/cross_region_replication.py",
+      "apps/api/services/edge_routing_manager.py",
+      "apps/api/services/shopify_cdn_sync.py",
+      "apps/api/services/liquid_ast_asset_rewriter.py"
+    ],
+    "indexed_at": "2026-08-28T11:59:47.348014+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-MEDIA-001-P3",
+    "title": "Phase 3 E-commerce & Dynamic Templates",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "services/dnk_video_ai_creator/src/shopify_product_promo_template.py",
+      "services/dnk_video_ai_creator/src/ugc_vertical_reel_template.py",
+      "services/dnk_video_ai_creator/src/template_registry.py"
+    ],
+    "indexed_at": "2026-08-28T12:26:54.401580+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-ANALYTICS-004",
+    "title": "Real-Time Anomaly Detection & Advanced Alerting Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/real_time_anomaly_detector.py",
+      "apps/api/services/dynamic_threshold_calculator.py",
+      "apps/api/services/advanced_alerting_engine.py",
+      "apps/api/services/alert_channel_dispatcher.py",
+      "apps/api/routers/analytics_anomaly_detection.py",
+      "apps/web/components/analytics/AnomalyDetectionDashboard.tsx",
+      "apps/web/components/analytics/AlertRulesConfigCard.tsx",
+      "apps/web/components/analytics/AlertHistoryTimeline.tsx",
+      "apps/web/lib/api/analytics_anomaly_client.ts"
+    ],
+    "indexed_at": "2026-08-28T12:26:58.399939+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-MEDIA-001",
+    "title": "Phase 4 REST API, Job Queue, Cache Manager & Progress Streaming",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "services/dnk_video_ai_creator/src/media_router.py",
+      "services/dnk_video_ai_creator/src/job_queue.py",
+      "services/dnk_video_ai_creator/src/cache_manager.py",
+      "services/dnk_video_ai_creator/src/progress_streamer.py",
+      "tests/media/test_phase4_video_engine.py"
+    ],
+    "indexed_at": "2026-08-28T12:44:46.631319+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-ECOM-004",
+    "title": "Shopify Checkout UI Extensions, Multi-Gateway Payments, 3DS 2.0 & Upsell Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/shopify_checkout_extension.py",
+      "apps/api/services/shopify_payment_gateway_handler.py",
+      "apps/api/services/shopify_payment_intent_manager.py",
+      "apps/api/services/shopify_post_purchase_upsell.py",
+      "apps/api/services/shopify_webhook_event_bus.py",
+      "apps/api/routers/shopify_checkout_payments.py",
+      "tests/shopify/test_e2e_checkout_payments.py"
+    ],
+    "indexed_at": "2026-08-28T13:23:34.051218+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-VIDEO-006",
+    "title": "DNK Video Librarian REST API Integration & AI Creator Agent",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "core/agents/dnk_video_ai_creator.py",
+      "scripts/media/run_pipeline.py",
+      "main.py"
+    ],
+    "indexed_at": "2026-08-28T13:39:19.589200+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-PLATFORM-SCALE-004",
+    "title": "Zero-Downtime Blue/Green & Canary Deployment Pipeline",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/platform_deployment_config.py",
+      "apps/api/db/models/platform_deployment_environment.py",
+      "apps/api/db/models/platform_health_probe_config.py",
+      "apps/api/db/models/platform_canary_analysis_result.py",
+      "apps/api/db/models/platform_deployment_event.py",
+      "apps/api/services/canary_traffic_splitter.py",
+      "apps/api/services/blue_green_deployment_manager.py",
+      "apps/api/services/health_probe_evaluator.py",
+      "apps/api/services/canary_analysis_engine.py",
+      "apps/api/services/auto_rollback_engine.py",
+      "apps/api/services/gitops_manifest_generator.py",
+      "apps/api/routers/platform_deployments.py",
+      "tests/platform/test_canary_traffic_splitter.py",
+      "tests/platform/test_blue_green_deployment.py",
+      "tests/platform/test_health_probe_evaluator.py",
+      "tests/platform/test_canary_analysis_engine.py",
+      "tests/platform/test_platform_deployments_router.py"
+    ],
+    "indexed_at": "2026-08-28T14:54:02.241649+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-MEDIA-002",
+    "title": "Distributed Video Processing & Transcoding Pipeline (GOP Chunking, HW Acceleration, ABR Packaging & FastAPI Router)",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/media_video_processing_job.py",
+      "apps/api/db/models/media_video_chunk.py",
+      "apps/api/db/models/media_transcoding_task.py",
+      "apps/api/db/models/media_packaging_output.py",
+      "apps/api/db/models/media_webhook_config.py",
+      "apps/api/services/video_chunking_engine.py",
+      "apps/api/services/hardware_acceleration_manager.py",
+      "apps/api/services/distributed_transcoding_worker.py",
+      "apps/api/services/video_packaging_engine.py",
+      "apps/api/services/media_storage_manager.py",
+      "apps/api/services/media_pipeline_router.py"
+    ],
+    "indexed_at": "2026-08-28T16:12:39.353864+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-HYBRID-SEARCH-001",
+    "title": "Unified PostgreSQL Hybrid Search Engine (pgvector + tsvector + RRF)",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/sql/001_enable_fulltext_search.sql",
+      "apps/api/sql/hybrid_search_rrf.sql",
+      "core/memory/pgvector_store.py",
+      "tests/verification/test_hybrid_search.py"
+    ],
+    "indexed_at": "2026-08-28T16:25:06.444277+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-VECTOR-001",
+    "title": "PostgreSQL Hybrid Search (pgvector + tsvector) with Reciprocal Rank Fusion",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/vector_store.py",
+      "apps/api/services/postgres_dense_vector_search.py",
+      "apps/api/services/postgres_sparse_vector_search.py",
+      "apps/api/services/reciprocal_rank_fusion.py",
+      "apps/api/services/cross_encoder_reranker.py",
+      "apps/api/services/postgres_hybrid_search_engine.py",
+      "apps/api/routers/vector_search.py",
+      "apps/web/components/vector/HybridSearchInterface.tsx",
+      "apps/web/components/vector/SearchResultsList.tsx",
+      "apps/web/components/vector/RerankedResultsCard.tsx",
+      "apps/web/lib/api/vector_client.ts",
+      "tests/vector/test_hybrid_search.py",
+      "tests/vector/test_reciprocal_rank_fusion.py",
+      "tests/vector/test_cross_encoder_reranker.py",
+      "tests/vector/test_vector_router.py"
+    ],
+    "indexed_at": "2026-08-28T16:47:32.301780+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-PATENT-001",
+    "title": "Patent Shield Phase 3 (FastAPI Router & Generative UI Dashboard)",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/routers/patent_shield.py",
+      "apps/web/ui/hooks/usePatentShield.ts",
+      "apps/web/components/patent-shield/PatentShieldDashboard.tsx",
+      "apps/web/app/patent-shield/page.tsx",
+      "tests/verification/test_patent_shield_phase3.py"
+    ],
+    "indexed_at": "2026-08-28T16:51:38.072701+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-SCONES-L3-001",
+    "title": "SCONES L3 SOTA Engine (Native PostgreSQL Long-Term Memory)",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/sql/003_scones_l3_schema.sql",
+      "core/scones_l3_memory.py",
+      "tests/verification/test_scones_l3.py"
+    ],
+    "indexed_at": "2026-08-28T17:01:56.788052+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-SCONES-L3-002",
+    "title": "SCONES L3 Sleep Consolidation Worker, FastAPI Router & Generative UI Dashboard",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/workers/sleep_consolidation_worker.py",
+      "apps/api/routers/memory_l3.py",
+      "apps/web/components/memory-l3/SCONESL3Dashboard.tsx",
+      "apps/web/app/memory-l3/page.tsx",
+      "apps/web/ui/hooks/useSCONESL3Memory.ts",
+      "tests/verification/test_scones_l3_week2.py"
+    ],
+    "indexed_at": "2026-08-28T17:10:28.635189+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-ECOM-005",
+    "title": "Shopify Functions & Wasm Custom Checkout Logic Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/shopify_functions_wasm_engine.py",
+      "apps/api/services/shopify_cart_transform_service.py",
+      "apps/api/services/shopify_dynamic_discount_service.py",
+      "apps/api/services/shopify_checkout_customization_service.py",
+      "apps/api/routers/shopify_functions.py",
+      "apps/web/lib/api/shopify_functions_client.ts",
+      "apps/web/components/shopify/CartTransformRulesCard.tsx",
+      "apps/web/components/shopify/DynamicDiscountsCard.tsx",
+      "apps/web/components/shopify/FunctionsEvaluationSandbox.tsx"
+    ],
+    "indexed_at": "2026-08-28T17:32:14.911710+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-A2A-003-PHASE2",
+    "title": "A2A Mesh Negotiation & Task Auction Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/a2a_mesh_negotiator.py",
+      "apps/api/services/a2a_task_auction_engine.py",
+      "tests/a2a/test_a2a_services_phase2.py"
+    ],
+    "indexed_at": "2026-08-28T19:11:52.372293+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-A2A-003-PHASE3",
+    "title": "A2A Consensus Engine & Dynamic Load Rebalancing",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/services/a2a_swarm_consensus_engine.py",
+      "apps/api/services/a2a_load_rebalancer.py",
+      "tests/a2a/test_a2a_services_phase3.py"
+    ],
+    "indexed_at": "2026-08-28T19:16:27.431371+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-ANALYTICS-005",
+    "title": "Predictive Capacity Planning & ML Forecasting V2",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/capacity_snapshot.py",
+      "apps/api/db/models/load_forecast.py",
+      "apps/api/db/models/queue_metric.py",
+      "apps/api/db/models/anomaly_alert.py",
+      "apps/api/db/models/scaling_recommendation.py",
+      "apps/api/db/models/cost_optimization_report.py",
+      "apps/api/services/capacity_forecasting_engine.py",
+      "apps/api/services/queue_anomaly_detector.py",
+      "apps/api/services/capacity_autoscaler_recommender.py",
+      "apps/api/routers/capacity_analytics_router.py",
+      "apps/api/routers/capacity_analytics_ws.py"
+    ],
+    "indexed_at": "2026-08-28T20:28:23.137035+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-CANVAS-002",
+    "title": "Visual Canvas V2 & Generative UI 2.0 Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/canvas.py",
+      "apps/api/services/canvas_graph_engine.py",
+      "apps/api/services/canvas_occ_sync.py",
+      "apps/api/services/canvas_generative_ui_engine.py",
+      "apps/api/services/canvas_component_sandbox.py",
+      "apps/api/routers/canvas_router.py",
+      "apps/api/routers/canvas_ws.py"
+    ],
+    "indexed_at": "2026-08-28T21:03:13.325890+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-ECOM-006",
+    "title": "Shopify Checkout UI Extensions, Post-Purchase Engine & Conversion Analytics",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/checkout_extension.py",
+      "apps/api/db/models/post_purchase_offer.py",
+      "apps/api/db/models/upsell_rule.py",
+      "apps/api/db/models/checkout_conversion_event.py",
+      "apps/api/db/models/shopify_webhook_event.py",
+      "apps/api/services/checkout_extension_engine.py",
+      "apps/api/services/post_purchase_funnel_engine.py",
+      "apps/api/services/shopify_webhook_ingestor.py",
+      "apps/api/services/checkout_conversion_analytics.py",
+      "apps/api/routers/checkout_postpurchase_router.py",
+      "apps/api/routers/checkout_analytics_ws.py",
+      "tests/ecom/test_checkout_postpurchase_models.py",
+      "tests/ecom/test_checkout_extension_engine.py",
+      "tests/ecom/test_post_purchase_funnel_engine.py",
+      "tests/ecom/test_shopify_webhook_ingestor.py",
+      "tests/ecom/test_checkout_conversion_analytics.py",
+      "tests/ecom/test_checkout_postpurchase_api_and_ws.py"
+    ],
+    "indexed_at": "2026-08-29T06:46:23.463599+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-CANVAS-003",
+    "title": "Infinite Canvas V3: Multi-User Collaboration, Spatial Indexing & AI Generation Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/canvas_spatial_index.py",
+      "apps/api/db/models/canvas_presence.py",
+      "apps/api/db/models/canvas_cursor_stream.py",
+      "apps/api/db/models/canvas_history_snapshot.py",
+      "apps/api/db/models/canvas_ai_generation_request.py",
+      "apps/api/db/models/canvas_semantic_group.py",
+      "apps/api/services/canvas_spatial_index_engine.py",
+      "apps/api/services/canvas_collaboration_arbiter.py",
+      "apps/api/services/canvas_ai_node_weaver.py",
+      "apps/api/services/canvas_history_time_travel_engine.py",
+      "apps/api/routers/canvas_v3_router.py",
+      "apps/api/routers/canvas_v3_ws.py"
+    ],
+    "indexed_at": "2026-08-29T07:49:27.272917+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-SECURITY-001",
+    "title": "Zero-Trust Security Layer & Dynamic RBAC Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "docs/tech/specs/DNK-SECURITY-001_zero_trust_rbac_spec.md",
+      "apps/api/db/models/security_subject.py",
+      "apps/api/db/models/security_role.py",
+      "apps/api/db/models/security_permission.py",
+      "apps/api/db/models/security_policy.py",
+      "apps/api/db/models/security_audit_log.py",
+      "apps/api/db/models/security_token_revocation.py",
+      "apps/api/services/zero_trust_policy_engine.py",
+      "apps/api/services/token_revocation_engine.py",
+      "apps/api/services/audit_trail_engine.py",
+      "apps/api/services/token_signature_verifier.py",
+      "apps/api/middleware/zero_trust_middleware.py",
+      "apps/api/routers/security_router.py",
+      "tests/security/test_security_models.py",
+      "tests/security/test_security_engines.py",
+      "tests/security/test_security_middleware.py",
+      "tests/security/test_security_router.py"
+    ],
+    "indexed_at": "2026-08-29T08:30:27.839406+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-A2A-004",
+    "title": "Cross-Platform Agent Protocol & External Agent Mesh Integration",
+    "summary": "Implementation of cross-platform federation registry, HMAC-SHA256 message codec, SSE streaming bus, resilient mesh router with 3-position circuit breaker and synthetic health probe telemetry",
+    "components": [
+      "docs/tech/specs/DNK-A2A-004_cross_platform_agent_mesh_spec.md",
+      "apps/api/db/models/a2a_federated_agent.py",
+      "apps/api/db/models/a2a_capability_schema.py",
+      "apps/api/db/models/a2a_message_envelope.py",
+      "apps/api/db/models/a2a_stream_session.py",
+      "apps/api/db/models/a2a_routing_table.py",
+      "apps/api/db/models/a2a_health_probe.py",
+      "apps/api/services/a2a_federation_registry_service.py",
+      "apps/api/services/a2a_message_codec_service.py",
+      "apps/api/services/a2a_streaming_engine.py",
+      "apps/api/services/a2a_mesh_router_service.py",
+      "apps/api/services/a2a_health_probe_service.py",
+      "apps/api/routers/a2a_federation_router.py",
+      "apps/api/routers/a2a_mesh_sse.py",
+      "tests/a2a/test_a2a_mesh_models.py",
+      "tests/a2a/test_a2a_federation_services.py",
+      "tests/a2a/test_a2a_mesh_router_and_health.py",
+      "tests/a2a/test_a2a_federation_router_and_sse.py"
+    ],
+    "indexed_at": "2026-08-29T10:02:17.864558+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-HEALTH-001",
+    "title": "System Health Monitoring & Auto-Healing Engine",
+    "summary": "Implementation of Prometheus/OTel metric aggregation, statistical incident detection with Z-score anomalies & flap prevention, playbook-based auto-healing executor with safety circuit breakers, multi-channel alert dispatcher, and FastAPI REST endpoints",
+    "components": [
+      "apps/api/db/models/health_metric_rule.py",
+      "apps/api/db/models/system_incident.py",
+      "apps/api/db/models/remediation_action.py",
+      "apps/api/db/models/auto_healing_policy.py",
+      "apps/api/db/models/service_health_snapshot.py",
+      "apps/api/db/models/alert_notification_log.py",
+      "apps/api/services/health_metric_aggregator.py",
+      "apps/api/services/incident_detection_engine.py",
+      "apps/api/services/auto_healing_executor.py",
+      "apps/api/services/alert_dispatcher_service.py",
+      "apps/api/routers/health_router.py",
+      "tests/health/test_health_models.py",
+      "tests/health/test_incident_detection_engine.py",
+      "tests/health/test_auto_healing_executor.py",
+      "tests/health/test_health_router.py",
+      "docs/tech/specs/DNK-HEALTH-001_system_health_monitoring_auto_healing_spec.md"
+    ],
+    "indexed_at": "2026-08-29T10:36:19.827883+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-STREAM-001",
+    "title": "Event Streaming Platform & Schema Registry",
+    "summary": "Engineered high-throughput partitioned event streaming platform with Schema Registry (JSONSchema/Avro), monotonic offset bus, consumer coordinator with dynamic rebalancing & lag tracking, ClickHouse micro-batch buffer, isolated DLQ replay, synthetic E2E health probes, and FastAPI REST/SSE router.",
+    "components": [
+      "db/models/stream_models.py",
+      "apps/api/services/event_schema_registry.py",
+      "apps/api/services/event_stream_bus.py",
+      "apps/api/services/clickhouse_ingestion_buffer.py",
+      "apps/api/services/stream_consumer_coordinator.py",
+      "apps/api/services/stream_dead_letter_queue.py",
+      "apps/api/services/stream_health_probes.py",
+      "apps/api/routers/stream_router.py",
+      "tests/stream/test_stream_models.py",
+      "tests/stream/test_stream_services.py",
+      "tests/stream/test_stream_consumer_and_dlq.py",
+      "tests/stream/test_stream_router.py"
+    ],
+    "indexed_at": "2026-08-29T11:23:55.463311+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-OBSERVE-001",
+    "title": "Distributed Tracing & Observability Platform (DNK-OBSERVE-001)",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/trace_span.py",
+      "apps/api/services/telemetry_collector_service.py",
+      "apps/api/services/trace_instrumentation_service.py",
+      "apps/api/routers/observe_router.py"
+    ],
+    "indexed_at": "2026-08-29T11:54:55.188944+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-BATCH-001",
+    "title": "Distributed Batch Processing Engine & DAG Workflows",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/batch_job.py",
+      "apps/api/db/models/batch_task.py",
+      "apps/api/db/models/batch_workflow_dag.py",
+      "apps/api/db/models/batch_worker_node.py",
+      "apps/api/db/models/batch_schedule_rule.py",
+      "apps/api/db/models/batch_dead_letter_record.py",
+      "apps/api/services/batch_engine_service.py",
+      "apps/api/services/batch_coordinator_service.py",
+      "apps/api/routers/batch_router.py",
+      "tests/batch/test_batch_models.py",
+      "tests/batch/test_batch_engine_service.py",
+      "tests/batch/test_batch_coordinator_service.py",
+      "tests/batch/test_batch_router.py"
+    ],
+    "indexed_at": "2026-08-29T12:10:24.978891+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-AUTH-001",
+    "title": "Multi-Tenant Authentication & Dynamic RBAC/ABAC Engine",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/api/db/models/auth_tenant.py",
+      "apps/api/db/models/auth_user.py",
+      "apps/api/db/models/auth_role.py",
+      "apps/api/db/models/auth_permission.py",
+      "apps/api/db/models/auth_api_key.py",
+      "apps/api/db/models/auth_audit_log.py",
+      "apps/api/db/models/auth_session.py",
+      "apps/api/services/oidc_auth_service.py",
+      "apps/api/services/rbac_policy_engine.py",
+      "apps/api/routers/auth_router.py",
+      "tests/auth/test_auth_models.py",
+      "tests/auth/test_oidc_auth_service.py",
+      "tests/auth/test_rbac_policy_engine.py",
+      "tests/auth/test_auth_router.py"
+    ],
+    "indexed_at": "2026-08-29T12:36:17.571583+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-DEPLOY-001",
+    "title": "Production Deployment Configuration, Multi-Stage Containerization, Kubernetes & Helm Manifests, CI/CD Pipelines",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "Dockerfile.api",
+      "Dockerfile.web",
+      "Dockerfile.worker",
+      "docker-compose.prod.yml",
+      "deployments/docker/nginx.conf",
+      "deployments/docker/prometheus.yml",
+      "deployments/k8s/namespace.yaml",
+      "deployments/k8s/configmaps.yaml",
+      "deployments/k8s/secrets.yaml",
+      "deployments/k8s/api-deployment.yaml",
+      "deployments/k8s/web-deployment.yaml",
+      "deployments/k8s/worker-deployment.yaml",
+      "deployments/k8s/services.yaml",
+      "deployments/k8s/ingress.yaml",
+      "deployments/k8s/hpa.yaml",
+      "deployments/k8s/pdb.yaml",
+      "deployments/helm/dnk-os/Chart.yaml",
+      "deployments/helm/dnk-os/values.yaml",
+      "deployments/helm/dnk-os/values-staging.yaml",
+      "deployments/helm/dnk-os/values-prod.yaml",
+      ".github/workflows/ci.yml",
+      ".github/workflows/deploy.yml",
+      "tests/deployment/test_docker_configurations.py",
+      "tests/deployment/test_docker_compose_prod.py",
+      "tests/deployment/test_k8s_manifests.py",
+      "tests/deployment/test_helm_chart.py",
+      "tests/deployment/test_github_workflows.py"
+    ],
+    "indexed_at": "2026-08-29T12:53:51.619929+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-CANVAS-001",
+    "title": "Visual Canvas MVP Workflow Designer and ReBurn Integration Bridge",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "docs/tech/specs/DNK-CANVAS-001_visual_canvas_workflow_designer_spec.md",
+      "apps/api/schemas/workflow_dag_schemas.py",
+      "apps/api/services/canvas_execution_engine.py",
+      "apps/api/services/canvas_reburn_templates.py",
+      "apps/api/routers/canvas_router.py",
+      "apps/web/components/canvas/nodes/WorkflowCustomNodes.tsx",
+      "apps/web/components/canvas/WorkflowDesigner.tsx",
+      "apps/web/app/canvas/page.tsx",
+      "tests/canvas/test_workflow_dag_schemas.py",
+      "tests/canvas/test_canvas_execution_engine_and_api.py",
+      "tests/canvas/test_canvas_reburn_templates.py"
+    ],
+    "indexed_at": "2026-08-29T13:25:35.322893+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-SYS-001",
+    "title": "Swarm Resilience Health Probe API",
+    "summary": "Implementation of Swarm Resilience, Process Guard Audit, and Token Health probes with TDD test suite",
+    "components": [
+      "apps/api/routers/swarm_resilience_router.py",
+      "tests/verification/test_swarm_resilience.py",
+      "apps/api/main.py",
+      "apps/api/routers/__init__.py",
+      "scripts/system/process_guard.py",
+      "scripts/system/gerych.sh",
+      "scripts/system/hermes_pre_tool_hook.py",
+      "scripts/system/gerych_swarm.sh"
+    ],
+    "indexed_at": "2026-08-30T19:00:53.825486+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-DNK-OPEN-DESIGN-CORE-001",
+    "title": "Unify Open Design as Official DNK OS Visual Shell & Backend Gateway Bridge",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "visual_shell/open_design/apps/web/app/layout.tsx",
+      "visual_shell/open_design/apps/web/src/state/appearance.ts",
+      "visual_shell/open_design/apps/web/src/lib/dnk-api.ts",
+      "visual_shell/open_design/apps/web/src/constants/swarm.ts",
+      "apps/web/app/layout.tsx",
+      "apps/web/lib/dnk-api.ts",
+      "apps/web/lib/swarm.ts",
+      "apps/web/components/canvas/StitchLeftChatPanel.tsx"
+    ],
+    "indexed_at": "2026-08-30T20:40:20.131435+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TELEPROMPTER-CORE-001",
+    "title": "Framework-Agnostic Teleprompter Core Runtime Implementation & ReBurn Integration",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "packages/teleprompter-core/src/domain/tokens.ts",
+      "packages/teleprompter-core/src/alignment/engine.ts",
+      "packages/teleprompter-core/src/state/session-machine.ts",
+      "packages/teleprompter-core/tests/integration/reburn-consumer.test.ts"
+    ],
+    "indexed_at": "2026-09-02T14:57:47.557258+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TaskDNA-CANVAS-REACT-UI-001",
+    "title": "React UI Studio Shell",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/src/components/canvas/store.ts",
+      "apps/web/src/components/canvas/CanvasStageView.tsx",
+      "apps/web/src/components/canvas/CanvasToolbar.tsx",
+      "apps/web/src/components/canvas/LayersPanel.tsx",
+      "apps/web/src/components/canvas/InspectorPanel.tsx",
+      "apps/web/src/components/canvas/CanvasStudioLayout.tsx"
+    ],
+    "indexed_at": "2026-09-02T15:58:13.670130+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "VIDEO_AUDIT_PIPELINE_001B",
+    "title": "VIDEO-AUDIT-PIPELINE-001B Secure Media Ingestion & Verification Fixes",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "packages/video-audit-core/src/pipeline/application/orchestrator.ts",
+      "packages/video-audit-core/src/pipeline/infrastructure/in-memory/in-memory-job-repository.ts",
+      "packages/video-audit-core/src/pipeline/domain/jobs/job.ts",
+      "packages/video-audit-core/src/pipeline/infrastructure/media-probe/deterministic-media-probe.ts",
+      "packages/video-audit-core/src/pipeline/ports/job-repository.ts"
+    ],
+    "indexed_at": "2026-09-02T18:43:55.029677+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "VIDEO_AUDIT_PIPELINE_001C",
+    "title": "VIDEO-AUDIT-PIPELINE-001C Transcription Adapter & WhisperX Layer",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "packages/video-audit-core/src/pipeline/domain/transcription/transcript.ts",
+      "packages/video-audit-core/src/pipeline/ports/transcription-provider.ts",
+      "packages/video-audit-core/src/pipeline/infrastructure/transcription/whisperx-transcription-adapter.ts",
+      "packages/video-audit-core/src/pipeline/infrastructure/transcription/deterministic-transcription-provider.ts",
+      "packages/video-audit-core/src/pipeline/application/transcription-worker.ts"
+    ],
+    "indexed_at": "2026-09-02T19:08:12.614344+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASKDNA-CANVAS-SWARM-PHASE3",
+    "title": "Phase 3: Agent Co-Pilot & Swarm Automation",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "../../apps/web/src/canvas/swarm-copilot-phase3.test.ts",
+      "../../apps/web/store/canvasStore.ts",
+      "../../apps/web/components/canvas/nodes/StrategyMarkdownNode.tsx",
+      "../../apps/web/components/canvas/nodes/DesignGalleryNode.tsx",
+      "../../apps/web/components/canvas/nodes/ApiDocsCodeNode.tsx",
+      "../../apps/web/components/canvas/nodes/SprintKanbanNode.tsx"
+    ],
+    "indexed_at": "2026-09-02T20:27:57.907145+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "VIDEO-AUDIT-PIPELINE-001E-C",
+    "title": "Gemini/Claude Provider Adapters",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/provider-port.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/provider-errors.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/retry-policy.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/token-budget.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/telemetry.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/gemini/client.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/gemini/adapter.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/gemini/mapper.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/claude/client.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/claude/adapter.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/claude/mapper.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/index.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/tests/provider-adapters.test.ts"
+    ],
+    "indexed_at": "2026-09-02T21:11:27.629392+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-CANVAS-SSOT-001",
+    "title": "Step 1: Unified Reactive Canvas Store SSOT Integration",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/components/workspace/DNKStudioWorkspace.tsx",
+      "apps/web/components/workspace/StudioDock.tsx",
+      "apps/web/components/workspace/CapCutTopBar.tsx",
+      "apps/web/components/canvas/CanvasEngine.tsx"
+    ],
+    "indexed_at": "2026-09-03T13:00:32.578851+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-CANVAS-WHITEBOARD-002",
+    "title": "Step 2: Transparent Sketch Whiteboard Overlay Excalidraw Integration",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/components/canvas/WhiteboardOverlay.tsx",
+      "apps/web/store/canvasStore.ts",
+      "apps/web/components/workspace/StudioDock.tsx",
+      "apps/web/components/workspace/DNKStudioWorkspace.tsx"
+    ],
+    "indexed_at": "2026-09-03T13:30:45.191283+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-OS-PHASE3",
+    "title": "Phase 3: Swarm Co-Pilot integration into Unified Spatial Canvas",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/lib/budgetGuard.ts",
+      "apps/web/lib/intentResolver.ts",
+      "apps/web/components/copilot/CopilotToolbar.tsx",
+      "apps/web/components/workspace/DNKStudioWorkspace.tsx",
+      "adapters/beads_adapter.py"
+    ],
+    "indexed_at": "2026-09-03T15:36:43.776652+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-OS-PHASE4",
+    "title": "Phase 4: Photo Studio integration with BiRefNet, IC-Light, and FLUX.1 + LayerDiffuse",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/components/canvas/nodes/PhotoStudioNode.tsx",
+      "services/dnk_canvas_worker/birefnet.py",
+      "services/dnk_canvas_worker/iclight.py",
+      "services/dnk_canvas_worker/flux1.py",
+      "services/dnk_canvas_worker/__init__.py",
+      "tests/canvas/test_canvas_v3_phase4_adapters.py"
+    ],
+    "indexed_at": "2026-09-03T16:15:27.806179+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-CANVAS-AUTOSAVE-004",
+    "title": "Canvas Client Crash Resolved",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [],
+    "indexed_at": "2026-09-03T16:20:12.477537+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "DNK-OS-PHASE5",
+    "title": "Phase 5: Video Intelligence Integration with @dnk/video-audit-core",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/components/canvas/nodes/VideoAuditReportNode.tsx",
+      "packages/video_audit_core/transcription_adapter.py",
+      "packages/video_audit_core/scene_extraction_worker.py",
+      "packages/video_audit_core/ocr_worker.py",
+      "packages/video_audit_core/audio_feature_worker.py",
+      "packages/video_audit_core/hook_retention_analysis.py",
+      "packages/video_audit_core/claim_verification.py",
+      "packages/video_audit_core/__init__.py",
+      "packages/video-audit-core/src/index.ts",
+      "tests/media/test_video_audit_core.py"
+    ],
+    "indexed_at": "2026-09-03T16:29:26.710665+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-CANVAS-NODES-FIX",
+    "title": "Canvas TypeError setNodes Resolved",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/store/canvasStore.ts"
+    ],
+    "indexed_at": "2026-09-03T16:42:39.931898+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "VIDEO-AUDIT-PIPELINE-001E-F-LIVE",
+    "title": "Niche Adaptation Final Verification Gate",
+    "summary": "Fully verified packages/video-audit-core/package.json exists with test:live script, tests pass 100% (138/138 tests), and CWD false positive is resolved.",
+    "components": [
+      "packages/video-audit-core"
+    ],
+    "indexed_at": "2026-09-03T18:32:35.294367+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-CANVAS-STITCH-003",
+    "title": "Stitch UI Runtime Error Fix",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/components/workspace/DNKStudioWorkspace.tsx",
+      "apps/web/components/canvas/StitchCanvasControls.tsx",
+      "apps/web/components/canvas/StitchPromptDock.tsx",
+      "apps/web/components/canvas/StitchAgentLog.tsx"
+    ],
+    "indexed_at": "2026-09-03T18:44:07.884266+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "VIDEO-AUDIT-PIPELINE-001E-F-R1",
+    "title": "Niche Adaptation Certification Gate",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [],
+    "indexed_at": "2026-09-04T08:49:54.612851+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "001E-PROD-PHASE-2",
+    "title": "SpendGuard Expansion & Telemetry",
+    "summary": "Expanded SpendGuard with token-based pricing, pre-flight checks, latency & spend telemetry, dashboard metrics calculation, Langfuse tracing, and fallback logging.",
+    "components": [
+      "packages/video-audit-core/src/pipeline/application/spend-guard.ts",
+      "packages/video-audit-core/src/pipeline/application/telemetry.ts",
+      "packages/video-audit-core/src/adaptation/domain/script-writer/live-llm-script-writer.ts",
+      "packages/video-audit-core/tests/adaptation/spend-guard.test.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/telemetry.ts",
+      "services/dnk_video_ai_creator/infrastructure/llm/shared/langfuse-adapter.ts"
+    ],
+    "indexed_at": "2026-09-04T10:34:02.474621+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-SWARM-CANVAS-WS-001",
+    "title": "CanvasRuntimeBridge Swarm WebSocket Gateway Streaming Integration",
+    "summary": "Full integration of CanvasRuntimeBridge into swarm_ws.py for real-time WebSocket event broadcasting, hardened dnk_swarm_status tool kwargs, and robust Redis fallback",
+    "components": [
+      "core/canvas_runtime_bridge.py",
+      "core/runtime_events.py",
+      "apps/api/routers/swarm_ws.py",
+      "core/hermes_agent/tools/dnk_swarm_tool.py",
+      "tests/verification/test_swarm_canvas_bridge_ws.py"
+    ],
+    "indexed_at": "2026-09-04T14:11:33.695720+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-REMOTION-CANVAS-BRIDGE-001",
+    "title": "Remotion Video AI Compiler & CanvasRuntimeBridge SOTA v5 Integration",
+    "summary": "Full integration of CanvasRuntimeBridge into RemotionCompiler with clean-room Remotion v5 math (Frame-as-a-Function-of-Time, <Sequence />, spring physics), real-time WebSocket progress telemetry, and canvas storyboard compilation.",
+    "components": [
+      "services/dnk_video_ai_creator/remotion_compiler.py",
+      "skills/remotion_composition_patterns/SKILL.md",
+      "docs/tech/sota_assimilation/remotion_v5_patterns.md",
+      "tests/verification/test_remotion_compiler.py"
+    ],
+    "indexed_at": "2026-09-04T18:16:10.000000+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-SPEC-STANDARD-V25",
+    "title": "Gerych Task Specification Standard v2.5 & Zero-Waste Protocol",
+    "summary": "Canonical template and governance protocol (docs/templates/GERYCH_TASK_TEMPLATE.md) defining Mandatory Atomic Slice Execution (MASE <= 25 tools/turn), virtualenv SSOT, strict relative paths, MRH compliance, and Obsidian dual-reader knowledge synchronization.",
+    "components": [
+      "docs/templates/GERYCH_TASK_TEMPLATE.md",
+      "AGENTS.md",
+      "core/orchestrator/agents/herich_librarian/SOUL.md",
+      "core/orchestrator/agents/gerych_prime/SOUL.md"
+    ],
+    "indexed_at": "2026-09-04T18:48:00.000000+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "TASK-STUDIO-RELEASE-001",
+    "title": "Spatial Canvas & Swarm Bridge Release",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "apps/web/components/canvas/CanvasEngine.tsx",
+      "apps/api/routers/swarm_ws.py",
+      "core/canvas_runtime_bridge.py",
+      "core/security/adversarial_review.py"
+    ],
+    "indexed_at": "2026-09-04T19:13:14.418292+00:00",
+    "status": "Verified SSOT"
+  },
+  {
+    "task_id": "SLICE-16.3",
+    "title": "MCP Slim Guard - Meta-Tools for Context Compression",
+    "summary": "Successfully completed phase objectives and full verification.",
+    "components": [
+      "core/orchestrator/tool_semantic_index.py",
+      "core/orchestrator/mcp_slim_guard.py",
+      "core/orchestrator/tool_registry.py",
+      "core/orchestrator/lazy_tool_loader.py",
+      "core/orchestrator/task_triage.py",
+      "tests/core/test_tool_semantic_index.py",
+      "tests/core/test_mcp_slim_guard.py"
+    ],
+    "indexed_at": "2026-09-05T15:36:13.843870+00:00",
+    "status": "Verified SSOT"
+  }
+]

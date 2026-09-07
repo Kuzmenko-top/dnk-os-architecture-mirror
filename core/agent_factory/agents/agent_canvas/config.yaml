@@ -1,0 +1,7 @@
+domain_scope: visual_shell/
+model: qwen/qwen2.5-coder-32b-instruct
+name: agent_canvas
+provider: nvidia_nim
+role: Visual Shell & Canvas UI Lead
+sandbox_enabled: true
+temperature: 0.2

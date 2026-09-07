@@ -1,0 +1,92 @@
+{
+  "_mrh_header": {
+    "mrh_id": "DNK-STD-0075",
+    "purpose": "Validation schema for agentic pattern cards.",
+    "canonical_source": true,
+    "alters_files": [
+      "docs/schemas/agentic_pattern_schema.json"
+    ],
+    "triggers_tasks": [
+      "TF_REGISTRY_PATTERN_001_ENRICHMENT"
+    ],
+    "status": "Active",
+    "version": "1.1.0",
+    "updated_at": "2026-08-08"
+  },
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Agentic Pattern",
+  "description": "Schema for validating an Agentic Pattern in the DNK OS Agentic Patterns Registry.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^DNK-(PAT|AGNT)-\\d{3}$"
+    },
+    "name": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Multi-Agent System",
+        "Optimization Loop",
+        "Cognitive Memory",
+        "Procedural Knowledge",
+        "State Machine / Workflow",
+        "Dynamic Routing",
+        "Task Enrichment"
+      ]
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "validation_methods": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "Active",
+            "Draft",
+            "Deprecated"
+          ]
+        },
+        "version": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "version"
+      ]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "description",
+    "type",
+    "roles",
+    "triggers",
+    "validation_methods"
+  ],
+  "additionalProperties": false
+}

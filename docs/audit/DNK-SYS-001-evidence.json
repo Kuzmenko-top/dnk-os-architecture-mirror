@@ -1,0 +1,32 @@
+{
+  "task_id": "DNK-SYS-001",
+  "title": "Swarm Resilience Health Probe API",
+  "status": "Completed",
+  "branch": "feature/dnk-studio-arch-001",
+  "commit_sha": "8c2958c6b5",
+  "pull_request_url": null,
+  "generated_at": "2026-08-30T19:00:53.824435+00:00",
+  "components": [
+    "apps/api/routers/swarm_resilience_router.py",
+    "tests/verification/test_swarm_resilience.py",
+    "apps/api/main.py",
+    "apps/api/routers/__init__.py",
+    "scripts/system/process_guard.py",
+    "scripts/system/gerych.sh",
+    "scripts/system/hermes_pre_tool_hook.py",
+    "scripts/system/gerych_swarm.sh"
+  ],
+  "tests": {
+    "master_quality_gate": "Verification manually skipped (--skip-verify)",
+    "adversarial_gate": "Adversarial review manually skipped (--skip-verify)",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

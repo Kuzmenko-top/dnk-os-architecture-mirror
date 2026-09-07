@@ -1,0 +1,7 @@
+domain_scope: services/
+model: deepseek-ai/deepseek-r1
+name: agent_yuriy
+provider: nvidia_nim
+role: Microservices & Sandbox Architect
+sandbox_enabled: true
+temperature: 0.1

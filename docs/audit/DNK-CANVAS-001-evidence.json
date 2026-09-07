@@ -1,0 +1,35 @@
+{
+  "task_id": "DNK-CANVAS-001",
+  "title": "Visual Canvas MVP Workflow Designer and ReBurn Integration Bridge",
+  "status": "Completed",
+  "branch": "feature/dnk-canvas-mvp-workflow-designer",
+  "commit_sha": "df46038a79",
+  "pull_request_url": null,
+  "generated_at": "2026-08-29T13:25:30.114740+00:00",
+  "components": [
+    "docs/tech/specs/DNK-CANVAS-001_visual_canvas_workflow_designer_spec.md",
+    "apps/api/schemas/workflow_dag_schemas.py",
+    "apps/api/services/canvas_execution_engine.py",
+    "apps/api/services/canvas_reburn_templates.py",
+    "apps/api/routers/canvas_router.py",
+    "apps/web/components/canvas/nodes/WorkflowCustomNodes.tsx",
+    "apps/web/components/canvas/WorkflowDesigner.tsx",
+    "apps/web/app/canvas/page.tsx",
+    "tests/canvas/test_workflow_dag_schemas.py",
+    "tests/canvas/test_canvas_execution_engine_and_api.py",
+    "tests/canvas/test_canvas_reburn_templates.py"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

@@ -1,0 +1,47 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/herich_librarian/memories/MEMORY.md"
+# purpose: "Canonical Long-Term Cognitive Memory for Gerych Core (DNK OS SSOT)."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "2.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+# 🧠 Gerych Core Long-Term Cognitive Memory
+
+## 👑 1. System Owner & Core Partnership
+- **Owner**: Maksym Kuzmenko (Maxim), Creator & Architect of DNK OS.
+- **Communication Language**: Ukrainian (🇺🇦).
+- **Code Language**: English (🇬🇧).
+- **Core Workspace**: `ws-alpha-001` (Production Root: `DNKOS_MVP/`).
+
+## 🧬 2. Two-Track Repository Assimilation Pipeline
+Gerych actively executes the Two-Track Evolution Algorithm (`DNKOS_MVP/core/dna_assimilation.py`):
+* **Track 1 (Permissive: MIT / Apache 2.0 / BSD)**: Direct component and pattern assimilation.
+* **Track 2 (Restrictive: GPL / AGPL)**: Clean-room reverse engineering and architectural synthesis without direct code copying.
+
+### 🌟 Active Donor Queue for SOTA Assimilation:
+1. **`FrameCN / Remotion` (Clean-Room)** ➔ [Media Engine] Programmatic video generation for `dnk_video_ai_creator`.
+2. **`pgvector/pgvector` (PostgreSQL)** ➔ [Vector RAG] Scalable embeddings & memory store on PostgreSQL.
+
+### ✅ Successfully Assimilated Donors:
+- `tldraw/tldraw` (DNK-UI-006: Infinite Freehand Whiteboard & Moodboard Engine)
+- `xyflow/xyflow` (DNK-UI-005: React Flow Canvas Engine)
+- `Shopify/theme-tools` & `barrel/shopify-vite` (DNK-ECOM-002: Liquid AST & Vite Theme Engine)
+- `langchain-ai/open-canvas` (DNK-ARCH-001)
+- `langchain-ai/managed-deepagents` (DNK-ARCH-002)
+- `langchain-ai/openwiki` (DNK-COMP-004)
+- `langchain-ai/langgraph` (DNK-ARCH-022)
+- `crewAIInc/crewAI` (DNK-ARCH-020)
+- `microsoft/autogen` (DNK-ARCH-021)
+- `run-llama/llama_index` (DNK-ARCH-019)
+- `huggingface/transformers` (DNK-ARCH-018)
+- `OpenDevin/OpenSWE` (DNK-ARCH-015)
+
+## 🛡️ 3. Architectural Invariants
+1. **Relative Paths**: Always use relative paths (`./`, `../`) in generated code.
+2. **Machine-Readable Headers**: Include MRH headers (`DNK-STD-0075`) in Python, YAML, and Markdown files.
+3. **Memory Isolation**: Maintain tenant (`tenant-alpha-001`) and workspace (`ws-alpha-001`) isolation across all supervisor/worker runs.
+4. **Zero-Broken-Window Rule**: All regression suites must pass with 100% Green (`scripts/verify_all.sh`).

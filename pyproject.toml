@@ -1,0 +1,57 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "pyproject_toml"
+# purpose: "Project dependencies and build configuration for DNK OS"
+# author: "DNK-e.com Maksym"
+# license: "DNK-INTERNAL"
+# status: "Active"
+# version: "1.2.0"
+# updated_at: "2026-09-02"
+# --- END DNK-MRH-HEADER ---
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dnkos-mvp"
+version = "0.1.0"
+description = "DNK OS MVP — Clean Architecture Production Engine powered by DNK_HUB Brain"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.110.0",
+    "fastmcp>=0.4.0",
+    "pydantic>=2.6.0",
+    "loguru>=0.7.2",
+    "httpx>=0.27.0",
+    "typer>=0.9.0",
+    "asyncpg>=0.31.0",
+    "sqlalchemy>=2.0.52",
+    "redis>=8.1.0",
+    "uvicorn[standard]>=0.28.0",
+    "psutil>=5.9.0",
+    "requests>=2.31.0",
+    "psycopg2-binary>=2.9.9",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.23.0",
+    "pytest-cov>=7.1.0",
+    "pyyaml>=6.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = ["--import-mode=importlib"]
+pythonpath = [".", "..", "adapters", "dnk_os", "DNK OS", "DNK OS/adapters", "services"]
+filterwarnings = [
+    "ignore::starlette.exceptions.StarletteDeprecationWarning",
+    "ignore::DeprecationWarning:fastapi.*",
+    "ignore::DeprecationWarning:starlette.*",
+]
+
+
+[tool.hatch.build.targets.wheel]
+packages = ["core", "services"]

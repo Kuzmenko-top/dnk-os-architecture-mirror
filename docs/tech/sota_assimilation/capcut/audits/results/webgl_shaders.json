@@ -1,0 +1,118 @@
+{
+  "engine": "ByteDance Effect Graphics Engine (effect_c)",
+  "context_types": [
+    "webgl2",
+    "webgl"
+  ],
+  "precision_defaults": {
+    "float": "mediump",
+    "int": "highp"
+  },
+  "shaders": [
+    {
+      "id": "shader_vs_standard_quad",
+      "type": "Vertex Shader",
+      "purpose": "Full-viewport quad rendering and texture coordinate mapping for post-processing/filters",
+      "attributes": [
+        {
+          "name": "position",
+          "type": "vec3",
+          "description": "Vertex quad coordinates"
+        },
+        {
+          "name": "textureCoord",
+          "type": "vec2",
+          "description": "UV coordinates"
+        }
+      ],
+      "varyings": [
+        {
+          "name": "TexCoords",
+          "type": "vec2",
+          "description": "Interpolated UV coordinates"
+        }
+      ],
+      "source": "attribute vec3 position;\nattribute vec2 textureCoord;\nvarying vec2 TexCoords;\n\nvoid main() {\n    gl_Position = vec4(position, 1.0);\n    TexCoords = textureCoord;\n}"
+    },
+    {
+      "id": "shader_fs_color_clamp_minmax",
+      "type": "Fragment Shader",
+      "purpose": "Dynamic color range clamping, HDR/exposure limiter, and contrast boundary management",
+      "uniforms": [
+        {
+          "name": "input_s",
+          "type": "sampler2D",
+          "description": "Source image texture"
+        },
+        {
+          "name": "minValue",
+          "type": "float",
+          "description": "Lower intensity threshold"
+        },
+        {
+          "name": "maxValue",
+          "type": "float",
+          "description": "Upper intensity threshold"
+        }
+      ],
+      "varyings": [
+        {
+          "name": "TexCoords",
+          "type": "vec2",
+          "description": "Interpolated UV coordinates"
+        }
+      ],
+      "source": "precision mediump float;\nvarying vec2 TexCoords;\nuniform sampler2D input_s;\nuniform float minValue;\nuniform float maxValue;\n\nvoid main() {\n    vec4 texColor = texture2D(input_s, TexCoords);\n    gl_FragColor = min(vec4(maxValue), max(vec4(minValue), texColor));\n}"
+    },
+    {
+      "id": "shader_fs_dual_blend_composite",
+      "type": "Fragment Shader",
+      "purpose": "Dual-input texture compositor (layer blending, mask alpha multiplication, effect overlay)",
+      "uniforms": [
+        {
+          "name": "input0_s",
+          "type": "sampler2D",
+          "description": "Base layer texture"
+        },
+        {
+          "name": "input1_s",
+          "type": "sampler2D",
+          "description": "Overlay / mask texture"
+        },
+        {
+          "name": "outId",
+          "type": "int",
+          "description": "Output composite mode index"
+        }
+      ],
+      "varyings": [
+        {
+          "name": "TexCoords",
+          "type": "vec2",
+          "description": "Interpolated UV coordinates"
+        }
+      ],
+      "source": "precision mediump float;\nvarying vec2 TexCoords;\nuniform sampler2D input0_s;\nuniform sampler2D input1_s;\nuniform int outId;\n\nvoid main() {\n    vec4 baseColor = texture2D(input0_s, TexCoords);\n    vec4 overlayColor = texture2D(input1_s, TexCoords);\n    if (outId == 0) {\n        gl_FragColor = mix(baseColor, overlayColor, overlayColor.a);\n    } else {\n        gl_FragColor = baseColor * overlayColor;\n    }\n}"
+    },
+    {
+      "id": "shader_fs_tensor_coord_remapping",
+      "type": "Fragment Shader",
+      "purpose": "GPU-accelerated tensor packing/unpacking and dimension coordinate remapping for neural filter shaders",
+      "uniforms": [
+        {
+          "name": "input_s",
+          "type": "sampler2D",
+          "description": "Packed tensor data texture"
+        }
+      ],
+      "varyings": [
+        {
+          "name": "TexCoords",
+          "type": "vec2",
+          "description": "Interpolated UV coordinates"
+        }
+      ],
+      "source": "precision mediump float;\nprecision highp int;\nvarying vec2 TexCoords;\nuniform sampler2D input_s;\nuniform int dstWidth;\nuniform int dstHeight;\n\nvoid main() {\n    vec4 in4 = texture2D(input_s, TexCoords);\n    gl_FragColor = in4;\n}"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+domain_scope: tests/ & scripts/
+model: mistralai/mistral-large-2-instruct
+name: agent_tiffany
+provider: nvidia_nim
+role: Chief Governance & QA Gatekeeper
+sandbox_enabled: true
+temperature: 0.0

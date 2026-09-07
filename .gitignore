@@ -1,0 +1,149 @@
+# Python environment & bytecode
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.extracted_assets/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local configuration & environment secrets
+.env
+.env.*
+.vertex_token
+.dnk_active_project.env
+!.env.example
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Logs & Telemetry
+logs/
+telemetry/metrics/
+telemetry/traces/
+telemetry/trajectories/
+*.log
+
+# Web Shell dependencies & build files
+**/node_modules/
+**/.next/
+**/build/
+**/dist/
+package-lock.json
+pnpm-lock.yaml
+
+# Scratch, temporary files and caches
+*.tmp
+.tmp/
+.cache/
+*.swp
+*.swo
+
+# Local databases & runtimes
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+apps/api/visual_shell_db.json
+**/visual_shell_db.json
+tests/*_storage.json
+tests/scones_storage.json
+
+# Hermes agent runtimes & caches
+.hermes/
+.runtime_cache/
+core/hermes_agent/
+core/orchestrator/agents/**/state.db*
+core/orchestrator/agents/**/verification_evidence.db*
+core/orchestrator/agents/**/checkpoints
+core/orchestrator/agents/**/checkpoints/
+core/orchestrator/agents/**/lsp
+core/orchestrator/agents/**/lsp/
+core/orchestrator/agents/**/bin
+core/orchestrator/agents/**/bin/
+core/orchestrator/agents/**/cache
+core/orchestrator/agents/**/cache/
+core/orchestrator/agents/**/pastes
+core/orchestrator/agents/**/pastes/
+core/orchestrator/agents/**/sandboxes
+core/orchestrator/agents/**/sandboxes/
+core/orchestrator/agents/**/sessions
+core/orchestrator/agents/**/sessions/
+core/orchestrator/agents/**/terminal-sessions
+core/orchestrator/agents/**/terminal-sessions/
+core/orchestrator/agents/**/audio_cache
+core/orchestrator/agents/**/audio_cache/
+core/orchestrator/agents/**/image_cache
+core/orchestrator/agents/**/image_cache/
+core/orchestrator/agents/**/images
+core/orchestrator/agents/**/images/
+core/orchestrator/agents/**/pairing
+core/orchestrator/agents/**/pairing/
+core/orchestrator/agents/**/logs
+core/orchestrator/agents/**/logs/
+core/orchestrator/agents/**/models_dev_cache*
+core/orchestrator/agents/**/provider_models_cache*
+core/orchestrator/agents/**/ollama_cloud_models_cache*
+core/orchestrator/agents/**/.curator_backups/
+core/orchestrator/agents/**/.hermes_history
+core/orchestrator/agents/**/.update_check
+core/orchestrator/agents/**/auth.json
+core/orchestrator/agents/**/processes.json
+core/orchestrator/agents/**/interrupt_debug.log
+core/orchestrator/agents/**/.skills_prompt_snapshot.json
+.hermes_history
+*.lock
+infra/postgres_data/
+telemetry/vault_store.json
+
+# Local Runtime & SQLite Artifacts
+*.db-journal
+*.lock
+canvas_production_fallback.db
+apps/api/visual_shell_db.json
+# Ephemeral Swarm Worktrees & Runtime Temp
+.worktrees/
+*.rdb
+.dnk_active_slices.json
+.scones/
+cache/
+**/.tirith-install-failed
+**/*.tsbuildinfo
+**/scones_storage.json
+services/dnk_shopify/DNK-e.com/
+services/dnk_shopify/DNK-e.com
+
+# Runtime Local State & Sessions
+data/
+sessions/
+docs/audit/sessions/
+telemetry/accounting_log.json
+artifacts/
+
+# Ephemeral task specs & self-heal runtime plans
+docs/plans/my_task/task_*.md
+docs/plans/self_heal/TASK-DNK-SELFHEAL-*.md
+docs/plans/TASK_ACTIVE.md
+tests/verification/*_temp*.canvas
+tests/verification/test_control_panel.canvas
+docs/notes/tasks_and_ideas/**/test-*
+docs/notes/tasks_and_ideas/**/test_*
+docs/notes/tasks_and_ideas/**/task-selfheal-*
+
+# Obsidian local cache inside notes
+docs/notes/.obsidian/
+docs/notes/**/.DS_Store
+
+# Graphify artifacts
+graphify-out/
+.graphify*
+
+# Ephemeral workspace sandbox directories
+ws-alpha-001/
+ws-*/
+

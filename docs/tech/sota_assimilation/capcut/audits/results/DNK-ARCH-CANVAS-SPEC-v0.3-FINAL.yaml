@@ -1,0 +1,334 @@
+# DNK-ARCH-CANVAS-SPEC v0.3 (FINAL)
+# Фінальна специфікація на основі CAPCUT-CANVAS-AUDIT-001 + CAPCUT-WASM-AUDIT-002
+# Ключові зміни: Rust/Wasm модулі, WebGL shaders, IndexedDB persistence
+
+## 1. Rendering Stack (Фінальний)
+
+### 1.1. Primary Renderer
+```yaml
+renderer:
+  type: "Konva.js (v8.x+)"
+  license: "MIT"
+  github: "https://github.com/konvajs/konva"
+  
+  wasm_acceleration:
+    language: "Rust"
+    binding: "wasm-bindgen"
+    repository: "everphoto-rust-clean (ByteDance, internal)"
+    compilation: "wasm-pack build --release"
+    
+    modules:
+      - name: "image-processing.wasm"
+        purpose: "GPU-accelerated filters, resize, crop"
+        exports:
+          - "resize_image"
+          - "apply_filter"
+          - "composite_layers"
+          - "chunked_upload"
+      
+      - name: "text-rendering.wasm"
+        purpose: "Skia-based text rasterization"
+        exports:
+          - "layout_text"
+          - "measure_glyphs"
+          - "rasterize_font"
+      
+      - name: "crypto.wasm"
+        purpose: "Asset integrity, DRM"
+        exports:
+          - "file_digest"  # SHA-256
+          - "decrypt_data"
+          - "encrypt_data"
+```
+
+### 1.2. WebGL Shader Engine (effect_c)
+
+```yaml
+webgl_shaders:
+  engine: "ByteDance effect_c (WebGL2/WebGL1)"
+  
+  vertex_shaders:
+    - name: "quad_view.vert"
+      purpose: "Standard quad view [-1, 1] for UV mapping"
+      code: |
+        attribute vec2 a_position;
+        attribute vec2 a_texCoord;
+        varying vec2 v_texCoord;
+        
+        void main() {
+            gl_Position = vec4(a_position, 0, 1);
+            v_texCoord = a_texCoord;
+        }
+  
+  fragment_shaders:
+    - name: "min_max_clamp.frag"
+      purpose: "Dynamic exposure/gamma limiting"
+      code: |
+        precision mediump float;
+        uniform sampler2D u_texture;
+        uniform float u_min;
+        uniform float u_max;
+        varying vec2 v_texCoord;
+        
+        void main() {
+            vec4 color = texture2D(u_texture, v_texCoord);
+            color.rgb = clamp(color.rgb, u_min, u_max);
+            gl_FragColor = color;
+        }
+    
+    - name: "dual_blend_composite.frag"
+      purpose: "Multi-layer blending (mix/multiply)"
+      code: |
+        precision mediump float;
+        uniform sampler2D u_base;
+        uniform sampler2D u_blend;
+        uniform float u_opacity;
+        varying vec2 v_texCoord;
+        
+        void main() {
+            vec4 base = texture2D(u_base, v_texCoord);
+            vec4 blend = texture2D(u_blend, v_texCoord);
+            
+            // Multiply blend mode
+            vec4 result = base * blend;
+            result = mix(base, result, u_opacity);
+            
+            gl_FragColor = result;
+        }
+    
+    - name: "tensor_packing.frag"
+      purpose: "Neural network filter remapping"
+      code: |
+        precision mediump float;
+        uniform sampler2D u_input;
+        uniform vec2 u_uv_offset;
+        varying vec2 v_texCoord;
+        
+        void main() {
+            vec2 uv = v_texCoord + u_uv_offset;
+            gl_FragColor = texture2D(u_input, uv);
+        }
+```
+
+### 1.3. Offscreen Canvas Buffers
+
+```yaml
+offscreen_buffers:
+  - id: "text_metric_buffer"
+    dimensions: "750x81"
+    purpose: "Tiptap/ProseMirror text metrics"
+    update_trigger: "On text change"
+    integration: "Sync to Konva.Text on commit"
+  
+  - id: "color_wheel_buffer"
+    dimensions: "300x150"
+    purpose: "Color picker wheel (.pencil-wheel-canvas)"
+    update_trigger: "On color change"
+    integration: "Konva.Image (static texture)"
+  
+  - id: "thumbnail_cache"
+    dimensions: "512x512"
+    purpose: "Preview thumbnails"
+    update_trigger: "On canvas change (debounced)"
+    integration: "IndexedDB persistence"
+```
+
+## 2. State Management (Фінальний)
+
+### 2.1. IndexedDB Persistence
+
+```yaml
+indexeddb:
+  database: "dnk_os_canvas"
+  version: 1
+  
+  stores:
+    - name: "drafts"
+      key_path: "canvas_id"
+      purpose: "Auto-save canvas state"
+      schema:
+        canvas_id: "UUID"
+        state: "CanvasState (JSON)"
+        timestamp: "ISO8601"
+        version: "Int32"
+    
+    - name: "history"
+      key_path: "transaction_id"
+      purpose: "Undo/Redo stack persistence"
+      schema:
+        transaction_id: "UUID"
+        canvas_id: "UUID"
+        operations: "CommandOperation[]"
+        timestamp: "ISO8601"
+    
+    - name: "assets"
+      key_path: "asset_id"
+      purpose: "Uploaded images/videos cache"
+      schema:
+        asset_id: "UUID"
+        type: "Image | Video"
+        blob: "Blob"
+        metadata: "AssetMetadata"
+```
+
+### 2.2. Chunked Upload (Rust/Wasm)
+
+```yaml
+chunked_upload:
+  pattern: "Multipart upload (S3-style)"
+  wasm_module: "image-processing.wasm"
+  
+  flow:
+    - step: "CreateDraftPackage"
+      api: "/cc/v1/workspace/create_draft_package"
+      request:
+        canvas_id: "UUID"
+        filename: "String"
+        size_bytes: "Int64"
+      response:
+        package_id: "UUID"
+        chunk_size: "Int32 (default: 5MB)"
+    
+    - step: "CreatePartUpload"
+      api: "/cc/v1/workspace/create_part_upload"
+      request:
+        package_id: "UUID"
+        part_number: "Int32"
+        chunk_hash: "String (SHA-256)"
+      response:
+        upload_url: "URL (presigned S3)"
+    
+    - step: "Upload Chunk"
+      method: "PUT to upload_url"
+      headers:
+        Content-Type: "application/octet-stream"
+        Content-MD5: "Base64(MD5(chunk))"
+    
+    - step: "CompletePartUpload"
+      api: "/cc/v1/workspace/complete_part_upload"
+      request:
+        package_id: "UUID"
+        part_number: "Int32"
+        etag: "String"
+    
+    - step: "Finalize Package"
+      api: "/cc/v1/workspace/finalize_package"
+      request:
+        package_id: "UUID"
+        total_parts: "Int32"
+      response:
+        asset_url: "URL"
+        asset_id: "UUID"
+```
+
+## 3. AI Integration (Фінальний)
+
+### 3.1. Model Router + Wasm Acceleration
+
+```yaml
+ai_pipeline:
+  stages:
+    - name: "PromptValidation"
+      wasm_module: "crypto.wasm"
+      checks:
+        - "Prompt hash (file_digest)"
+        - "Credits validation"
+    
+    - name: "ModelSelection"
+      routing:
+        - "If layer_separation: seedream-5-pro"
+        - "If background_removal: sam-v2"
+        - "Else: flux-1-dev"
+    
+    - name: "Generation"
+      async: true
+      progress: "SSE | WebSocket"
+    
+    - name: "PostProcessing"
+      wasm_accelerated:
+        - "Upscale (ESRGAN Wasm)"
+        - "Background removal (SAM Wasm)"
+        - "Color grading (WebGL shaders)"
+    
+    - name: "CanvasIntegration"
+      steps:
+        - "Create AIImageCutOut node"
+        - "Apply alpha mask"
+        - "IndexedDB auto-save"
+```
+
+## 4. Undo/Redo (На основі CapCut)
+
+### 4.1. Command Pattern + Differential Snapshots
+
+```yaml
+undo_redo:
+  pattern: "Hybrid (Command Pattern + Differential Snapshots)"
+  
+  command_pattern:
+    base_class: "Command"
+    commands:
+      - "CreateNodeCommand"
+      - "UpdateNodeCommand"
+      - "DeleteNodeCommand"
+      - "MoveNodeCommand"
+  
+  differential_snapshots:
+    purpose: "Memory optimization for large canvases"
+    interval: "Every 10 transactions"
+    storage: "IndexedDB (history store)"
+  
+  depth:
+    max_transactions: 100
+    max_memory_mb: 500
+    auto_checkpoint: "Every 5 minutes"
+  
+  persistence:
+    indexeddb: true
+    export_format: "JSON (DNK-COMP-AI-DESIGN-DTO)"
+    import_format: "JSON | CapCut HAR (migration)"
+```
+
+## 5. Implementation Phases (Фінальний)
+
+### Phase 1: Core Canvas (Weeks 1-2)
+- [x] Konva.js initialization
+- [x] 3-рівнева ізоляція (Gizmo / Stage / Cache)
+- [ ] IndexedDB persistence (drafts, history, assets)
+- [ ] Chunked upload (Rust/Wasm)
+
+### Phase 2: AI Integration (Weeks 3-4)
+- [x] AI-орієнтовані вузли (AIImageCutOut, AIInpaintEditor, AIImageFrameEditor)
+- [ ] Model router (Seedream, SAM, Flux)
+- [ ] Wasm acceleration (image processing, crypto)
+- [ ] WebGL shaders (effect_c)
+
+### Phase 3: Advanced (Weeks 5-6)
+- [x] Tiptap integration (750x81 offscreen buffer)
+- [ ] Undo/Redo (Command + Differential Snapshots)
+- [ ] Auto-save (IndexedDB, 5min checkpoint)
+- [ ] Chunked upload finalization
+- [ ] Skills ecosystem
+
+## 6. Clean-Room Compliance (Фінальний)
+
+```yaml
+legal_compliance:
+  do_not_copy:
+    - "ByteDance everphoto-rust-clean code (proprietary)"
+    - "CapCut API signatures (_signature, x-gorgon)"
+    - "effect_c shader source code"
+  
+  safe_to_use:
+    - "Architectural patterns (chunked upload, IndexedDB)"
+    - "Shader algorithms (min/max clamp, dual blend)"
+    - "Wasm exports (function signatures)"
+    - "Behavioral analysis (Clean-Room)"
+  
+  attribution:
+    - "CapCut AI Design: inspiration for UX patterns"
+    - "ByteDance effect_c: inspiration for WebGL shaders"
+    - "everphoto-rust-clean: inspiration for Rust/Wasm architecture"
+```
+
+```

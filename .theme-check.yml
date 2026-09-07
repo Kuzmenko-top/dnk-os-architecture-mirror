@@ -1,0 +1,14 @@
+# 🩺 Shopify Theme Check Configuration
+root: "."
+
+# Конфігурація правил лінтера
+checks:
+  MissingTemplate:
+    enabled: true
+    severity: error
+  UnusedVariable:
+    enabled: true
+    severity: suggestion
+  ParserError:
+    enabled: true
+    severity: error

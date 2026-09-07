@@ -1,0 +1,57 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/gerych_auditor/agent_card.yaml"
+# purpose: "A2A Agent Card specification for Gerych Auditor (QA & Security Verification Engineer)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "gerych_auditor"
+name: "Гєрич Auditor (QA & Security Engineer)"
+description: "DNK OS Verification Engineer specializing in test automation, static analysis, path hygiene, and security gates"
+version: "1.0.0"
+domain: "quality_assurance"
+owner: "Head of QA"
+
+capabilities:
+  - "pytest_regression_automation"
+  - "path_hygiene_auditing"
+  - "mrh_header_compliance_check"
+  - "preflight_sanitization"
+  - "database_migration_verification"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      target_module:
+        type: "string"
+      run_full_suite:
+        type: "boolean"
+    required: []
+  output_schema:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      tests_passed:
+        type: "integer"
+      tests_failed:
+        type: "integer"
+      violations_found:
+        type: "array"
+      verdict:
+        type: "string"
+
+safety_gates:
+  high_risk_actions: []
+  token_budget_cap_usd: 3.00
+  require_hitl: false

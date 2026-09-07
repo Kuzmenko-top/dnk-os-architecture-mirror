@@ -1,0 +1,228 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "hermes-agent",
+  "elements": [
+    {
+      "type": "rectangle",
+      "id": "r1",
+      "x": 100,
+      "y": 100,
+      "width": 220,
+      "height": 90,
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#a5d8ff",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "boundElements": [
+        {
+          "id": "t_r1",
+          "type": "text"
+        }
+      ],
+      "seed": 12345,
+      "version": 1,
+      "versionNonce": 54321,
+      "isDeleted": false
+    },
+    {
+      "type": "text",
+      "id": "t_r1",
+      "x": 110,
+      "y": 115,
+      "width": 200,
+      "height": 60,
+      "text": "1. Start Crew Run\n[screen_001]\n(Dashboard)",
+      "fontSize": 18,
+      "fontFamily": 1,
+      "strokeColor": "#1e1e1e",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "r1",
+      "originalText": "1. Start Crew Run\n[screen_001]\n(Dashboard)",
+      "autoResize": true,
+      "seed": 12346,
+      "version": 1,
+      "versionNonce": 54322,
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "a1",
+      "x": 320,
+      "y": 145,
+      "width": 130,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          130,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "r1",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "r2",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "seed": 12347,
+      "version": 1,
+      "versionNonce": 54323,
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "r2",
+      "x": 450,
+      "y": 100,
+      "width": 220,
+      "height": 90,
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffd8a8",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "boundElements": [
+        {
+          "id": "t_r2",
+          "type": "text"
+        }
+      ],
+      "seed": 12348,
+      "version": 1,
+      "versionNonce": 54324,
+      "isDeleted": false
+    },
+    {
+      "type": "text",
+      "id": "t_r2",
+      "x": 460,
+      "y": 115,
+      "width": 200,
+      "height": 60,
+      "text": "2. Agent Execution\n[screen_001]\n(Logs & Streams)",
+      "fontSize": 18,
+      "fontFamily": 1,
+      "strokeColor": "#1e1e1e",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "r2",
+      "originalText": "2. Agent Execution\n[screen_001]\n(Logs & Streams)",
+      "autoResize": true,
+      "seed": 12349,
+      "version": 1,
+      "versionNonce": 54325,
+      "isDeleted": false
+    },
+    {
+      "type": "arrow",
+      "id": "a2",
+      "x": 670,
+      "y": 145,
+      "width": 130,
+      "height": 0,
+      "points": [
+        [
+          0,
+          0
+        ],
+        [
+          130,
+          0
+        ]
+      ],
+      "endArrowhead": "arrow",
+      "startBinding": {
+        "elementId": "r2",
+        "fixedPoint": [
+          1,
+          0.5
+        ]
+      },
+      "endBinding": {
+        "elementId": "r3",
+        "fixedPoint": [
+          0,
+          0.5
+        ]
+      },
+      "seed": 12350,
+      "version": 1,
+      "versionNonce": 54326,
+      "isDeleted": false
+    },
+    {
+      "type": "rectangle",
+      "id": "r3",
+      "x": 800,
+      "y": 100,
+      "width": 220,
+      "height": 90,
+      "roundness": {
+        "type": 3
+      },
+      "strokeColor": "#1e1e1e",
+      "backgroundColor": "#ffd8a8",
+      "fillStyle": "solid",
+      "strokeWidth": 2,
+      "roughness": 1,
+      "opacity": 100,
+      "boundElements": [
+        {
+          "id": "t_r3",
+          "type": "text"
+        }
+      ],
+      "seed": 12351,
+      "version": 1,
+      "versionNonce": 54327,
+      "isDeleted": false
+    },
+    {
+      "type": "text",
+      "id": "t_r3",
+      "x": 810,
+      "y": 115,
+      "width": 200,
+      "height": 60,
+      "text": "3. Human HITL Gate\n[screen_002]\n(Approve / Feedback)",
+      "fontSize": 18,
+      "fontFamily": 1,
+      "strokeColor": "#1e1e1e",
+      "textAlign": "center",
+      "verticalAlign": "middle",
+      "containerId": "r3",
+      "originalText": "3. Human HITL Gate\n[screen_002]\n(Approve / Feedback)",
+      "autoResize": true,
+      "seed": 12352,
+      "version": 1,
+      "versionNonce": 54328,
+      "isDeleted": false
+    }
+  ],
+  "appState": {
+    "viewBackgroundColor": "#ffffff"
+  }
+}

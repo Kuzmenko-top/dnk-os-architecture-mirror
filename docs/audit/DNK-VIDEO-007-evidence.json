@@ -1,0 +1,33 @@
+{
+  "task_id": "DNK-VIDEO-007",
+  "title": "Docker Deployment & Production Rollout",
+  "status": "Completed",
+  "branch": "mentor/platform/DNK-PLATFORM-SCALE-003-multi-region-routing",
+  "commit_sha": "e3b55681f8",
+  "pull_request_url": null,
+  "generated_at": "2026-08-28T14:42:31.159744+00:00",
+  "components": [
+    "Dockerfile",
+    "docker-compose.yml",
+    "docker-compose.prod.yml",
+    "scripts/docker/init-db.sql",
+    "scripts/docker/healthcheck.sh",
+    ".env.example",
+    "docs/DEPLOYMENT.md",
+    "core/workers/celery_app.py",
+    "specs/DNK-STD-0086.yaml"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

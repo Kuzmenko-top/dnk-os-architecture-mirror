@@ -1,0 +1,31 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "dnk_manifest.yaml"
+# purpose: "Master Manifest for DNK OS MVP 0.1.0 in root DNK OS directory."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "0.1.0"
+# updated_at: "2026-08-06"
+# --- END DNK-MRH-HEADER ---
+
+service:
+  name: \"dnk_hub\"
+  display_name: "DNK OS MVP 0.1.0"
+  version: "0.1.0"
+  type: "production_runtime"
+  owner: "Maxim"
+  license: "DNK-INTERNAL"
+  brain_vault: "DNK_HUB"
+  capabilities:
+    - "tree_task_graph_planning"
+    - "user_soul_persona_hydration"
+    - "trajectory_learning_compression"
+    - "victory_map_analytics"
+    - "swarm_orchestration"
+    - "shopify_3_0_tinker_engineering"
+
+donors_assimilated:
+  open_design: "Visual canvas & design system editor"
+  hermes_agent: "Autonomous execution runtime & agent manager (Gerych)"
+  agentswarms: "Swarm delegation & parallel task execution"

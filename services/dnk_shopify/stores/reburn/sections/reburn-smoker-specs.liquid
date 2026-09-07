@@ -1,0 +1,98 @@
+{% comment %}
+# --- DNK-MRH-HEADER ---
+# mrh_id: "services/dnk_shopify/stores/reburn/sections/reburn-smoker-specs.liquid"
+# purpose: "Shopify Liquid 2.0 section rendering ReBurn Smoker Metaobjects."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-06"
+# --- END DNK-MRH-HEADER ---
+{% endcomment %}
+
+<div class="reburn-specs-container">
+  <h2 class="reburn-specs-title">{{ section.settings.title | default: "Технічні Характеристики ReBurn" }}</h2>
+  
+  {% assign specs = product.metafields.custom.smoker_specs.value %}
+  
+  {% if specs != blank %}
+    <table class="reburn-specs-table">
+      <tbody>
+        <tr>
+          <td><strong>Місткість камери:</strong></td>
+          <td>{{ specs.capacity | default: "30 кг" }}</td>
+        </tr>
+        <tr>
+          <td><strong>Нагрівальний елемент:</strong></td>
+          <td>{{ specs.heating_element | default: "2.0 кВт (Нержавіючий ТЕН)" }}</td>
+        </tr>
+        <tr>
+          <td><strong>Матеріал корпусу:</strong></td>
+          <td>{{ specs.chamber_material | default: "Харчова нержавіюча сталь AISI 304" }}</td>
+        </tr>
+        <tr>
+          <td><strong>Контролер температури:</strong></td>
+          <td>{{ specs.temp_controller | default: "Цифровий PID контролер з термопарою" }}</td>
+        </tr>
+      </tbody>
+    </table>
+  {% else %}
+    <p class="reburn-specs-fallback">Характеристики доступні за запитом. Дані підвантажуються через Shopify Metaobjects.</p>
+  {% endif %}
+</div>
+
+<style>
+  .reburn-specs-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 20px;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-family: sans-serif;
+  }
+  .reburn-specs-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #ff4500;
+    padding-bottom: 5px;
+  }
+  .reburn-specs-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .reburn-specs-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: #444;
+  }
+  .reburn-specs-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  .reburn-specs-fallback {
+    font-style: italic;
+    color: #777;
+  }
+</style>
+
+{% schema %}
+{
+  "name": "ReBurn Smoker Specs",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Технічні Характеристики Smoker"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Default ReBurn Specs"
+    }
+  ]
+}
+{% endschema %}

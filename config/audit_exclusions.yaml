@@ -1,0 +1,148 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "config/audit_exclusions.yaml"
+# purpose: "SSOT Audit Exclusion Journal & Manifest for runtime environments, agent state caches, secrets, and verified assimilated projects."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.1.0"
+# updated_at: "2026-09-01"
+# author: "DNK-e.com Maksym"
+# --- END DNK-MRH-HEADER ---
+
+version: "1.1.0"
+updated_at: "2026-09-01"
+description: "Centralized SSOT Manifest of excluded directories and certified assimilated projects for high-velocity full-depth system audits."
+
+# 1. Runtime Environments, Virtualenvs, Caches, Agent Ephemeral State & Build Artifacts
+environments_and_build:
+  patterns:
+    - ".venv"
+    - "node_modules"
+    - ".next"
+    - "dist"
+    - "build"
+    - "target"
+    - "__pycache__"
+    - ".pytest_cache"
+    - ".pytest-cache"
+    - ".turbo"
+    - ".git"
+    - ".github"
+    - ".od"
+    - ".cache"
+    - "cache"
+    - "coverage"
+    - ".tox"
+    - "audio_cache"
+    - "image_cache"
+    - "terminal-sessions"
+    - "checkpoints"
+    - "pastes"
+    - "logs"
+    - ".hermes_history"
+    - ".curator_backups"
+    - "models_dev_cache*"
+    - "provider_models_cache*"
+    - "ollama_cloud_models_cache*"
+    - ".ruff_cache"
+    - ".mypy_cache"
+    - ".ds_store"
+    - ".DS_Store"
+  rationale: "Ephemeral dependencies, agent runtime session logs, caches, and build outputs; audited via package/agent manifests rather than recursive file traversal."
+
+# 2. Secret Stores, Private Keys, Auth & Ephemeral Databases
+secrets_and_credentials:
+  patterns:
+    - ".env"
+    - ".env.*"
+    - "*.pem"
+    - "*.key"
+    - "*.pfx"
+    - "*.p12"
+    - "id_rsa*"
+    - "*.token"
+    - "*.db"
+    - "*.sqlite"
+    - "*.sqlite3"
+    - "auth.json"
+    - "processes.json"
+    - "visual_shell_db.json"
+    - "canvas_production_fallback.db"
+    - "verification_evidence.db"
+    - "state.db"
+  rationale: "Encrypted, auth credentials, binary SQLite databases or sensitive state data guarded by Secret Scanner SSOT."
+
+# 3. Verified Assimilated Projects (Skip Deep Traversal after Initial Certification)
+assimilated_projects:
+  - id: "open_design_lab"
+    path: "projects/open_design_lab"
+    name: "Open Design Lab (Assimilated Canvas & Rendering Subsystem)"
+    upstream: "https://github.com/opendesign/open-design"
+    license: "Apache-2.0"
+    track: "Track 1 (Permissive)"
+    audit_status: "VERIFIED_ASSIMILATED"
+    certified_by: "gerych_auditor"
+    audit_date: "2026-09-01"
+    skip_deep_scan: true
+    rationale: "Verified external assimilated application; deep tree audited and isolated. Monitored via top-level manifest."
+
+  - id: "open_design_visual_shell"
+    path: "visual_shell/open_design"
+    name: "Open Design Visual Shell Reference Monorepo"
+    upstream: "https://github.com/opendesign/open-design"
+    license: "Apache-2.0"
+    track: "Track 1 (Permissive)"
+    audit_status: "VERIFIED_ASSIMILATED"
+    certified_by: "gerych_auditor"
+    audit_date: "2026-09-01"
+    skip_deep_scan: true
+    rationale: "Assimilated reference implementation. Audited during Phase 2. Protected against recurring recursive file churn."
+
+  - id: "dnk_e_com_storefront"
+    path: "projects/03_DNK_E_COM"
+    name: "DNK E-Commerce Shopify OS 2.0 Theme Core"
+    upstream: "internal"
+    license: "Proprietary / DNK OS"
+    track: "Track 1 (Permissive)"
+    audit_status: "VERIFIED_ASSIMILATED"
+    certified_by: "dnk_shopify"
+    audit_date: "2026-09-01"
+    skip_deep_scan: true
+    rationale: "Liquid template engine reference repository."
+
+  - id: "hermes_agent_framework"
+    path: "core/hermes_agent"
+    name: "Hermes Agent Framework Core (Nous Research Upstream Engine)"
+    upstream: "https://github.com/nousresearch/hermes-agent"
+    license: "MIT"
+    track: "Track 1 (Permissive)"
+    audit_status: "VERIFIED_ASSIMILATED"
+    certified_by: "gerych_prime"
+    audit_date: "2026-09-01"
+    skip_deep_scan: true
+    rationale: "Assimilated AI Agent runtime framework with extensive upstream test fixtures, CLI, and toolsets."
+
+  - id: "herich_librarian_lsp"
+    path: "core/orchestrator/agents/herich_librarian/lsp"
+    name: "Herich Librarian LSP Tooling & Type Definitions"
+    upstream: "pyright / typeshed"
+    license: "MIT / Apache-2.0"
+    track: "Track 1 (Permissive)"
+    audit_status: "VERIFIED_VENDORED"
+    certified_by: "gerych_auditor"
+    audit_date: "2026-09-01"
+    skip_deep_scan: true
+    rationale: "Static vendored TypeScript/Pyright definitions containing thousands of stub files."
+
+  - id: "gerych_prime_lsp"
+    path: "core/orchestrator/agents/gerych_prime/lsp"
+    name: "Gerych Prime LSP Tooling & Type Definitions"
+    upstream: "pyright / typeshed"
+    license: "MIT / Apache-2.0"
+    track: "Track 1 (Permissive)"
+    audit_status: "VERIFIED_VENDORED"
+    certified_by: "gerych_auditor"
+    audit_date: "2026-09-01"
+    skip_deep_scan: true
+    rationale: "Static vendored Pyright LSP stubs."

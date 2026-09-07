@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: "{{ include \"dnk-os.fullname\" . }}-web"
+  labels:
+    app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-web"
+    app.kubernetes.io/component: frontend
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  replicas: {{ .Values.web.replicaCount }}
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-web"
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-web"
+        app.kubernetes.io/component: frontend
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+      containers:
+        - name: web
+          image: "{{ .Values.web.image.repository }}:{{ .Values.web.image.tag }}"
+          imagePullPolicy: {{ .Values.web.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: {{ .Values.web.service.port }}
+              protocol: TCP
+          resources:
+            limits:
+              cpu: "{{ .Values.web.resources.limits.cpu }}"
+              memory: "{{ .Values.web.resources.limits.memory }}"
+            requests:
+              cpu: "{{ .Values.web.resources.requests.cpu }}"
+              memory: "{{ .Values.web.resources.requests.memory }}"
+          livenessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.web.service.port }}
+            initialDelaySeconds: 10
+            periodSeconds: 15
+          readinessProbe:
+            httpGet:
+              path: /
+              port: {{ .Values.web.service.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 5

@@ -1,0 +1,84 @@
+{
+  "audit_version": "1.0.0",
+  "audit_id": "CAPCUT-UNDO-REDO-AUDIT-003",
+  "component": "UndoRedoStack & Transaction Management",
+  "target": "https://www.capcut.com/ai-design",
+  "architecture": {
+    "pattern": "Command Pattern with Operational Transformation (OT) Dual-Stack",
+    "stack_classes": [
+      "UndoRedoStack (Base)",
+      "CollaborativeUndoRedoStack (Collaborative extension with transform)",
+      "Command (Base transaction unit)",
+      "CollaborativeCommand (Collaborative transaction unit with pointer & vector)"
+    ],
+    "max_stack_size": 100,
+    "memory_limits": {
+      "max_memory_mb": 500,
+      "blob_cache_eviction": "LRU with time-based indexing",
+      "gc_trigger": "Trim on stack size > 100 and IndexedDB quota pressure"
+    },
+    "checkpoint_policy": {
+      "auto_save_interval_ms": 300000,
+      "auto_save_interval_minutes": 5,
+      "optimistic_write_store": "lvweb-offline-data",
+      "persistent_commit_store": "graphic-local-user-draft"
+    },
+    "command_lifecycle": {
+      "execution": "command.execute('redo' | 'undo')",
+      "inversion": "command.reverse() -> returns new Command with swapped undo/redo commands",
+      "merging": "pushWithOperateId(operateId, item) -> merges continuous micro-actions (drag, resize, slider)",
+      "truncation": "push() clears redoStack on new user action unless clearRedo=false"
+    }
+  },
+  "command_registry": [
+    {
+      "type": "ADD_IN_CANVAS",
+      "category": "Structure",
+      "description": "Inserts image, text, shape, or sticker node into canvas tree",
+      "undo_strategy": "DELETE_NODE by nodeId",
+      "redo_strategy": "RESTORE_NODE with full subtree"
+    },
+    {
+      "type": "DELETE_NODE",
+      "category": "Structure",
+      "description": "Removes one or more nodes from the stage",
+      "undo_strategy": "RESTORE_NODE at original z-index and coordinates",
+      "redo_strategy": "DELETE_NODE by nodeId"
+    },
+    {
+      "type": "UPDATE_NODE",
+      "category": "Mutation",
+      "description": "Mutates node attributes (color, opacity, font, shadow, filters)",
+      "undo_strategy": "DIFF_APPLY(previous_values)",
+      "redo_strategy": "DIFF_APPLY(next_values)"
+    },
+    {
+      "type": "MOVE_NODE",
+      "category": "Spatial",
+      "description": "Changes x, y position, rotation, or scale bounds of nodes",
+      "undo_strategy": "SET_BOUNDS(previous_transform_matrix)",
+      "redo_strategy": "SET_BOUNDS(next_transform_matrix)"
+    },
+    {
+      "type": "GROUP_CREATE",
+      "category": "Hierarchy",
+      "description": "Combines selected nodes into a parent Container/Group",
+      "undo_strategy": "GROUP_UNGROUP",
+      "redo_strategy": "GROUP_CREATE"
+    },
+    {
+      "type": "GROUP_UNGROUP",
+      "category": "Hierarchy",
+      "description": "Explodes Container/Group back to root canvas items",
+      "undo_strategy": "GROUP_CREATE",
+      "redo_strategy": "GROUP_UNGROUP"
+    },
+    {
+      "type": "SET_DOCUMENT_PROPERTY",
+      "category": "Document",
+      "description": "Resizes document bounds, changes DPI, background color or aspect ratio",
+      "undo_strategy": "RESTORE_DOCUMENT_PROPS",
+      "redo_strategy": "APPLY_DOCUMENT_PROPS"
+    }
+  ]
+}

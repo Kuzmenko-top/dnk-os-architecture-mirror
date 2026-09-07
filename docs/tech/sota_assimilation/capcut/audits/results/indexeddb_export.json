@@ -1,0 +1,209 @@
+{
+  "audit_version": "1.0.0",
+  "iteration": 3,
+  "audit_target": "https://www.capcut.com/ai-design",
+  "timestamp": "2026-09-02T15:10:00Z",
+  "indexeddb_summary": {
+    "total_databases": 24,
+    "core_persistence_dbs": 7,
+    "cache_dbs": 11,
+    "telemetry_dbs": 4,
+    "third_party_dbs": 2
+  },
+  "databases": [
+    {
+      "name": "graphic-local",
+      "version": 1,
+      "purpose": "Primary Local Draft & Canvas Persistence",
+      "stores": [
+        {
+          "name": "graphic-local-user-draft",
+          "keyPath": "id",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "updateTime",
+              "keyPath": "updateTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Stores full serialized Canvas tree JSON including nodes, guides, layers, and viewport"
+        },
+        {
+          "name": "graphic-local-user-draft-meta",
+          "keyPath": "id",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "updateTime",
+              "keyPath": "updateTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Stores draft metadata (title, width, height, dpi, preview thumbnail, modified timestamp)"
+        },
+        {
+          "name": "user-materials",
+          "keyPath": "id",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "draftId",
+              "keyPath": "draftId",
+              "unique": false,
+              "multiEntry": false
+            },
+            {
+              "name": "md5",
+              "keyPath": "md5",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Stores local user uploads, temporary AI cutout masks, inpaint blobs, and asset digests"
+        }
+      ]
+    },
+    {
+      "name": "StreamImage",
+      "version": 1,
+      "purpose": "Multi-resolution Tile & Chunk Image Cache",
+      "stores": [
+        {
+          "name": "blocks",
+          "keyPath": "block_key",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "block_key",
+              "keyPath": "block_key",
+              "unique": true,
+              "multiEntry": false
+            }
+          ],
+          "description": "Caches high-resolution decoded image chunks and mipmap mip-blocks for GPU render"
+        }
+      ]
+    },
+    {
+      "name": "resource-v2",
+      "version": 1,
+      "purpose": "Encrypted Asset & Template Resource Management",
+      "stores": [
+        {
+          "name": "resource",
+          "keyPath": "uniqueIdWithDecryptHash",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "updateTime",
+              "keyPath": "updateTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Stores decrypted/cached remote sticker, font, and template binary assets"
+        },
+        {
+          "name": "resource-meta",
+          "keyPath": "key",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "updateTime",
+              "keyPath": "updateTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Metadata for remote resources, TTL expirations, and decryption salts"
+        }
+      ]
+    },
+    {
+      "name": "ttuploader-db",
+      "version": 1,
+      "purpose": "Resumable Chunked File Upload State",
+      "stores": [
+        {
+          "name": "upload-result",
+          "keyPath": "hashKey",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "expiryIndex",
+              "keyPath": "expiryTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Maintains chunk offsets, upload tickets, and resume tokens for Wasm upload pipeline"
+        }
+      ]
+    },
+    {
+      "name": "lvweb-offline-data",
+      "version": 1,
+      "purpose": "Crash Recovery & Optimistic State Queue",
+      "stores": [
+        {
+          "name": "offline",
+          "keyPath": "key",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "updateTime",
+              "keyPath": "updateTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Holds uncommitted dirty transactions and pending cloud sync operations"
+        }
+      ]
+    },
+    {
+      "name": "CapcutStorage",
+      "version": 1,
+      "purpose": "General Key-Value Application Store",
+      "stores": [
+        {
+          "name": "dataStore",
+          "keyPath": null,
+          "autoIncrement": true,
+          "indexes": [],
+          "description": "Cached AI creator models, tool configurations, and user VIP feature flags"
+        }
+      ]
+    },
+    {
+      "name": "blob-cache",
+      "version": 1,
+      "purpose": "Audio / Voiceover / TTS Blob Cache",
+      "stores": [
+        {
+          "name": "blob-cache",
+          "keyPath": "id",
+          "autoIncrement": false,
+          "indexes": [
+            {
+              "name": "createTime",
+              "keyPath": "createTime",
+              "unique": false,
+              "multiEntry": false
+            },
+            {
+              "name": "updateTime",
+              "keyPath": "updateTime",
+              "unique": false,
+              "multiEntry": false
+            }
+          ],
+          "description": "Binary audio preview blobs and generated speech waveforms"
+        }
+      ]
+    }
+  ]
+}

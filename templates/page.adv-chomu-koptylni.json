@@ -1,0 +1,31 @@
+{
+  "wrapper": "div",
+  "sections": {
+    "custom_hero-banner_0": {
+      "type": "hero-banner",
+      "settings": {
+        "title": "chomu-koptylni-mudriy-craftiar-naykraschi - Hero-banner",
+        "heading_size": "h2"
+      }
+    },
+    "custom_content-tabs_1": {
+      "type": "content-tabs",
+      "settings": {
+        "title": "chomu-koptylni-mudriy-craftiar-naykraschi - Content-tabs",
+        "heading_size": "h2"
+      }
+    },
+    "custom_product-compare-chart_2": {
+      "type": "product-compare-chart",
+      "settings": {
+        "title": "chomu-koptylni-mudriy-craftiar-naykraschi - Product-compare-chart",
+        "heading_size": "h2"
+      }
+    }
+  },
+  "order": [
+    "custom_hero-banner_0",
+    "custom_content-tabs_1",
+    "custom_product-compare-chart_2"
+  ]
+}

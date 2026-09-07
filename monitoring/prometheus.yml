@@ -1,0 +1,25 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "prometheus_config"
+# purpose: "Prometheus scraping configuration and alert rules reference"
+# author: "DNK-e.com Maksym"
+# license: "DNK-INTERNAL"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-11"
+# --- END DNK-MRH-HEADER ---
+
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "alerts.yml"
+
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'dnk_api'
+    static_configs:
+      - targets: ['api:8000']

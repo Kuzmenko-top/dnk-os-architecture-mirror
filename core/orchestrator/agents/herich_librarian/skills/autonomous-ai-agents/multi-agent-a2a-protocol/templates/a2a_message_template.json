@@ -1,0 +1,16 @@
+{
+  "jsonrpc": "2.0",
+  "method": "agent.action",
+  "params": {
+    "payload": {}
+  },
+  "id": "msg_00000000",
+  "trace_id": "trc_00000000",
+  "span_id": "spn_00000000",
+  "sender": "sender_agent",
+  "recipients": ["recipient_agent"],
+  "pattern": "peer-to-peer",
+  "topic": null,
+  "timeout_ms": 5000,
+  "timestamp": "2026-08-28T12:00:00Z"
+}

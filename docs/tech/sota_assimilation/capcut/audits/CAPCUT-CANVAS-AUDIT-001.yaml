@@ -1,0 +1,41 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "docs/tech/sota_assimilation/capcut/audits/CAPCUT-CANVAS-AUDIT-001.yaml"
+# purpose: "TaskDNA Audit Definition for CapCut AI Design Web Architecture & Reverse Engineering."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym & Gerych"
+# --- END DNK-MRH-HEADER ---
+
+audit_id: "CAPCUT-CANVAS-AUDIT-001"
+target_url: "https://www.capcut.com/ai-design"
+executor: "Gerych (Hermes Prime)"
+supervisor: "DNK_MENTOR (Antigravity)"
+
+tasks:
+  - id: "iteration_1"
+    name: "CDP Session, State Snapshots & HAR Extraction"
+    status: "in_progress"
+    goals:
+      - "Capture Canvas rendering contexts (2D vs WebGL vs Wasm)"
+      - "Extract Store and Global State objects"
+      - "Record HAR / Network telemetry"
+      - "Inspect DOM layer tree"
+
+  - id: "iteration_2"
+    name: "Deep Dynamic Debugging & Engine Reverse Engineering"
+    status: "pending"
+    goals:
+      - "Wasm symbols and export table analysis"
+      - "Event loop and undo/redo state stack inspection"
+      - "Shader and Skia pipeline verification"
+
+  - id: "iteration_3"
+    name: "Architectural Synthesis & DNK Canvas Engine DTO"
+    status: "pending"
+    goals:
+      - "Pydantic DTO models synthesis"
+      - "Comparison against ComfyUI / Penpot / Doop"

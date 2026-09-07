@@ -1,0 +1,24 @@
+{
+  "name": "@dnk/video-ai-creator-llm",
+  "version": "1.0.0",
+  "description": "Gemini & Claude LLM Adapters for dnk_video_ai_creator",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run",
+    "test:live": "RUN_LIVE_LLM_TESTS=1 vitest run tests/live-provider-qualification.test.ts",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "zod": "^3.23.8",
+    "@dnk/video-audit-core": "file:../../../../packages/video-audit-core"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "vitest": "^1.6.0",
+    "@types/node": "^20.12.12"
+  },
+  "private": true
+}

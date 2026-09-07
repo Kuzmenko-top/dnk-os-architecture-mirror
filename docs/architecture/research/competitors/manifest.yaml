@@ -1,0 +1,28 @@
+# manifest.yaml
+# Метадані для всіх завантажених скріншотів аналізу конкурентів DNK OS.
+# Правило іменування файлів: assets/screenshots/<flow-number>-<screen-name>.png
+
+screenshots:
+  - id: crewai_dashboard_001
+    file: assets/screenshots/001-crewai-dashboard.png
+    competitor: crewai
+    flow_number: "001"
+    screen_name: "crewai-dashboard"
+    captured_at: "2026-08-11"
+    source_url: "https://crewai.com/enterprise"
+    description: "Enterprise dashboard showing running crews, execution timelines, and logs."
+    confidence: "High"
+    decision_impact: "Confirmed the need for a Unified Timeline Model in DNK OS UI."
+    evidence_status: "pending_evidence" # Файл очікує завантаження користувачем
+
+  - id: crewai_approval_002
+    file: assets/screenshots/002-crewai-approval-gate.png
+    competitor: crewai
+    flow_number: "002"
+    screen_name: "crewai-approval-gate"
+    captured_at: "2026-08-11"
+    source_url: "https://docs.crewai.com/how-to/Human-In-The-Loop"
+    description: "UI popup/gate waiting for user feedback before continuing the task."
+    confidence: "Medium"
+    decision_impact: "Justified the development of Supervisor approval gates in our herich_librarian Orchestrator."
+    evidence_status: "pending_evidence" # Файл очікує завантаження користувачем

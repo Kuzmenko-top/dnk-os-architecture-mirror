@@ -1,0 +1,55 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/orchestrator/agents/gerych_researcher/agent_card.yaml"
+# purpose: "A2A Agent Card specification for Gerych Researcher (Knowledge & Architecture Specialist)"
+# author: "DNK-e.com Maksym"
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-27"
+# --- END DNK-MRH-HEADER ---
+
+agent_id: "gerych_researcher"
+name: "Гєрич Researcher (Knowledge & Intelligence Specialist)"
+description: "DNK OS Research Specialist for SOTA Architecture Assimilation, Git Mining, and Knowledge Graphs"
+version: "1.0.0"
+domain: "research"
+owner: "Head of Research"
+
+capabilities:
+  - "dna_knowledge_assimilation"
+  - "github_repo_ast_analysis"
+  - "license_compliance_audit"
+  - "rag_document_indexing"
+  - "sota_benchmark_synthesis"
+
+auth:
+  type: "system_worker"
+  scope: "workspace"
+
+task_contract:
+  input_schema:
+    type: "object"
+    properties:
+      target_url:
+        type: "string"
+      research_topic:
+        type: "string"
+      depth:
+        type: "string"
+    required: ["research_topic"]
+  output_schema:
+    type: "object"
+    properties:
+      status:
+        type: "string"
+      knowledge_artifacts:
+        type: "array"
+      summary:
+        type: "string"
+
+safety_gates:
+  high_risk_actions: ["external_code_ingestion"]
+  token_budget_cap_usd: 5.00
+  require_hitl: false

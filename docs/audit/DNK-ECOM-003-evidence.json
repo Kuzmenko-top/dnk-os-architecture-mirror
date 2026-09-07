@@ -1,0 +1,23 @@
+{
+  "task_id": "DNK-ECOM-003",
+  "title": "Shopify Liquid Live Preview & Storefront Sandbox Studio",
+  "status": "Completed",
+  "branch": "main",
+  "commit_sha": "f59a089b01",
+  "generated_at": "2026-08-28T08:36:01.884661+00:00",
+  "components": [
+    "apps/web/components/shopify/ShopifyLiveEditor.tsx",
+    "apps/web/components/cabinet/DomainPanelsTab.tsx"
+  ],
+  "tests": {
+    "quality_gate": "147/147 passed (100% Green)",
+    "syntax": "5869 files AST clean"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

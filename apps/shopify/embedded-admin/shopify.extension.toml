@@ -1,0 +1,5 @@
+name = "dnk-admin-dashboard"
+type = "admin"
+
+[access_scopes]
+scopes = "read_products,write_products,read_orders,write_orders"

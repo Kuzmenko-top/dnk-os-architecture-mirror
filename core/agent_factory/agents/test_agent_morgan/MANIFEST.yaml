@@ -1,0 +1,12 @@
+agent_id: "test_agent_morgan"
+name: "Morgan"
+role: "Analytics & Business Engineer"
+version: "1.0.0"
+capabilities:
+  - pytest_runner
+  - obsidian_vault_parser
+  - task_forest_engine
+allowed_skills:
+  - dnk-task-graph-manager
+  - obsidian-task-forest
+memory_dir: "core/agent_factory/agents/test_agent_morgan/memory/"

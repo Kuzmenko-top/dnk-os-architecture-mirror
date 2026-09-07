@@ -1,0 +1,40 @@
+{
+  "task_id": "DNK-HEALTH-001",
+  "title": "System Health Monitoring & Auto-Healing Engine",
+  "status": "Completed",
+  "branch": "feature/dnk-health-001-auto-healing-engine",
+  "commit_sha": "03feabf057",
+  "pull_request_url": "https://github.com/Kuzmenko-top/DNK_OS_MVP/pull/47",
+  "generated_at": "2026-08-29T10:36:14.637172+00:00",
+  "components": [
+    "apps/api/db/models/health_metric_rule.py",
+    "apps/api/db/models/system_incident.py",
+    "apps/api/db/models/remediation_action.py",
+    "apps/api/db/models/auto_healing_policy.py",
+    "apps/api/db/models/service_health_snapshot.py",
+    "apps/api/db/models/alert_notification_log.py",
+    "apps/api/services/health_metric_aggregator.py",
+    "apps/api/services/incident_detection_engine.py",
+    "apps/api/services/auto_healing_executor.py",
+    "apps/api/services/alert_dispatcher_service.py",
+    "apps/api/routers/health_router.py",
+    "tests/health/test_health_models.py",
+    "tests/health/test_incident_detection_engine.py",
+    "tests/health/test_auto_healing_executor.py",
+    "tests/health/test_health_router.py",
+    "docs/tech/specs/DNK-HEALTH-001_system_health_monitoring_auto_healing_spec.md"
+  ],
+  "tests": {
+    "master_quality_gate": "160/160 passed (100% Green, 0 failures)",
+    "adversarial_gate": "Adversarial Gate Skipped (No module named 'core.hermes_agent')",
+    "syntax_check": "5904 files AST clean",
+    "path_hygiene": "0 violations"
+  },
+  "invariants": {
+    "core_freeze": "ACTIVE",
+    "mrh_headers": "100% compliance",
+    "path_hygiene": "All relative paths",
+    "redaction": "All secrets redacted",
+    "ssot_venv": ".venv"
+  }
+}

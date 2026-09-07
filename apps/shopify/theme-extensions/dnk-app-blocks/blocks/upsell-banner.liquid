@@ -1,0 +1,31 @@
+{{ 'upsell-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="dnk-upsell-banner" data-product-id="{{ product.id }}">
+  <h3>{{ block.settings.banner_text | default: "Додайте ще для безкоштовної доставки!" }}</h3>
+  
+  {% if block.settings.recommended_product != blank %}
+    {% assign rec = block.settings.recommended_product %}
+    <div class="recommended-product">
+      <img src="{{ rec.featured_image | image_url: width: 200 }}" alt="{{ rec.title }}">
+      <h4>{{ rec.title }}</h4>
+      <p>{{ rec.price | money }}</p>
+      <button data-add-to-cart="{{ rec.variants.first.id }}" class="dnk-add-btn">
+        Додати до кошика
+      </button>
+    </div>
+  {% endif %}
+</div>
+
+<script>
+  document.querySelectorAll('.dnk-upsell-banner [data-add-to-cart]').forEach((btn) => {
+    btn.addEventListener('click', async (e) => {
+      const variantId = e.target.dataset.addToCart;
+      await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: variantId, quantity: 1 }),
+      });
+      location.reload();
+    });
+  });
+</script>

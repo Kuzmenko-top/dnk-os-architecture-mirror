@@ -1,0 +1,17 @@
+{
+  "name": "DNK Upsell Banner",
+  "target": "section",
+  "schema": [
+    {
+      "type": "product",
+      "id": "recommended_product",
+      "label": "Рекомендований товар"
+    },
+    {
+      "type": "text",
+      "id": "banner_text",
+      "label": "Текст банера",
+      "default": "Додайте ще для безкоштовної доставки!"
+    }
+  ]
+}

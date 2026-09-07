@@ -1,0 +1,49 @@
+.dnk-loyalty-widget {
+  border: 1px solid #e0e7ff;
+  border-radius: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, #eef2ff 0%, #f8fafc 100%);
+  margin: 16px 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+.dnk-loyalty-badge {
+  display: inline-block;
+  background-color: #4f46e5;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+.dnk-loyalty-progress-bar {
+  width: 100%;
+  height: 8px;
+  background-color: #cbd5e1;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+.dnk-loyalty-progress-fill {
+  height: 100%;
+  background-color: #6366f1;
+  border-radius: 4px;
+}
+.dnk-redeem-btn {
+  background-color: #4f46e5;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  width: 100%;
+}
+.dnk-redeem-btn:hover {
+  background-color: #4338ca;
+}
+.dnk-login-link {
+  color: #4f46e5;
+  text-decoration: underline;
+  font-weight: 500;
+}

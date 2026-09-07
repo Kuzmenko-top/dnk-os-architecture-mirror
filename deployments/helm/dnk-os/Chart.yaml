@@ -1,0 +1,26 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "deployments/helm/dnk-os/Chart.yaml"
+# purpose: "Helm Chart metadata for DNK OS Unified Cloud-Native Deployment"
+# author: "DNK-e.com Maksym"
+# license: "MIT"
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-08-29"
+# --- END DNK-MRH-HEADER ---
+
+apiVersion: v2
+name: dnk-os
+description: Enterprise Cloud-Native Orchestration Helm Chart for DNK OS
+type: application
+version: 1.0.0
+appVersion: "5.0.0"
+keywords:
+  - dnk-os
+  - fastapi
+  - nextjs
+  - a2a
+  - multi-tenant
+home: https://dnk-e.com
+maintainers:
+  - name: Maksym Kuzmenko
+    email: dev@dnk-e.com

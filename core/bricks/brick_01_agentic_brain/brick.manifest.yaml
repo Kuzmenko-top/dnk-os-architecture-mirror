@@ -1,0 +1,44 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/bricks/brick_01_agentic_brain/brick.manifest.yaml"
+# purpose: "Manifest for Brick 01: Agentic Brain & Swarm Core."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym"
+# --- END DNK-MRH-HEADER ---
+
+id: "brick_01_agentic_brain"
+name: "Agentic Brain & Swarm Core"
+version: "1.0.0"
+mrh_id: "core/bricks/brick_01_agentic_brain/brick.manifest.yaml"
+category: "agentic_core"
+description: "Hermes orchestrator, swarm delegation, TaskDNA execution engine, fail-closed circuit breakers, and LLM providers."
+
+paths:
+  - "core/hermes_agent"
+  - "core/orchestrator"
+  - "scripts/system/hermes_pre_tool_hook.py"
+
+dependencies:
+  internal: []
+  external:
+    python:
+      - "pydantic>=2.7.0"
+      - "pyyaml>=6.0"
+      - "google-cloud-aiplatform>=1.40.0"
+    npm: []
+
+contracts:
+  python_schema: "core/bricks/brick_01_agentic_brain/contracts/schemas.py"
+  typescript_types: "core/bricks/brick_01_agentic_brain/contracts/types.ts"
+
+entrypoints:
+  orchestrator: "core.orchestrator.engine:run_agent"
+  cli: "scripts/system/gerych.sh"
+
+quality_gate:
+  test_suite: "tests/verification/test_service_registry.py"
+  min_coverage: 85

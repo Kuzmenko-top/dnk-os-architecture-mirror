@@ -1,0 +1,7 @@
+domain_scope: core/
+model: deepseek-ai/deepseek-r1
+name: agent_prime
+provider: nvidia_nim
+role: Core Kernel & OmniRouter Guardian
+sandbox_enabled: true
+temperature: 0.1

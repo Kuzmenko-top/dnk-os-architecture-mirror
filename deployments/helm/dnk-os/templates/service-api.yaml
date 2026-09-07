@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: "{{ include \"dnk-os.fullname\" . }}-api"
+  labels:
+    app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-api"
+    app.kubernetes.io/component: backend
+    app.kubernetes.io/part-of: dnk-platform
+spec:
+  type: {{ .Values.api.service.type }}
+  ports:
+    - port: {{ .Values.api.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app.kubernetes.io/name: "{{ include \"dnk-os.name\" . }}-api"

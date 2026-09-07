@@ -1,0 +1,18 @@
+{
+  "baseline": {
+    "runtime_version": "0.20.5",
+    "source_type": "embedded_unmanaged_fork",
+    "git_sha": "f466536c54ce0c806a3871852be78116d75021ea",
+    "state_db_sha256": "b88df733b78288d3aba920482810bde4efccf97ccb32fa43ae53ab53c82ce1b5",
+    "config_sha256": "5be7f02f4e57b4a85c199e121640ebd52a2419b59fe5f1a7eca560ce019421e1",
+    "sessions_db_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "active_process": "501  2732  1801   0  2:18PM ttys007    0:00.07 uv run --directory ./core/hermes_agent python3 ./hermes\n  501  2799  2732   0  2:18PM ttys007    0:56.33 python3 ./hermes\n  501  3532  3319   0  2:24PM ttys008    0:00.06 uv run --directory ./core/hermes_agent python3 ./hermes",
+    "captured_at": "2026-09-03T12:19:53.145931Z",
+    "paths": {
+      "production_runtime_path": "./core/hermes_agent",
+      "production_venv_path": "./core/hermes_agent/.venv",
+      "production_config_path": "~/.hermes/config.yaml",
+      "production_state_db": "~/.hermes/state.db"
+    }
+  }
+}

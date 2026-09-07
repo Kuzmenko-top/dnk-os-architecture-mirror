@@ -1,0 +1,86 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "docs/tech/sota_assimilation/capcut/audits/results/DNK-ARCH-CANVAS-SPEC.yaml"
+# purpose: "Formal DNK OS Canvas Architecture Specification derived from CapCut Audits (Iterations 1 & 2)."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "2.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym & Gerych (Hermes Prime)"
+# --- END DNK-MRH-HEADER ---
+
+dnk_arch_canvas_spec:
+  version: "2.0.0"
+  status: "Draft / Iteration 2 Verified"
+  architecture_pattern: "Hybrid Multi-Tier 2D/GPU Canvas Engine"
+
+  scene_hierarchy:
+    tier_1_gizmo:
+      z_index: 20
+      engine: "Konva.Transformer"
+      responsibilities:
+        - "Bounding box rendering"
+        - "Rotation and scale anchors"
+        - "Smart alignment guide lines (snap to edges/center)"
+        - "Multi-selection lasso"
+    
+    tier_2_scene_graph:
+      z_index: 0
+      engine: "Konva.Stage & Konva.Layer"
+      responsibilities:
+        - "Hierarchical node tree (Containers, Groups, Shapes, Images, Text)"
+        - "Interactive hit testing and event delegation"
+        - "DOM event mapping (pointerdown, dragmove, pointerup)"
+    
+    tier_3_backdrop:
+      z_index: -1
+      engine: "Konva.FastLayer"
+      responsibilities:
+        - "Static canvas background"
+        - "Grid patterns and transparent checkerboards"
+        - "Artboard clip boundaries"
+
+  acceleration_pipelines:
+    webgl_shader_engine:
+      runtime: "WebGL2 (fallback WebGL1)"
+      shaders:
+        - id: "quad_vs"
+          type: "Vertex"
+          role: "Viewport quad coordinate interpolation"
+        - id: "minmax_clamp_fs"
+          type: "Fragment"
+          role: "Color thresholding and exposure boundary clamping"
+        - id: "blend_composite_fs"
+          type: "Fragment"
+          role: "Layer blend modes (Normal, Multiply, Screen, Mask overlay)"
+        - id: "tensor_remap_fs"
+          type: "Fragment"
+          role: "GPU tensor coordinate remapping"
+
+    wasm_core_engine:
+      runtime: "Rust wasm32-unknown-unknown + wasm-bindgen"
+      responsibilities:
+        - "Zero-copy TypedArray linear memory management"
+        - "High-throughput chunked stream packaging"
+        - "Cryptographic hash computation (SHA256/MD5)"
+        - "Image downsampling and tile-based raster caching"
+
+    offscreen_buffers:
+      text_metrics:
+        dimensions: [750, 81]
+        context: "2d"
+        engine: "Tiptap / ProseMirror Layout Bridge"
+        role: "Glyph advance, word-wrapping, and font bounding box measurement"
+      brush_sampler:
+        dimensions: [300, 150]
+        context: "2d"
+        role: "Interactive color wheel and dynamic brush interpolation"
+
+  state_management_bridge:
+    undo_redo:
+      pattern: "Command Pattern / Immutable Snapshots"
+      storage: "IndexedDB + Memory Ring Buffer"
+    export_pipeline:
+      formats: ["image/png", "image/jpeg", "image/webp", "application/json (SceneGraph)"]
+      chunk_size_bytes: 1048576 # 1 MB chunks for background worker stream

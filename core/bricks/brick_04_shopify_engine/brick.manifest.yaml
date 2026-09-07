@@ -1,0 +1,49 @@
+# --- DNK-MRH-HEADER ---
+# mrh_id: "core/bricks/brick_04_shopify_engine/brick.manifest.yaml"
+# purpose: "Manifest for Brick 04: Shopify 3.0 Engine & Liquid AST Transpiler."
+# canonical_source: true
+# alters_files: []
+# triggers_tasks: []
+# status: "Active"
+# version: "1.0.0"
+# updated_at: "2026-09-02"
+# author: "DNK-e.com Maksym"
+# --- END DNK-MRH-HEADER ---
+
+id: "brick_04_shopify_engine"
+name: "Shopify 3.0 Engine & Liquid AST"
+version: "1.0.0"
+mrh_id: "core/bricks/brick_04_shopify_engine/brick.manifest.yaml"
+category: "ecommerce_engine"
+description: "Liquid AST parsing, TemplateStateEngine mutations, mechanical transpiler, Vite theme bundler, and Shopify deployment engine."
+
+paths:
+  - "services/dnk_shopify"
+  - "services/dnk_shopify_builder"
+  - "apps/api/routers/shopify.py"
+  - "apps/api/services/shopify_deploy_engine.py"
+
+dependencies:
+  internal:
+    - "brick_02_scones_memory"
+  external:
+    python:
+      - "fastapi>=0.110.0"
+      - "pydantic>=2.7.0"
+      - "liquidpy>=0.8.0"
+    npm:
+      - "@shopify/cli"
+      - "vite"
+
+contracts:
+  python_schema: "core/bricks/brick_04_shopify_engine/contracts/schemas.py"
+  typescript_types: "core/bricks/brick_04_shopify_engine/contracts/types.ts"
+
+entrypoints:
+  api_router: "apps.api.routers.shopify:router"
+  state_engine: "services.dnk_shopify_builder.template_state_engine:TemplateStateEngine"
+  transpiler: "services.dnk_shopify_builder.mechanical_transpiler:MechanicalTranspiler"
+
+quality_gate:
+  test_suite: "tests/shopify/test_template_state_engine.py"
+  min_coverage: 90
